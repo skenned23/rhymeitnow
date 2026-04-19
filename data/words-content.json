@@ -138,5 +138,47 @@
       { "q": "How do I use soul without sounding clichéd?", "a": "Pair it with an unexpected rhyme or put it in a surprising context. 'Soul' paired with 'scroll' or 'toll' in an unusual line can feel fresh even though the word itself is familiar." }
     ],
     "related": ["heart", "mind", "spirit", "life", "love", "breath", "voice", "whole"]
+  }, {
+  "shadow": {
+    "intro": "Shadow is a poetic staple that carries both literal and metaphorical weight, evoking mystery, absence, and hidden truths. Its versatility makes it invaluable in songwriting—from noir-tinged ballads to introspective folk. The word's soft consonant endings pair naturally with words ending in -ow and -ade sounds, lending itself to melancholic and atmospheric compositions that explore themes of darkness, doubt, and the unknown.",
+    "famous_uses": [
+      {
+        "context": "\"I Am the Shadow\" — Leonard Cohen",
+        "note": "Cohen used shadow as a meditation on identity and invisibility, pairing it with words like 'water' and 'light' to explore duality."
+      },
+      {
+        "context": "\"Shadow of the Day\" — Linkin Park",
+        "note": "The title metaphor juxtaposes the temporary nature of daylight with emotional darkness, using shadow to represent inner turmoil and fading hope."
+      },
+      {
+        "context": "\"Chasing Shadows\" — contemporary folk tradition",
+        "note": "Artists frequently pair shadow with motion verbs like chasing and following to convey pursuit of intangible emotional states or lost love."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with shadow?",
+        "a": "Perfect rhymes include meadow, beaded, jaded, faded, shaded, waded, traded, and graded. These words share the long-a vowel sound followed by the -d or -doh ending, creating smooth, flowing lines in verse."
+      },
+      {
+        "q": "What are near rhymes for shadow?",
+        "a": "Near rhymes include halo, follow, shallow, swallow, and yellow. These words share similar vowel patterns or ending consonants but don't perfectly align, offering subtle sonic texture in modern songwriting."
+      },
+      {
+        "q": "What are slant rhymes for shadow?",
+        "a": "Slant rhymes like narrow, sorrow, tomorrow, and marrow work effectively in contemporary music by creating consonance through shared consonant sounds while keeping slight vowel variation, ideal for folk and indie arrangements."
+      }
+    ],
+    "related": [
+      "darkness",
+      "light",
+      "mystery",
+      "fade",
+      "hidden",
+      "silhouette",
+      "grief",
+      "doubt"
+    ]
   }
+}
 }
