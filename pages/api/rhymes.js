@@ -25,7 +25,7 @@ export default async function handler(req, res) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20240620',
+        model: 'claude-3-haiku-20240307',
         max_tokens: 1000,
         system: `You are a rhyme-finding engine. Return ONLY a valid raw JSON object — no markdown, no backticks, no preamble. The JSON must have exactly these keys:
 - "perfect": array of 10-12 words that perfectly rhyme (identical vowel+consonant ending sound)
