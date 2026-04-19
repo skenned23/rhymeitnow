@@ -264,5 +264,47 @@
       "loss"
     ]
   }
+}, {
+  "peace": {
+    "intro": "Peace is one of the most powerful and universally resonant words in songwriting and poetry, embodying hope, resolution, and tranquility. It belongs to the -eace rhyme family and carries deep emotional weight, serving as both a literal concept and metaphor for inner calm, conflict resolution, and spiritual fulfillment. Artists use it to anchor themes of healing, activism, and personal transformation.",
+    "famous_uses": [
+      {
+        "context": "\"Peace of Mind\" — Boston",
+        "note": "The band uses peace as the central metaphor for emotional release, rhyming it with \"ease\" to emphasize the mental relief that comes from letting go of worry."
+      },
+      {
+        "context": "\"Imagine\" — John Lennon",
+        "note": "Lennon invokes peace as a utopian ideal throughout the song, pairing it with broader themes of unity and imagining a world without conflict."
+      },
+      {
+        "context": "\"Peace, Peace to You\" — The Pogues",
+        "note": "The traditional blessing structure uses peace as a benediction, creating a warm, reconciliatory tone that resonates with folk and spiritual traditions."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with peace?",
+        "a": "Perfect rhymes include: cease, crease, decrease, grease, lease, please, release, and tease. All share the long-ee sound with the -eace ending, making them ideal for creating smooth, flowing couplets."
+      },
+      {
+        "q": "What are near rhymes for peace?",
+        "a": "Near rhymes include: piece, fleece, niece, geese, and reach. These share similar vowel sounds but have slightly different consonant endings, allowing for subtle sonic variation while maintaining rhyme cohesion."
+      },
+      {
+        "q": "What are slant rhymes for peace?",
+        "a": "Slant rhymes include: breathe, beneath, sheath, and wreath. These work in modern songwriting by creating assonant or half-rhyme patterns that feel contemporary and less predictable than perfect rhymes."
+      }
+    ],
+    "related": [
+      "love",
+      "hope",
+      "harmony",
+      "rest",
+      "grace",
+      "light",
+      "freedom",
+      "serenity"
+    ]
+  }
 }
 }
