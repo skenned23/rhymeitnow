@@ -1,6 +1,6 @@
 # RhymeItNow — rhymeitnow.com
 
-AI-powered rhyme finder for poets, songwriters, and word lovers.
+AI-powered rhyme finder for poets, songwriters, and word lovers..
 
 ## Setup Instructions
 
