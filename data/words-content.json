@@ -222,5 +222,47 @@
       "gleam"
     ]
   }
+}, {
+  "war": {
+    "intro": "War is a powerful word in songwriting and poetry, carrying immense emotional and political weight. It anchors the -ar rhyme family alongside words like 'far,' 'star,' and 'scar,' offering both literal and metaphorical possibilities. From protest anthems to intimate heartbreak ballads, 'war' serves as a potent metaphor for conflict—both external and internal.",
+    "famous_uses": [
+      {
+        "context": "War — Edwin Starr",
+        "note": "The soul classic uses 'war' as the central refrain, rhyming it with 'what is it good for' in a powerful anti-war statement."
+      },
+      {
+        "context": "The War — Angels & Airwaves",
+        "note": "Uses 'war' to explore emotional and relational conflict, pairing it with 'far' and 'scars' for metaphorical depth."
+      },
+      {
+        "context": "War and Peace — Tolstoy",
+        "note": "The literary classic employs 'war' throughout to examine human struggle, conflict, and the cost of ambition."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with war?",
+        "a": "Perfect rhymes include: far, star, car, bar, scar, tar, char, guitar, bizarre, memoir. These share the long 'ar' vowel sound and hard consonant ending."
+      },
+      {
+        "q": "What are near rhymes for war?",
+        "a": "Near rhymes include: wore, door, floor, more, core, pour, store. These share the -or/-ore sound but differ slightly, creating subtle sonic variation."
+      },
+      {
+        "q": "What are slant rhymes for war?",
+        "a": "Slant rhymes include: world, word, where, were, swore, shore. These work in modern songwriting through assonance and consonance, creating tension and contemporary edge."
+      }
+    ],
+    "related": [
+      "peace",
+      "battle",
+      "fight",
+      "conflict",
+      "struggle",
+      "scar",
+      "fear",
+      "loss"
+    ]
+  }
 }
 }
