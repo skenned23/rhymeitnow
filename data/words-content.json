@@ -306,5 +306,47 @@
       "serenity"
     ]
   }
+}, {
+  "stars": {
+    "intro": "Stars is one of poetry and songwriting's most versatile and emotionally resonant words, evoking wonder, aspiration, and cosmic distance. Belonging to the -ars rhyme family, it pairs naturally with words like 'cars,' 'bars,' and 'guitars,' making it accessible for both intimate and grand compositions. Its metaphorical weight—representing dreams, guidance, and the unreachable—has made it a cornerstone of romantic and inspirational lyrics across genres.",
+    "famous_uses": [
+      {
+        "context": "\"Reach for the Stars\" — Various Artists",
+        "note": "The phrase anchors motivational anthems, typically rhymed with 'hearts,' 'parts,' and 'scars' to contrast aspiration with human limitation."
+      },
+      {
+        "context": "\"Twinkle, Twinkle, Little Star\" — Jane Taylor",
+        "note": "The foundational nursery rhyme establishes 'stars' rhyming with 'are,' creating a timeless pattern used in children's and whimsical poetry."
+      },
+      {
+        "context": "\"Black\" — Pearl Jam",
+        "note": "Eddie Vedder uses 'stars' in the chorus to evoke intimacy and memory, pairing it with softer consonants for emotional vulnerability."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with stars?",
+        "a": "Perfect rhymes include: bars, cars, guitars, jars, wars, scars, Mars, cigars, avatars, bizarre, afar. All share the stressed -arz sound, creating clean, singable lines in any genre."
+      },
+      {
+        "q": "What are near rhymes for stars?",
+        "a": "Near rhymes include: heart, art, part, start, apart, smart. These vowel shifts create subtle assonance while maintaining rhythmic flow, popular in modern hip-hop and contemporary songwriting."
+      },
+      {
+        "q": "What are slant rhymes for stars?",
+        "a": "Slant rhymes include: storms, forms, scorn, worn, born, sworn. These consonant-heavy alternatives work well in rap and experimental poetry, adding roughness and unpredictability to the cosmic imagery."
+      }
+    ],
+    "related": [
+      "sky",
+      "night",
+      "dreams",
+      "light",
+      "hope",
+      "distance",
+      "wonder",
+      "glow"
+    ]
+  }
 }
 }
