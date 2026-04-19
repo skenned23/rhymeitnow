@@ -348,5 +348,677 @@
       "glow"
     ]
   }
+}, {
+  "road": {
+    "intro": "Road is a versatile word in songwriting and poetry, evoking journeys, freedom, and life's paths. It belongs to the -oad rhyme family with words like load, boat, and mode, carrying both literal and metaphorical weight. The word's open, flowing sound makes it ideal for anthems about adventure, loss, and transformation, appearing in countless classics across genres.",
+    "famous_uses": [
+      {
+        "context": "\"The Road Not Taken\" — Robert Frost",
+        "note": "Frost uses \"road\" as a central metaphor for life choices, pairing it with \"wood\" and exploring diverging paths with philosophical depth."
+      },
+      {
+        "context": "\"Born to Be Wild\" — Steppenwolf",
+        "note": "The band pairs \"road\" with \"load\" and \"code\" to create an anthemic celebration of freedom and rebellion on the open highway."
+      },
+      {
+        "context": "\"The Long and Winding Road\" — The Beatles",
+        "note": "McCartney uses \"road\" paired with \"abode\" and \"bowed\" to craft an emotional ballad about longing and return."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with road?",
+        "a": "Perfect rhymes include: load, mode, code, bode, strode, abode, node, showed, glowed, and owed. These all share the long-o sound followed by a -d ending, creating smooth, predictable rhymes."
+      },
+      {
+        "q": "What are near rhymes for road?",
+        "a": "Near rhymes include: rode, rowed, ode, bowed, and mowed. These have similar vowel sounds but different final consonants or slight pronunciation variations, offering flexibility in modern songwriting."
+      },
+      {
+        "q": "What are slant rhymes for road?",
+        "a": "Slant rhymes include: good, mood, food, and blood. These share assonance or consonance but not perfect rhyme, allowing contemporary artists to create unexpected sonic connections and poetic depth."
+      }
+    ],
+    "related": [
+      "journey",
+      "path",
+      "travel",
+      "freedom",
+      "adventure",
+      "destination",
+      "miles",
+      "horizon"
+    ]
+  }
+}, {
+  "broken": {
+    "intro": "Broken is a powerfully evocative word in songwriting and poetry, carrying deep emotional weight across the melancholy and introspection family. Its sharp consonant ending and two-syllable structure make it ideal for building vulnerability and despair in lyrics. The word appears frequently in emotional ballads, blues, and contemporary pop, where it resonates with audiences experiencing heartbreak, failure, or personal struggle.",
+    "famous_uses": [
+      {
+        "context": "\"Broken\" — Seether feat. Amy Lee",
+        "note": "The title uses broken as a central metaphor for emotional devastation, paired with rhymes like token and spoken to emphasize unspoken pain."
+      },
+      {
+        "context": "\"Broken Smile\" — The Weeks",
+        "note": "Broken modifies emotional imagery, rhyming with woken to capture the moment someone realizes they've lost something precious."
+      },
+      {
+        "context": "\"My Heart Is Broken\" — Eels",
+        "note": "Direct and raw use of broken as a statement of fact, paired with rhymes like awoken to suggest emotional awakening through pain."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with broken?",
+        "a": "Token, woken, spoken, oaken, bespoken, awoken, unbroken, and chokin' all share the long-o sound with stressed -en ending, creating perfect rhymes ideal for heartbreak narratives."
+      },
+      {
+        "q": "What are near rhymes for broken?",
+        "a": "Frozen, chosen, golden, and solemn work as near rhymes, sharing similar vowel sounds but slightly different consonant endings, useful for subtle emotional shifts."
+      },
+      {
+        "q": "What are slant rhymes for broken?",
+        "a": "Oken, stolen, swollen, and folden function as slant rhymes in modern songwriting, allowing approximate rhyme schemes that feel natural in conversational vocals."
+      }
+    ],
+    "related": [
+      "heartbroken",
+      "shattered",
+      "fractured",
+      "wounded",
+      "scattered",
+      "battered",
+      "lost",
+      "defeated"
+    ]
+  }, {
+  "lost": {
+    "intro": "Lost is a powerfully evocative word in songwriting and poetry, conveying themes of disconnection, confusion, and yearning. It belongs to the '-ost' rhyme family and carries inherent melancholy and introspection. The word works equally well in upbeat, ironic contexts or deeply emotional ballads, making it versatile across genres from folk to pop to hip-hop.",
+    "famous_uses": [
+      {
+        "context": "\"Lost\" — Frank Ocean",
+        "note": "Ocean pairs 'lost' with 'crossed' and 'cost' to explore themes of emotional displacement and sacrificial love in a lush, atmospheric production."
+      },
+      {
+        "context": "\"Lost in Your Eyes\" — Firehouse",
+        "note": "The power ballad uses 'lost' with 'crossed' and 'tossed' to express romantic vulnerability and complete emotional surrender."
+      },
+      {
+        "context": "\"I'm Lost Without You\" — Blink-182",
+        "note": "Pop-punk pairing of 'lost' with 'cost' and 'crossed' emphasizes desperation and dependence in a relatable, youthful way."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with lost?",
+        "a": "Perfect rhymes include: cost, crossed, frost, tossed, glossed, embossed, dressed, guessed, blessed, stressed. These share the exact '-ost' or '-est' ending sound, creating clean, satisfying rhymes."
+      },
+      {
+        "q": "What are near rhymes for lost?",
+        "a": "Near rhymes include: last, past, cast, fast, vast, mast. These share similar vowel and consonant sounds but don't perfectly align, working well in modern songwriting for subtle, less predictable rhyme schemes."
+      },
+      {
+        "q": "What are slant rhymes for lost?",
+        "a": "Slant rhymes include: lift, drift, shift, twist, missed, list. These create off-kilter, contemporary sounds useful in indie and alternative music, adding tension and preventing overly obvious rhyme patterns."
+      }
+    ],
+    "related": [
+      "found",
+      "searching",
+      "wandering",
+      "confused",
+      "empty",
+      "broken",
+      "alone",
+      "forgotten"
+    ]
+  }, {
+  "wild": {
+    "intro": "Wild is a powerhouse word in songwriting and poetry, evoking freedom, chaos, and untamed passion. It belongs to the '-ild' rhyme family and carries strong emotional weight—suitable for expressing liberation, recklessness, or raw nature. Writers pair it with words like 'child,' 'mild,' and 'styled' to create contrast or emphasis.",
+    "famous_uses": [
+      {
+        "context": "\"Born to Be Wild\" — Steppenwolf",
+        "note": "The iconic opening uses 'wild' to capture the spirit of freedom and rebellion, pairing it with 'child' for generational impact."
+      },
+      {
+        "context": "\"Wild Things Run Fast\" — Fleetwood Mac",
+        "note": "Combines 'wild' with the metaphor of speed and uncontrollability, establishing urgency and passion throughout the track."
+      },
+      {
+        "context": "\"Where the Wild Things Are\" — Maurice Sendak",
+        "note": "The classic children's title uses 'wild' to set up a fantastical realm, contrasting civilization with imagination."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with wild?",
+        "a": "Perfect rhymes include: child, mild, beguiled, compiled, defiled, exiled, reviled, styled, riled, and whiled. All share the '-ild' ending with identical vowel and consonant sounds."
+      },
+      {
+        "q": "What are near rhymes for wild?",
+        "a": "Near rhymes include: willed, build, field, wiled, and smiled. These share the '-ild' or '-ield' consonant cluster but have slightly different vowel sounds, creating subtle sonic tension."
+      },
+      {
+        "q": "What are slant rhymes for wild?",
+        "a": "Slant rhymes include: while, file, trial, and bile. These work in modern songwriting through assonance or consonance, allowing flexibility when exact rhymes feel forced or predictable."
+      }
+    ],
+    "related": [
+      "free",
+      "untamed",
+      "reckless",
+      "chaos",
+      "nature",
+      "passion",
+      "fierce",
+      "bold"
+    ]
+  }, {
+  "truth": {
+    "intro": "Truth is a powerful anchor word in songwriting and poetry, grounding emotional narratives in authenticity and conviction. Belonging to the -ooth family, it carries weight and sincerity, often used to convey vulnerability, revelation, or defiance. Its single-syllable punch makes it ideal for climactic moments, while its introspective nature resonates deeply with audiences seeking honest storytelling.",
+    "famous_uses": [
+      {
+        "context": "\"God's Honest Truth\" — Willie Nelson",
+        "note": "Nelson pairs truth with honest, both emphasizing country authenticity and straightforward emotional disclosure in relationship narratives."
+      },
+      {
+        "context": "\"Nothing But The Truth\" — John Legend",
+        "note": "The phrase uses truth as an absolute commitment, rhymed internally with sincere declarations of devotion and transparency in love."
+      },
+      {
+        "context": "\"The Truth\" — Kate Bush",
+        "note": "Bush employs truth as a mysterious, almost spiritual concept, using it to explore ambiguity and the complexity of knowing reality."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with truth?",
+        "a": "Perfect rhymes include: booth, youth, sleuth, uncouth, forsooth, tooth, smooth, ruth, vermouth, and sooth. These share the -ooth vowel sound, creating a clean, satisfying rhyme that works across genres from hip-hop to country."
+      },
+      {
+        "q": "What are near rhymes for truth?",
+        "a": "Near rhymes include: loose, goose, noose, juice, moose, and deuce. These approximate the -ooth sound but shift slightly, creating subtle, modern-sounding rhymes popular in contemporary songwriting."
+      },
+      {
+        "q": "What are slant rhymes for truth?",
+        "a": "Slant rhymes include: wreath, breath, beneath, sheath, and loathe. These work through assonance and consonance rather than exact matching, adding texture and complexity favored in indie and alternative music."
+      }
+    ],
+    "related": [
+      "honesty",
+      "revelation",
+      "authenticity",
+      "sincerity",
+      "conviction",
+      "clarity",
+      "wisdom",
+      "justice"
+    ]
+  }, {
+  "blood": {
+    "intro": "Blood is a powerful word in songwriting and poetry, evoking intensity, passion, sacrifice, and raw emotion. It anchors the -ood rhyme family alongside flood, good, and wood—words that carry weight and consequence. Whether used literally or metaphorically, blood resonates across rock, hip-hop, country, and folk genres as a symbol of commitment, pain, or familial bonds.",
+    "famous_uses": [
+      {
+        "context": "\"Bad Blood\" — Taylor Swift",
+        "note": "Swift uses blood metaphorically to describe betrayal and conflict between former friends, pairing it with emotional storytelling that intensifies the -ood family's dramatic potential."
+      },
+      {
+        "context": "\"Blood on the Tracks\" — Bob Dylan",
+        "note": "Dylan's iconic album title uses blood as a symbol of emotional and relational damage, establishing it as a literary device that bridges confession and accusation."
+      },
+      {
+        "context": "\"In the Blood\" — John Mayer",
+        "note": "Mayer employs blood to explore inherited traits and family legacy, using the word's visceral quality to examine personal behavior rooted in family patterns."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with blood?",
+        "a": "Perfect rhymes include: flood, good, hood, wood, stood, could, would, should, understood, childhood. These words share the -ood sound and create natural, singable patterns in verse structures."
+      },
+      {
+        "q": "What are near rhymes for blood?",
+        "a": "Near rhymes include: bud, mud, thud, stud, flood-like assonance. These words share vowel sounds or final consonants but don't perfectly rhyme, creating subtle sonic connections useful in modern songwriting."
+      },
+      {
+        "q": "What are slant rhymes for blood?",
+        "a": "Slant rhymes include: bud, dud, sud, crud, stud. These work well in spoken-word and rap contexts where imperfect rhymes add authenticity and complexity without forcing artificial perfection."
+      }
+    ],
+    "related": [
+      "heart",
+      "pain",
+      "family",
+      "sacrifice",
+      "passion",
+      "loyalty",
+      "violence",
+      "truth"
+    ]
+  }, {
+  "glory": {
+    "intro": "Glory is a powerful word in songwriting and poetry, evoking triumph, honor, and transcendent achievement. It belongs to the -ory rhyme family alongside words like story, memory, and history. The word carries emotional weight across genres—from anthemic rock to spiritual ballads—making it ideal for climactic moments and aspirational themes that resonate deeply with listeners.",
+    "famous_uses": [
+      {
+        "context": "Glory — U2",
+        "note": "Bono uses 'glory' as a declaration of spiritual transcendence, pairing it with 'story' and 'memory' to create an uplifting, anthemic sound about redemption and transformation."
+      },
+      {
+        "context": "Glory (from Selma) — Common & John Legend",
+        "note": "The word anchors the refrain with 'story,' emphasizing historical triumph and civil rights achievement through repetition and emotional intensity."
+      },
+      {
+        "context": "Paths of Glory — Stanley Kubrick (film)",
+        "note": "Used ironically in the title to contrast the brutality of war with society's glorification of military honor, establishing a critical tone."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with glory?",
+        "a": "Story, memory, history, allegory, category, territory, inventory, sensory, migratory, mandatory, ambulatory. These perfect rhymes share the stressed -ory ending, creating a soaring, epic quality ideal for anthems and dramatic moments."
+      },
+      {
+        "q": "What are near rhymes for glory?",
+        "a": "Worry, hurry, sorry, theory, query, weary, eerie. These near rhymes share similar vowel sounds but differ slightly in consonants, allowing subtle variation while maintaining harmonic connection in modern songs."
+      },
+      {
+        "q": "What are slant rhymes for glory?",
+        "a": "Free, be, see, decree, spree, degree. Slant rhymes work by sharing assonance or consonance rather than perfect sound matching, creating contemporary, flexible rhyme schemes popular in hip-hop and indie music."
+      }
+    ],
+    "related": [
+      "victory",
+      "honor",
+      "triumph",
+      "light",
+      "achievement",
+      "legacy",
+      "immortal",
+      "shining"
+    ]
+  }, {
+  "faith": {
+    "intro": "Faith is a cornerstone word in songwriting and poetry, carrying profound emotional and spiritual weight. It belongs to the '-aith' rhyme family, alongside words like 'grace,' 'place,' and 'race,' making it versatile for both secular and religious contexts. The word evokes vulnerability, hope, and conviction, making it essential for ballads, hymns, and inspirational anthems that explore belief and trust.",
+    "famous_uses": [
+      {
+        "context": "Faith — George Michael",
+        "note": "George Michael uses 'faith' as the central theme of the title track, pairing it with 'grace' and 'place' to create an uplifting, soul-driven exploration of trust and redemption."
+      },
+      {
+        "context": "Faithfully — Journey",
+        "note": "The power ballad uses 'faith' to anchor its romantic devotion narrative, rhyming it with 'place' and building emotional intensity through repetition and soaring melodies."
+      },
+      {
+        "context": "The Divine Comedy — Dante Alighieri",
+        "note": "Dante employs 'faith' extensively in his theological poetry, using it to explore the journey toward salvation and divine understanding throughout his epic work."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with faith?",
+        "a": "Perfect rhymes include: grace, place, race, space, face, case, base, waste, taste, chase. These words share the '-aith' and '-ace' sounds, creating melodic and meaningful pairings for themes of hope, geography, identity, and consequence."
+      },
+      {
+        "q": "What are near rhymes for faith?",
+        "a": "Near rhymes include: bathe, lathe, swathe, breathe, sheathe, and rathe. These imperfect rhymes work well in modern songwriting by creating subtle sonic tension while maintaining lyrical flow and contemporary feel."
+      },
+      {
+        "q": "What are slant rhymes for faith?",
+        "a": "Slant rhymes include: wraith, sheath, death, and breath. These unconventional pairings work powerfully in contemporary and alternative music, creating unexpected emotional resonance while exploring themes of mortality, change, and spiritual struggle."
+      }
+    ],
+    "related": [
+      "hope",
+      "grace",
+      "trust",
+      "believe",
+      "soul",
+      "prayer",
+      "divine",
+      "spirit"
+    ]
+  }, {
+  "rise": {
+    "intro": "Rise is a powerful, uplifting word that dominates motivational anthems, love songs, and narratives of overcoming adversity. Its -ize/-ise rhyme family provides strong, dynamic sounds perfect for building emotional crescendos. The word carries inherent optimism and forward momentum, making it essential for songwriters seeking transformative or aspirational themes.",
+    "famous_uses": [
+      {
+        "context": "\"Rise Up\" — Andra Day",
+        "note": "The title word anchors an empowering anthem about resilience, paired with rhymes like 'eyes' and 'skies' to amplify its motivational force."
+      },
+      {
+        "context": "\"The Rise and Fall of a Midwest Princess\" — Chappell Roan",
+        "note": "Used in the album title to frame a narrative arc, contrasting rise with fall to explore themes of ambition and vulnerability."
+      },
+      {
+        "context": "\"Arise\" — William Blake",
+        "note": "Blake's poetic use of 'rise' and related forms emphasizes spiritual awakening and revolutionary consciousness in Romantic literature."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with rise?",
+        "a": "Perfect rhymes include: skies, eyes, ties, lies, tries, cries, flies, replies, supplies, sunrise, and disguise. These share the long 'i' sound followed by the 'z' consonant, creating bright, punchy rhymes."
+      },
+      {
+        "q": "What are near rhymes for rise?",
+        "a": "Near rhymes include: wise, size, prize, surprised, otherwise, and comprise. These share similar vowel sounds but may have slightly different consonant endings, allowing for subtle variations in rhyme schemes."
+      },
+      {
+        "q": "What are slant rhymes for rise?",
+        "a": "Slant rhymes include: ice, advice, twice, and price. These share the long 'i' sound but end with different consonants, working effectively in modern songwriting for looser, more conversational flow."
+      }
+    ],
+    "related": [
+      "fall",
+      "climb",
+      "soar",
+      "ascend",
+      "peak",
+      "triumph",
+      "emerge",
+      "overcome"
+    ]
+  }, {
+  "fall": {
+    "intro": "Fall is a versatile word dominating songwriting and poetry, belonging to the -all rhyme family (ball, call, wall, all). It carries dual emotional weight: the melancholic season of decline and death, or the physical surrender of losing control. This duality makes it powerful for both heartbreak ballads and metaphorical verses about vulnerability and change.",
+    "famous_uses": [
+      {
+        "context": "\"Free Fallin'\" — Tom Petty",
+        "note": "Petty uses \"fall\" as a metaphor for liberation and letting go, rhyming it with \"all\" to create a sense of total surrender and freedom."
+      },
+      {
+        "context": "\"I Will Follow You into the Dark\" — Death Cab for Cutie",
+        "note": "The song employs autumnal imagery with \"fall\" to evoke loss and inevitability, pairing it with emotional vulnerability."
+      },
+      {
+        "context": "\"After the Fall\" — Dante Alighieri",
+        "note": "The classical allusion to humanity's original fall adds philosophical weight, making the word resonate with themes of sin, loss, and redemption."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with fall?",
+        "a": "Perfect rhymes include: all, ball, call, hall, mall, tall, wall, small. These share the identical -all sound and work seamlessly in verse, creating strong end rhymes or internal rhymes."
+      },
+      {
+        "q": "What are near rhymes for fall?",
+        "a": "Near rhymes include: feel, fail, foal, fuel, fowl, sail. These share similar vowel or consonant patterns but don't perfectly align, offering subtle texture for modern songwriting."
+      },
+      {
+        "q": "What are slant rhymes for fall?",
+        "a": "Slant rhymes include: foul, full, soul, foil, fail. These work in contemporary music by creating intentional imperfection, adding rawness and emotional authenticity to lyrics."
+      }
+    ],
+    "related": [
+      "autumn",
+      "winter",
+      "decay",
+      "surrender",
+      "loss",
+      "gravity",
+      "change",
+      "season"
+    ]
+  }, {
+  "stone": {
+    "intro": "Stone is a foundational word in songwriting and poetry, evoking permanence, coldness, and weight. Its versatile rhyme family includes bone, alone, grown, and known, making it ideal for themes of isolation, hardship, and emotional distance. The word carries both literal and metaphorical power, from physical landscapes to emotional barriers.",
+    "famous_uses": [
+      {
+        "context": "\"Like a Rolling Stone\" — Bob Dylan",
+        "note": "Dylan uses stone as a metaphor for movement and change, rhyming it with 'alone' and 'known' to explore loss of identity and social displacement."
+      },
+      {
+        "context": "\"Brown Sugar\" — The Rolling Stones",
+        "note": "The band's name itself draws from the blues tradition, using stone imagery throughout their catalog to suggest durability and raw power in rock and roll."
+      },
+      {
+        "context": "\"Stone of Sisyphus\" — Various poets",
+        "note": "Stone appears frequently in classical and modern poetry as a symbol of eternal struggle and the burden of repetitive human effort."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with stone?",
+        "a": "Perfect rhymes include: bone, alone, grown, known, shown, thrown, zone, tone, moan, phone. These all share the long 'o' sound followed by 'n', creating clean, satisfying rhymes ideal for memorable choruses and verses."
+      },
+      {
+        "q": "What are near rhymes for stone?",
+        "a": "Near rhymes include: scone, throne, drone, clone, prone, cone. These share similar vowel sounds but diverge slightly in consonant placement, offering subtle variations that work well in modern and hip-hop songwriting."
+      },
+      {
+        "q": "What are slant rhymes for stone?",
+        "a": "Slant rhymes include: sworn, worn, born, corn, horn. These consonance-based rhymes share the 'n' ending but shift the vowel sound, creating an off-kilter feel perfect for unsettling emotions or deliberate imperfection in contemporary music."
+      }
+    ],
+    "related": [
+      "bone",
+      "alone",
+      "grown",
+      "cold",
+      "hard",
+      "ground",
+      "grave",
+      "solid"
+    ]
+  }, {
+  "grace": {
+    "intro": "Grace is a poignant and versatile word in songwriting and poetry, embodying elegance, forgiveness, and divine favor. It anchors the -ace rhyme family with words like place, face, and space, carrying emotional weight ranging from spiritual redemption to physical poise. This word appears across genres—from hymns to contemporary ballads—offering both introspection and uplift.",
+    "famous_uses": [
+      {
+        "context": "Amazing Grace — John Newton",
+        "note": "The titular word anchors this iconic hymn, paired with 'place' and 'ways' to express spiritual salvation and redemption across centuries of religious songwriting."
+      },
+      {
+        "context": "Grace — Jeff Buckley",
+        "note": "Buckley uses 'grace' as a meditation on loss and beauty, rhyming it with 'face' and 'place' to create intimate vulnerability in this contemporary reinterpretation."
+      },
+      {
+        "context": "By the Grace of the Gods — The Magnetic Fields",
+        "note": "The word grounds an exploration of fate and fortune, paired with internal rhymes to create a whimsical yet melancholic atmosphere."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with grace?",
+        "a": "Perfect rhymes include: face, place, space, case, base, trace, race, embrace, replace, and chase. All share the long-A vowel sound followed by the -s sound, creating clean, resonant rhymes."
+      },
+      {
+        "q": "What are near rhymes for grace?",
+        "a": "Near rhymes include: glace, brace, lace, pace, and erase. These share most of the ending sound but have slight variations in vowel or consonant positioning, offering subtle alternatives."
+      },
+      {
+        "q": "What are slant rhymes for grace?",
+        "a": "Slant rhymes include: gaze, glaze, phase, and ways. These work in modern songwriting by sharing assonance or consonant sounds without perfect rhyme, adding contemporary texture and intentional imprecision."
+      }
+    ],
+    "related": [
+      "forgiveness",
+      "elegance",
+      "redemption",
+      "dignity",
+      "mercy",
+      "poise",
+      "blessing",
+      "serenity"
+    ]
+  }, {
+  "wings": {
+    "intro": "Wings is a powerful metaphor in songwriting and poetry, evoking freedom, transcendence, and escape. Part of the -ings rhyme family, it pairs naturally with words like things, brings, and sings, making it versatile for both uplifting anthems and introspective ballads. Its emotional weight spans from liberation to loss, depending on context.",
+    "famous_uses": [
+      {
+        "context": "\"Blackbird\" — The Beatles",
+        "note": "Paul McCartney uses 'wings' metaphorically for freedom and breaking chains, rhyming it with 'things' to create a message of empowerment."
+      },
+      {
+        "context": "\"Like a Prayer\" — Madonna",
+        "note": "Madonna pairs 'wings' with 'things' in a spiritual context, using the imagery to convey divine protection and transcendence."
+      },
+      {
+        "context": "\"I Dreamed a Dream\" — Les Misérables",
+        "note": "The theatrical use of 'wings' evokes lost hope and dreams, emphasizing the contrast between aspiration and reality."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with wings?",
+        "a": "Perfect rhymes include: things, brings, sings, rings, strings, kings, springs, swings, stings, and clings. All share the -ings ending with identical vowel and consonant sounds, creating seamless rhyme schemes."
+      },
+      {
+        "q": "What are near rhymes for wings?",
+        "a": "Near rhymes include: wigs, digs, pigs, rings (slight variation), and flings. These share similar consonant patterns but differ slightly in vowel quality or final consonant, working well in modern, less rigid compositions."
+      },
+      {
+        "q": "What are slant rhymes for wings?",
+        "a": "Slant rhymes include: winds, welds, wends, and wilds. These approximate the sound through consonance or assonance rather than perfect rhyme, offering creative flexibility in contemporary songwriting styles."
+      }
+    ],
+    "related": [
+      "flight",
+      "freedom",
+      "sky",
+      "soar",
+      "angel",
+      "dream",
+      "escape",
+      "spirit"
+    ]
+  }, {
+  "wind": {
+    "intro": "\"Wind\" is a versatile word in songwriting and poetry, offering both literal nature imagery and metaphorical meanings of change and movement. Its dual pronunciation (rhyming with \"kind\" or \"sinned\") creates unique flexibility for lyricists. The word carries emotional weight—evoking freedom, unpredictability, and the passage of time—making it essential for atmospheric storytelling.",
+    "famous_uses": [
+      {
+        "context": "\"Blowin' in the Wind\" — Bob Dylan",
+        "note": "Dylan uses \"wind\" as a symbol of unanswerable questions and social change, pairing it with rhymes like \"friend\" and \"end\" to emphasize the cyclical nature of human struggle."
+      },
+      {
+        "context": "\"Dust in the Wind\" — Kansas",
+        "note": "The band pairs \"wind\" with \"find\" and \"mind\" to explore themes of mortality and the fleeting nature of existence in this classic rock ballad."
+      },
+      {
+        "context": "\"Her Hair Was Blowing in the Wind\" — Traditional/Folk",
+        "note": "Folk tradition uses \"wind\" to create vivid imagery, often rhyming with \"grinned\" or \"thinned\" for romantic or melancholic effect."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with wind (pronounced 'wind' as in breeze)?",
+        "a": "Perfect rhymes include: sinned, grinned, thinned, pinned, skinned, thinned, chinned, beginned. These share the short 'i' vowel sound followed by the 'nd' consonant blend, creating strong end-rhyme opportunities."
+      },
+      {
+        "q": "What are near rhymes for wind?",
+        "a": "Near rhymes include: wisp, whip, win, lint, hint, and mint. These approximate the 'i' sound or consonant structure without perfect alignment, working well in modern songwriting for subtle rhyming patterns."
+      },
+      {
+        "q": "What are slant rhymes for wind?",
+        "a": "Slant rhymes include: wand, wandered, tinted, winged, and blind. These employ vowel or consonant shifts that create emotional resonance in contemporary music without strict rhyme rules, allowing lyrical flexibility."
+      }
+    ],
+    "related": [
+      "breeze",
+      "storm",
+      "sky",
+      "drift",
+      "change",
+      "freedom",
+      "time",
+      "movement"
+    ]
+  }, {
+  "river": {
+    "intro": "River is a foundational word in songwriting and poetry, evoking flow, change, and passage through life. Its clean, open vowel sound belongs to the -iver rhyme family, carrying both melancholic and hopeful emotional weight. From spiritual metaphors to literal landscapes, 'river' provides lyricists with natural imagery that feels timeless and universally resonant.",
+    "famous_uses": [
+      {
+        "context": "\"Deep River\" — Traditional Spiritual",
+        "note": "Used as a metaphor for crossing into freedom and the afterlife, paired with religious imagery and call-and-response structures."
+      },
+      {
+        "context": "\"Rolling on a River\" — Tina Turner",
+        "note": "Employed the river as a symbol of unstoppable momentum and confidence, rhyming it with 'shiver' to create dynamic sonic energy."
+      },
+      {
+        "context": "\"The River\" — Bruce Springsteen",
+        "note": "River serves as both literal landscape and metaphor for life's journey, with reflective arrangements that emphasize its contemplative power."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with river?",
+        "a": "Deliver, quiver, shiver, sliver, giver, liver, diver, skiver. These words share the exact -iver ending with a long 'i' sound and soft consonant closure, creating smooth, melodic rhymes."
+      },
+      {
+        "q": "What are near rhymes for river?",
+        "a": "Silver, whisper, glimmer, shimmer, twitter. These near rhymes approximate the sound but shift the vowel or final consonant slightly, working well in contemporary songwriting for subtle rhyme schemes."
+      },
+      {
+        "q": "What are slant rhymes for river?",
+        "a": "Fever, never, weather, feather, clever. Slant rhymes with river work through assonance or consonance, offering looser rhyme schemes useful in hip-hop, indie, and modern folk songwriting."
+      }
+    ],
+    "related": [
+      "flow",
+      "water",
+      "journey",
+      "current",
+      "stream",
+      "crossing",
+      "passage",
+      "wave"
+    ]
+  }, {
+  "smoke": {
+    "intro": "Smoke is a versatile word in songwriting, evoking mystery, disappearance, and hazy emotion. It belongs to the -oke rhyme family, which offers both strong perfect rhymes and poetic imagery. The word carries weight in blues, rock, and introspective pop, often symbolizing loss, obscurity, or the ephemeral nature of moments.",
+    "famous_uses": [
+      {
+        "context": "\"Smoke on the Water\" — Deep Purple",
+        "note": "The iconic riff-driven title uses smoke as a visual metaphor, paired with 'water' for atmospheric effect and memorable singability."
+      },
+      {
+        "context": "\"Smoke Gets in Your Eyes\" — The Platters",
+        "note": "This classic love song pairs smoke with eyes and sighs, creating a romantic haze that obscures clear vision in matters of the heart."
+      },
+      {
+        "context": "\"Up in Smoke\" — Cheech & Chong",
+        "note": "The phrase explores the theme of disappearance and transience, using smoke as both literal and metaphorical imagery in comedic storytelling."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with smoke?",
+        "a": "Poke, broke, woke, joke, choke, stroke, spoke, cloak, croak, and provoke all share the long-o sound with a hard consonant ending. These rhymes offer various emotional tones from humorous to dramatic."
+      },
+      {
+        "q": "What are near rhymes for smoke?",
+        "a": "Soak, stoke, yoke, and folk are near rhymes that share the -oke pattern with slight vowel or consonant variations. These work well in conversational verses where perfect rhyme feels too rigid."
+      },
+      {
+        "q": "What are slant rhymes for smoke?",
+        "a": "Sleek, speak, sake, and stroke function as slant rhymes through assonance and consonant similarity. Modern songwriting uses these to create subtle internal rhyme patterns while maintaining narrative flow."
+      }
+    ],
+    "related": [
+      "fire",
+      "haze",
+      "fade",
+      "vanish",
+      "cloud",
+      "whisper",
+      "mirror",
+      "ghost"
+    ]
+  }
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
 }
 }
