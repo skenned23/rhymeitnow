@@ -50,8 +50,8 @@ function saveAsImage(bars, styleName, theme, format) {
   const canvas = document.createElement('canvas')
   const scale = 2
   const { width, height } = format
-  const padding = 80
-  const lineHeight = 56
+  const padding = format.id === '9:16' ? 120 : 80
+const lineHeight = format.id === '9:16' ? 120 : 56
 
   // Measure wrapped lines
   const tempCtx = canvas.getContext('2d')
@@ -90,7 +90,7 @@ function saveAsImage(bars, styleName, theme, format) {
   ctx.fillRect(0, startY, width, 4)
 
   // Style label
-  ctx.font = '500 11px Georgia, serif'
+  ctx.font = format.id === '9:16' ? '500 32px Georgia, serif' : '500 11px Georgia, serif'
   ctx.fillStyle = theme.labelColor
   ctx.fillText(styleName.toUpperCase() + ' · AI-GENERATED BARS', padding, startY + 44)
 
@@ -103,7 +103,7 @@ function saveAsImage(bars, styleName, theme, format) {
   ctx.stroke()
 
   // Bars
-  ctx.font = 'italic 28px Georgia, serif'
+ ctx.font = format.id === '9:16' ? 'italic 72px Georgia, serif' : 'italic 28px Georgia, serif'
   wrappedLines.forEach((line, i) => {
     const y = startY + 62 + 48 + i * lineHeight
     ctx.fillStyle = theme.dividerColor
@@ -122,7 +122,7 @@ function saveAsImage(bars, styleName, theme, format) {
   ctx.stroke()
 
   // Watermark
-  ctx.font = '12px Georgia, serif'
+ ctx.font = format.id === '9:16' ? '28px Georgia, serif' : '12px Georgia, serif'
   ctx.fillStyle = theme.watermarkColor
   const watermark = 'RHYMEITNOW.COM'
   const wWidth = ctx.measureText(watermark).width
