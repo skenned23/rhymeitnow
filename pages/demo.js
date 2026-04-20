@@ -328,7 +328,7 @@ export default function Demo() {
         <>
           <div style={s.inputBox}>
             <span style={s.label}>Rhymes for</span>
-            <div style={{ ...s.wordDisplay, fontSize: '2rem' }}>{pain}</div>
+            <div style={{ ...s.wordDisplay, fontSize: '2rem' }}>{inputWord || 'pain'}</div>
           </div>
 
           {groupedVisible.perfect.length > 0 && (
@@ -376,7 +376,7 @@ export default function Demo() {
       {(phase === 'rapping' || phase === 'bars' || phase === 'done') && (
         <>
           <div style={s.rapBox}>
-            <span style={s.label}>Rap Builder — "{pain}" · Emotional · 4 Bars</span>
+            <span style={s.label}>Rap Builder — "{inputWord || 'pain'}" · Emotional · 4 Bars</span>
             {rapLoading && (
               <div style={s.loading}>Building your bars...</div>
             )}
