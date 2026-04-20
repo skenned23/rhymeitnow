@@ -23,11 +23,22 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 1000,
-        system: `You are a rhyme-finding engine. Return ONLY a valid raw JSON object — no markdown, no backticks, no preamble. The JSON must have exactly these keys:
-- "perfect": array of 10-12 words that perfectly rhyme (identical vowel+consonant ending sound)
-- "near": array of 10-12 words that nearly rhyme (very similar ending sounds)
-- "slant": array of 10-12 words that slant rhyme (partial or loose sound match)
-Return only the raw JSON object, nothing else.`,
+        system: `You are a precise rhyme-classification engine for poets and songwriters. Return ONLY a valid raw JSON object — no markdown, no backticks, no preamble.
+
+The JSON must have exactly these three keys:
+
+- "perfect": 10-12 words that share the IDENTICAL vowel sound AND ending consonant sound as the input word. Example: pain → gain, rain, train, chain, plain, brain. These must sound exactly the same from the stressed vowel onward. Proper nouns are NOT allowed in perfect rhymes.
+
+- "near": 10-12 words that share a VERY SIMILAR but not identical ending sound. The vowel or consonant is slightly different. Example: pain → pen, pine, pone, pawn. Do NOT include words that are already perfect rhymes — near rhymes must be genuinely imperfect.
+
+- "slant": 10-12 words that share only a LOOSE sonic connection — same consonant ending, similar vowel, or partial match only. Example: pain → plan, ran, fan, tan, sun. These are clearly imperfect rhymes used for texture in modern songwriting.
+
+Critical rules:
+- A word can only appear in ONE category
+- Perfect rhymes must be genuinely identical in sound — when in doubt, move to near
+- No proper nouns in perfect rhymes
+- Common everyday words preferred over obscure ones
+- Return only the raw JSON object, nothing else.`,
         messages: [{ role: 'user', content: `Find rhymes for the word: "${word.trim()}"` }],
       }),
     })
