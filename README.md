@@ -2,7 +2,7 @@
 
 AI-powered rhyme finder for poets, songwriters, and word lovers..
 
-## Setup Instructions 
+## Setup Instructions  
 
 ### 1. Add your Anthropic API Key in Vercel
 - Go to your Vercel dashboard
