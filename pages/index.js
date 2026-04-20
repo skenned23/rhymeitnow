@@ -17,6 +17,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [copied, setCopied] = useState(null)
+  const [copiedAll, setCopiedAll] = useState(null)
   const [searchedWord, setSearchedWord] = useState('')
   const [placeholder, setPlaceholder] = useState(EXAMPLES[0])
 
@@ -56,6 +57,13 @@ export default function Home() {
     navigator.clipboard?.writeText(w)
     setCopied(w)
     setTimeout(() => setCopied(null), 1400)
+  }
+
+  const copyAll = (categoryKey, words) => {
+    const text = words.join(', ')
+    navigator.clipboard?.writeText(text)
+    setCopiedAll(categoryKey)
+    setTimeout(() => setCopiedAll(null), 1600)
   }
 
   return (
@@ -136,25 +144,49 @@ export default function Home() {
               </div>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.25rem' }}>
-              {CATEGORIES.map(cat => (
-                <div key={cat.key} style={{ background: '#130f08', border: '1px solid #251e10', borderTop: `3px solid ${cat.accent}`, borderRadius: '10px', padding: '1.5rem' }}>
-                  <div style={{ marginBottom: '1.25rem' }}>
-                    <div style={{ fontSize: '0.65rem', letterSpacing: '4px', color: cat.accent, textTransform: 'uppercase', marginBottom: '0.2rem' }}>{cat.label}</div>
-                    <div style={{ fontSize: '0.78rem', color: '#4a4030' }}>{cat.sub}</div>
+              {CATEGORIES.map(cat => {
+                const words = results[cat.key] || []
+                return (
+                  <div key={cat.key} style={{ background: '#130f08', border: '1px solid #251e10', borderTop: `3px solid ${cat.accent}`, borderRadius: '10px', padding: '1.5rem' }}>
+                    <div style={{ marginBottom: '1.25rem' }}>
+                      <div style={{ fontSize: '0.65rem', letterSpacing: '4px', color: cat.accent, textTransform: 'uppercase', marginBottom: '0.2rem' }}>{cat.label}</div>
+                      <div style={{ fontSize: '0.78rem', color: '#4a4030' }}>{cat.sub}</div>
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+                      {words.map(w => (
+                        <button key={w} onClick={() => copyWord(w)}
+                          style={{ background: copied === w ? cat.accent : '#1e1a0e', color: copied === w ? '#0e0c08' : '#c8b890', border: `1px solid ${copied === w ? cat.accent : '#302818'}`, borderRadius: '5px', padding: '0.38rem 0.75rem', fontSize: '0.9rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+                          {copied === w ? '✓' : w}
+                        </button>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: '1rem', paddingTop: '0.75rem', borderTop: '1px solid #1e1810', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ fontSize: '0.72rem', color: '#3a3020' }}>
+                        {words.length} rhymes found
+                      </span>
+                      {words.length > 0 && (
+                        <button
+                          onClick={() => copyAll(cat.key, words)}
+                          style={{
+                            background: copiedAll === cat.key ? cat.accent : 'transparent',
+                            color: copiedAll === cat.key ? '#0e0c08' : '#5a4e38',
+                            border: `1px solid ${copiedAll === cat.key ? cat.accent : '#2a2010'}`,
+                            borderRadius: '5px',
+                            padding: '0.25rem 0.65rem',
+                            fontSize: '0.7rem',
+                            cursor: 'pointer',
+                            fontFamily: 'Georgia, serif',
+                            letterSpacing: '1px',
+                            textTransform: 'uppercase',
+                            transition: 'all 0.2s',
+                          }}>
+                          {copiedAll === cat.key ? '✓ Copied!' : 'Copy All'}
+                        </button>
+                      )}
+                    </div>
                   </div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
-                    {(results[cat.key] || []).map(w => (
-                      <button key={w} onClick={() => copyWord(w)}
-                        style={{ background: copied === w ? cat.accent : '#1e1a0e', color: copied === w ? '#0e0c08' : '#c8b890', border: `1px solid ${copied === w ? cat.accent : '#302818'}`, borderRadius: '5px', padding: '0.38rem 0.75rem', fontSize: '0.9rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
-                        {copied === w ? '✓' : w}
-                      </button>
-                    ))}
-                  </div>
-                  <div style={{ marginTop: '1rem', paddingTop: '0.75rem', borderTop: '1px solid #1e1810', fontSize: '0.72rem', color: '#3a3020' }}>
-                    {(results[cat.key] || []).length} rhymes found
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
             <p style={{ textAlign: 'center', color: '#3a3020', fontSize: '0.78rem', marginTop: '1.5rem' }}>Click any word to copy it</p>
           </div>
