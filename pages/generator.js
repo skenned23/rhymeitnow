@@ -104,7 +104,7 @@ export default function Generator() {
     const successes = batchResults.filter(r => r.status === 'ok')
     if (successes.length === 0) return ''
     // Produce entries as "word": { ... }, ready to paste before final }
-    return successes
+    return ',\n' + successes
       .map(r => {
         const inner = JSON.stringify(r.json, null, 2)
         // r.json is already { "word": { ... } } shape — extract inner value
