@@ -77,7 +77,7 @@ export default function Demo() {
         body: JSON.stringify({ line: demoWord, style: DEMO_STYLE, bars: DEMO_BARS })
       })
       const rapData = await rapRes.json()
-      const barsText = rapData.bars || rapData.rap || ''
+      const barsText = (rapData.generated_bars || []).join('\n')
       setBars(barsText)
       setRapLoading(false)
       setPhase('bars')
