@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Head from 'next/head'
 import { SiteNav, SiteFooter } from '../components/Layout'
 
@@ -16,6 +16,101 @@ const EXAMPLES = [
   "Every night I'm grinding while they sleeping in the dark",
   "Started with a dream now I got a works of art",
 ]
+
+function saveAsImage(bars, styleName) {
+  const canvas = document.createElement('canvas')
+  const scale = 2
+  const width = 1080
+  const padding = 80
+  const lineHeight = 52
+  const headerHeight = 120
+  const footerHeight = 80
+
+  // Wrap lines
+  const tempCtx = canvas.getContext('2d')
+  tempCtx.font = `italic ${28 * scale}px Georgia, serif`
+  const wrappedLines = []
+  bars.forEach(bar => {
+    const words = bar.split(' ')
+    let current = ''
+    words.forEach(word => {
+      const test = current ? current + ' ' + word : word
+      if (tempCtx.measureText(test).width > (width - padding * 2) * scale) {
+        if (current) wrappedLines.push(current)
+        current = word
+      } else {
+        current = test
+      }
+    })
+    if (current) wrappedLines.push(current)
+  })
+
+  const height = headerHeight + wrappedLines.length * lineHeight + footerHeight + 60
+
+  canvas.width = width * scale
+  canvas.height = height * scale
+  const ctx = canvas.getContext('2d')
+  ctx.scale(scale, scale)
+
+  // Background
+  ctx.fillStyle = '#0a0906'
+  ctx.fillRect(0, 0, width, height)
+
+  // Gold top bar
+  ctx.fillStyle = '#c8a86a'
+  ctx.fillRect(0, 0, width, 4)
+
+  // Style label
+  ctx.font = `500 11px Georgia, serif`
+  ctx.fillStyle = '#5a4e38'
+  ctx.letterSpacing = '4px'
+  ctx.fillText(styleName.toUpperCase() + ' · AI-GENERATED BARS', padding, 44)
+
+  // Divider
+  ctx.strokeStyle = '#251e10'
+  ctx.lineWidth = 1
+  ctx.beginPath()
+  ctx.moveTo(padding, 62)
+  ctx.lineTo(width - padding, 62)
+  ctx.stroke()
+
+  // Bars
+  ctx.font = `italic 28px Georgia, serif`
+  ctx.letterSpacing = '0px'
+  wrappedLines.forEach((line, i) => {
+    const y = 62 + 48 + i * lineHeight
+    const isEven = i % 2 === 0
+    ctx.fillStyle = isEven ? '#f0e4c8' : '#c8b890'
+    // Left accent
+    ctx.fillStyle = '#251e10'
+    ctx.fillRect(padding, y - 22, 2, 28)
+    ctx.fillStyle = isEven ? '#f0e4c8' : '#c8b890'
+    ctx.fillText(line, padding + 16, y)
+  })
+
+  // Bottom divider
+  const bottomY = 62 + 48 + wrappedLines.length * lineHeight + 20
+  ctx.strokeStyle = '#251e10'
+  ctx.lineWidth = 1
+  ctx.beginPath()
+  ctx.moveTo(padding, bottomY)
+  ctx.lineTo(width - padding, bottomY)
+  ctx.stroke()
+
+  // Watermark
+  ctx.font = `12px Georgia, serif`
+  ctx.fillStyle = '#3a3020'
+  ctx.letterSpacing = '2px'
+  const watermark = 'RHYMEITNOW.COM'
+  const wWidth = ctx.measureText(watermark).width
+  ctx.fillText(watermark, (width - wWidth) / 2, bottomY + 36)
+
+  // Download
+  const link = document.createElement('a')
+  link.download = 'my-bars-rhymeitnow.png'
+  link.href = canvas.toDataURL('image/png')
+  link.click()
+}
 
 export default function RapBuilder() {
   const [inputLine, setInputLine] = useState('')
@@ -80,6 +175,8 @@ export default function RapBuilder() {
   const useExample = (ex) => {
     setInputLine(ex)
   }
+
+  const currentStyleName = STYLES.find(s => s.id === style)?.label || 'Trap'
 
   return (
     <>
@@ -219,6 +316,10 @@ export default function RapBuilder() {
                   style={{ flex: 1, padding: '0.85rem', background: '#c8a86a', color: '#0e0c08', border: 'none', borderRadius: '8px', fontSize: '0.95rem', fontWeight: '700', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
                   Continue Building →
                 </button>
+                <button onClick={() => saveAsImage(results.generated_bars || [], currentStyleName)}
+                  style={{ padding: '0.85rem 1.25rem', background: '#130f08', color: '#c8a86a', border: '1px solid #c8a86a', borderRadius: '8px', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontWeight: '700' }}>
+                  Save as Image
+                </button>
                 <button onClick={() => { setResults(null); setInputLine('') }}
                   style={{ padding: '0.85rem 1.25rem', background: '#130f08', color: '#7a6a4a', border: '1px solid #251e10', borderRadius: '8px', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
                   New Line
@@ -233,6 +334,10 @@ export default function RapBuilder() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                 <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase' }}>Your Lyrics So Far</div>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button onClick={() => saveAsImage(session, currentStyleName)}
+                    style={{ padding: '0.4rem 0.85rem', background: '#1a1510', color: '#c8a86a', border: '1px solid #c8a86a', borderRadius: '6px', fontSize: '0.78rem', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
+                    Save as Image
+                  </button>
                   <button onClick={copySession}
                     style={{ padding: '0.4rem 0.85rem', background: copied ? '#c8a86a' : '#1a1510', color: copied ? '#0e0c08' : '#7a6a4a', border: '1px solid #2a2010', borderRadius: '6px', fontSize: '0.78rem', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
                     {copied ? '✓ Copied' : 'Copy All'}
