@@ -4,6 +4,24 @@ import Link from 'next/link'
 import { SiteNav, SiteFooter } from '../components/Layout'
 
 const EXAMPLES = ['moon', 'fire', 'dream', 'rain', 'time', 'love', 'night', 'gold']
+
+const CLUSTERS = {
+  pain: ['rain', 'gain', 'heart', 'sorrow', 'chain', 'flame'],
+  love: ['heart', 'above', 'dove', 'soul', 'hope', 'dream'],
+  fire: ['desire', 'night', 'burn', 'rain', 'storm', 'light'],
+  night: ['light', 'dream', 'dark', 'moon', 'star', 'fire'],
+  dream: ['hope', 'sleep', 'soul', 'mind', 'wish', 'night'],
+  heart: ['love', 'soul', 'pain', 'start', 'apart', 'art'],
+  time: ['rhyme', 'climb', 'life', 'mind', 'find', 'prime'],
+  rain: ['pain', 'chain', 'gain', 'train', 'plain', 'brain'],
+  soul: ['whole', 'goal', 'roll', 'heart', 'mind', 'life'],
+  home: ['roam', 'alone', 'road', 'heart', 'soul', 'bone'],
+  moon: ['soon', 'tune', 'night', 'star', 'dream', 'sky'],
+  fire: ['desire', 'higher', 'inspire', 'rain', 'pain', 'night'],
+  gold: ['bold', 'cold', 'hold', 'soul', 'old', 'told'],
+  hope: ['cope', 'rope', 'soul', 'dream', 'faith', 'light'],
+  fear: ['tear', 'near', 'clear', 'year', 'dark', 'heart'],
+}
 const CATEGORIES = [
   { key: 'perfect', label: 'Perfect Rhymes', sub: 'Exact sound match', accent: '#c8a86a' },
   { key: 'near', label: 'Near Rhymes', sub: 'Close but not exact', accent: '#7aafc8' },
@@ -113,8 +131,13 @@ export default function Home() {
 
           {/* Example chips */}
           <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '0.75rem', color: '#4a4030', alignSelf: 'center' }}>Try:</span>
-            {EXAMPLES.map(ex => (
+            <span style={{ fontSize: '0.75rem', color: '#4a4030', alignSelf: 'center' }}>
+              {searchedWord && CLUSTERS[searchedWord.toLowerCase()] ? 'Related:' : 'Try:'}
+            </span>
+            {(searchedWord && CLUSTERS[searchedWord.toLowerCase()] 
+              ? CLUSTERS[searchedWord.toLowerCase()] 
+              : EXAMPLES
+            ).map(ex => (
               <button key={ex} onClick={() => { setWord(ex); findRhymes(ex) }}
                 style={{ background: '#181410', color: '#9a8a6a', border: '1px solid #2e2518', borderRadius: '20px', padding: '0.3rem 0.85rem', fontSize: '0.8rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
                 {ex}
@@ -154,10 +177,17 @@ export default function Home() {
                     </div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
                       {words.map(w => (
-                        <button key={w} onClick={() => copyWord(w)}
-                          style={{ background: copied === w ? cat.accent : '#1e1a0e', color: copied === w ? '#0e0c08' : '#c8b890', border: `1px solid ${copied === w ? cat.accent : '#302818'}`, borderRadius: '5px', padding: '0.38rem 0.75rem', fontSize: '0.9rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
-                          {copied === w ? '✓' : w}
-                        </button>
+                        <div key={w} style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+                          <Link href={`/rhymes-for/${w.toLowerCase()}`}
+                            style={{ background: '#1e1a0e', color: '#c8b890', border: `1px solid #302818`, borderRadius: '5px', padding: '0.38rem 0.75rem', fontSize: '0.9rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic', textDecoration: 'none', display: 'inline-block' }}>
+                            {w}
+                          </Link>
+                          <button onClick={() => copyWord(w)}
+                            title="Copy"
+                            style={{ background: copied === w ? cat.accent : 'transparent', color: copied === w ? '#0e0c08' : '#5a4e38', border: 'none', borderRadius: '3px', padding: '0.2rem 0.3rem', fontSize: '0.65rem', cursor: 'pointer', marginLeft: '2px' }}>
+                            {copied === w ? '✓' : '⧉'}
+                          </button>
+                        </div>
                       ))}
                     </div>
                     <div style={{ marginTop: '1rem', paddingTop: '0.75rem', borderTop: '1px solid #1e1810', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -188,7 +218,19 @@ export default function Home() {
                 )
               })}
             </div>
-            <p style={{ textAlign: 'center', color: '#3a3020', fontSize: '0.78rem', marginTop: '1.5rem' }}>Click any word to copy it</p>
+            <p style={{ textAlign: 'center', color: '#3a3020', fontSize: '0.78rem', marginTop: '1.5rem' }}>Click any word to explore its rhymes — or copy it directly</p>
+
+            {/* Rap Builder CTA */}
+            <div style={{ marginTop: '2rem', background: '#130f08', border: '1px solid #3a2e1a', borderRadius: '10px', padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+              <div>
+                <div style={{ fontSize: '0.7rem', letterSpacing: '3px', color: '#c8a86a', textTransform: 'uppercase', marginBottom: '0.25rem' }}>Ready to write?</div>
+                <div style={{ color: '#7a6a4a', fontSize: '0.9rem' }}>Use these rhymes to build rap bars instantly</div>
+              </div>
+              <Link href="/rap-builder"
+                style={{ background: '#c8a86a', color: '#0e0c08', border: 'none', borderRadius: '8px', padding: '0.75rem 1.5rem', fontSize: '0.9rem', fontWeight: '700', fontFamily: 'Georgia, serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                Try Rap Builder →
+              </Link>
+            </div>
           </div>
         )}
 
