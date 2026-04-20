@@ -22,7 +22,7 @@
     ],
     "faq": [
       { "q": "What rhymes perfectly with moon?", "a": "Perfect rhymes for 'moon' include soon, tune, June, spoon, balloon, cartoon, cocoon, and lagoon — all sharing the long 'oon' sound." },
-      { "q": "What are near rhymes for moon?", "a": "Near rhymes include born, born, mourn, and home — words that share some sound qualities but not the exact ending sound." },
+      { "q": "What are near rhymes for moon?", "a": "Near rhymes include born, mourn, and home — words that share some sound qualities but not the exact ending sound." },
       { "q": "How do songwriters use moon in lyrics?", "a": "Moon is often used as a setting or emotional backdrop — symbolizing romance, mystery, or longing — while its rhymes carry the narrative forward." }
     ],
     "related": ["sun", "star", "night", "sky", "dream", "light", "dark", "fire"]
@@ -50,7 +50,7 @@
     ],
     "faq": [
       { "q": "What rhymes perfectly with rain?", "a": "Perfect rhymes for 'rain' include pain, gain, plain, train, brain, remain, contain, explain, maintain, and refrain — the 'ain' family is one of the largest in English." },
-      { "q": "Are there near rhymes for rain?", "a": "Near rhymes include run, ran, rim, and rim — words that share consonant sounds but shift the vowel slightly for a more modern effect." },
+      { "q": "Are there near rhymes for rain?", "a": "Near rhymes include run, ran, rim — words that share consonant sounds but shift the vowel slightly for a more modern effect." },
       { "q": "Why do so many songs use rain?", "a": "Rain is a universally understood emotional symbol — for sadness, cleansing, or change — and its large rhyme family makes it structurally easy to build verses around." }
     ],
     "related": ["pain", "storm", "wind", "cloud", "sky", "flood", "tear", "sun"]
@@ -115,7 +115,7 @@
     "intro": "Home is one of the most emotionally powerful words in songwriting — it carries belonging, nostalgia, longing, and loss all at once. Country music built an entire genre around it. Its rhyme family is smaller than some, but each rhyme carries weight.",
     "famous_uses": [
       { "context": "\"Take Me Home, Country Roads\" — John Denver", "note": "Denver's beloved anthem turns home into a symbol of roots and identity, using the word as both destination and emotional anchor throughout the song." },
-      { "context": "\"Home\" — Michael Bublé", "note": "Bublé uses home as a metaphor for the person rather than the place — showing how the word can carry relational rather than geographic meaning." },
+      { "context": "\"Home\" — Michael Buble", "note": "Buble uses home as a metaphor for the person rather than the place — showing how the word can carry relational rather than geographic meaning." },
       { "context": "\"The Odyssey\" — Homer", "note": "The entire epic poem is structured around the desire to return home — one of literature's oldest and most powerful driving forces." }
     ],
     "faq": [
@@ -138,5 +138,5 @@
       { "q": "How do I use soul without sounding clichéd?", "a": "Pair it with an unexpected rhyme or put it in a surprising context. 'Soul' paired with 'scroll' or 'toll' in an unusual line can feel fresh even though the word itself is familiar." }
     ],
     "related": ["heart", "mind", "spirit", "life", "love", "breath", "voice", "whole"]
-  }, 
+  }
 }
