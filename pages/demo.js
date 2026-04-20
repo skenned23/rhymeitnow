@@ -74,7 +74,7 @@ export default function Demo() {
       const rapRes = await fetch('/api/rap', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ word: demoWord, style: DEMO_STYLE, bars: DEMO_BARS })
+        body: JSON.stringify({ line: demoWord, style: DEMO_STYLE, bars: DEMO_BARS })
       })
       const rapData = await rapRes.json()
       const barsText = rapData.bars || rapData.rap || ''
