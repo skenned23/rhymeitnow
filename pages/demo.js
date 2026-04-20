@@ -1,12 +1,12 @@
 // pages/demo.js — Screen recording demo mode (not linked in nav)
 import { useState, useEffect, useRef } from 'react'
 
-const DEMO_WORD = 'pain'
 const DEMO_STYLE = 'emotional'
 const DEMO_BARS = '4'
 
 export default function Demo() {
   const [phase, setPhase] = useState('idle') // idle | typing | finding | rhymes | transition | rapping | bars | done
+  const [inputWord, setInputWord] = useState('pain')
   const [typedWord, setTypedWord] = useState('')
   const [rhymes, setRhymes] = useState({ perfect: [], near: [], slant: [] })
   const [visibleRhymes, setVisibleRhymes] = useState([])
@@ -20,6 +20,7 @@ export default function Demo() {
   const sleep = ms => new Promise(r => setTimeout(r, ms))
 
   const runDemo = async () => {
+    const demoWord = inputWord.trim() || 'pain'
     setPhase('typing')
     setTypedWord('')
     setRhymes({ perfect: [], near: [], slant: [] })
@@ -28,12 +29,12 @@ export default function Demo() {
     setVisibleBars([])
 
     // Typewriter effect
-    for (let i = 0; i <= DEMO_WORD.length; i++) {
-      setTypedWord(DEMO_WORD.slice(0, i))
-      await sleep(120)
+    for (let i = 0; i <= demoWord.length; i++) {
+      setTypedWord(demoWord.slice(0, i))
+      await sleep(150)
     }
 
-    await sleep(600)
+    await sleep(800)
     setPhase('finding')
 
     // Call rhymes API
@@ -41,7 +42,7 @@ export default function Demo() {
       const res = await fetch('/api/rhymes', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ word: DEMO_WORD })
+        body: JSON.stringify({ word: demoWord })
       })
       const data = await res.json()
       const perfect = data.perfect || []
@@ -50,7 +51,7 @@ export default function Demo() {
       setRhymes({ perfect, near, slant })
       setPhase('rhymes')
 
-      // Reveal rhymes one by one
+      // Reveal rhymes one by one — slower
       const allRhymes = [
         ...perfect.slice(0, 5).map(w => ({ word: w, type: 'perfect' })),
         ...near.slice(0, 4).map(w => ({ word: w, type: 'near' })),
@@ -58,22 +59,22 @@ export default function Demo() {
       ]
 
       for (let i = 0; i < allRhymes.length; i++) {
-        await sleep(320)
+        await sleep(650)
         setVisibleRhymes(prev => [...prev, allRhymes[i]])
       }
 
-      await sleep(1800)
+      await sleep(2500)
 
       // Transition to Rap Builder
       setPhase('transition')
-      await sleep(1000)
+      await sleep(1800)
       setPhase('rapping')
       setRapLoading(true)
 
       const rapRes = await fetch('/api/rap', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ word: DEMO_WORD, style: DEMO_STYLE, bars: DEMO_BARS })
+        body: JSON.stringify({ word: demoWord, style: DEMO_STYLE, bars: DEMO_BARS })
       })
       const rapData = await rapRes.json()
       const barsText = rapData.bars || rapData.rap || ''
@@ -81,14 +82,14 @@ export default function Demo() {
       setRapLoading(false)
       setPhase('bars')
 
-      // Reveal bars line by line
+      // Reveal bars line by line — slower
       const lines = barsText.split('\n').filter(l => l.trim())
       for (let i = 0; i < lines.length; i++) {
-        await sleep(500)
+        await sleep(1100)
         setVisibleBars(prev => [...prev, lines[i]])
       }
 
-      await sleep(2000)
+      await sleep(2500)
       setPhase('done')
 
     } catch (err) {
@@ -285,9 +286,22 @@ export default function Demo() {
         <>
           <div style={s.inputBox}>
             <span style={s.label}>Enter a word</span>
-            <div style={s.wordDisplay}>
-              <span style={{ color: '#3a3020' }}>pain</span>
-            </div>
+            <input
+              type="text"
+              value={inputWord}
+              onChange={e => setInputWord(e.target.value)}
+              placeholder="pain"
+              style={{
+                background: 'transparent',
+                border: 'none',
+                outline: 'none',
+                color: '#f0e4c8',
+                fontSize: '2.4rem',
+                fontFamily: 'Georgia, serif',
+                width: '100%',
+                letterSpacing: '2px',
+              }}
+            />
           </div>
           <button style={s.findBtn} onClick={runDemo}>▶ Start Demo</button>
         </>
@@ -374,7 +388,7 @@ export default function Demo() {
           {phase === 'done' && (
             <>
               <div style={s.doneMsg}>rhymeitnow.com</div>
-              <button style={s.startBtn} onClick={runDemo}>↺ Replay Demo</button>
+              <button style={s.startBtn} onClick={() => setPhase('idle')}>↺ Try Another Word</button>
             </>
           )}
         </>
