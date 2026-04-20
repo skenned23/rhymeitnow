@@ -52,7 +52,7 @@ function saveAsImage(bars, styleName, theme, format) {
   const width = format.width
 const contentLines = bars.reduce((acc, bar) => acc + Math.ceil(bar.length / 35), 0)
 const minHeight = format.height
-const dynamicHeight = format.id === '9:16' ? Math.max(minHeight, 400 + contentLines * 130) : format.height
+const dynamicHeight = format.id === '9:16' ? Math.max(minHeight, 600 + contentLines * 160) : format.height
 const height = dynamicHeight
   const padding = format.id === '9:16' ? 120 : 80
 const lineHeight = format.id === '9:16' ? 120 : 56
