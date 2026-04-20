@@ -49,24 +49,34 @@ const FORMATS = [
 function saveAsImage(bars, styleName, theme, format) {
   const canvas = document.createElement('canvas')
   const scale = 2
-  const width = format.width
-const contentLines = bars.reduce((acc, bar) => acc + Math.ceil(bar.length / 35), 0)
-const minHeight = format.height
-const dynamicHeight = format.id === '9:16' ? Math.max(minHeight, 600 + contentLines * 160) : format.height
-const height = dynamicHeight
-  const padding = format.id === '9:16' ? 120 : 80
-const lineHeight = format.id === '9:16' ? 120 : 56
+  const is916 = format.id === '9:16'
 
-  // Measure wrapped lines
-  const tempCtx = canvas.getContext('2d')
-  tempCtx.font = format.id === '9:16' ? `italic ${48 * scale}px Georgia, serif` : `italic ${28 * scale}px Georgia, serif`
+  // Fixed dimensions — always 1080x608 or 1080x1920
+  const W = 1080
+  const H = is916 ? 1920 : 608
+
+  // Font sizes
+  const barFontSize = is916 ? 52 : 28
+  const labelFontSize = is916 ? 24 : 11
+  const watermarkFontSize = is916 ? 22 : 12
+  const padding = is916 ? 90 : 80
+  const lineHeight = is916 ? 80 : 52
+
+  canvas.width = W * scale
+  canvas.height = H * scale
+  const ctx = canvas.getContext('2d')
+  ctx.scale(scale, scale)
+
+  // Measure wrapped lines using actual render font
+  ctx.font = `italic ${barFontSize}px Georgia, serif`
+  const maxLineWidth = W - padding * 2
   const wrappedLines = []
   bars.forEach(bar => {
     const words = bar.split(' ')
     let current = ''
     words.forEach(word => {
       const test = current ? current + ' ' + word : word
-      if (tempCtx.measureText(test).width > (width - padding * 2) * scale) {
+      if (ctx.measureText(test).width > maxLineWidth) {
         if (current) wrappedLines.push(current)
         current = word
       } else {
@@ -76,61 +86,64 @@ const lineHeight = format.id === '9:16' ? 120 : 56
     if (current) wrappedLines.push(current)
   })
 
-  canvas.width = width * scale
-  canvas.height = height * scale
-  const ctx = canvas.getContext('2d')
-  ctx.scale(scale, scale)
+  // Calculate content block height
+  const headerH = is916 ? 120 : 80
+  const footerH = is916 ? 80 : 60
+  const contentH = headerH + wrappedLines.length * lineHeight + footerH
+
+  // Center content vertically for 9:16, top-align for 16:9
+  const startY = is916 ? Math.max(80, Math.floor((H - contentH) / 2)) : 0
 
   // Background
   ctx.fillStyle = theme.bg
-  ctx.fillRect(0, 0, width, height)
-
-  // For 9:16 — center content vertically
-  const contentHeight = 60 + 48 + wrappedLines.length * lineHeight + 80
-  const startY = format.id === '9:16' ? Math.max(60, (height - contentHeight) / 2) : 0
+  ctx.fillRect(0, 0, W, H)
 
   // Top accent bar
   ctx.fillStyle = theme.accent
-  ctx.fillRect(0, startY, width, 4)
+  ctx.fillRect(padding, startY, W - padding * 2, is916 ? 3 : 2)
 
-  // Style label
-  ctx.font = format.id === '9:16' ? '500 32px Georgia, serif' : '500 11px Georgia, serif'
+  // Label
+  ctx.font = `500 ${labelFontSize}px Georgia, serif`
   ctx.fillStyle = theme.labelColor
-  ctx.fillText(styleName.toUpperCase() + ' · AI-GENERATED BARS', padding, startY + 44)
+  ctx.fillText(styleName.toUpperCase() + ' · AI-GENERATED BARS', padding, startY + (is916 ? 52 : 36))
 
   // Top divider
+  const dividerY = startY + (is916 ? 68 : 48)
   ctx.strokeStyle = theme.dividerColor
   ctx.lineWidth = 1
   ctx.beginPath()
-  ctx.moveTo(padding, startY + 62)
-  ctx.lineTo(width - padding, startY + 62)
+  ctx.moveTo(padding, dividerY)
+  ctx.lineTo(W - padding, dividerY)
   ctx.stroke()
 
   // Bars
-ctx.font = format.id === '9:16' ? 'italic 48px Georgia, serif' : 'italic 28px Georgia, serif'
+  ctx.font = `italic ${barFontSize}px Georgia, serif`
   wrappedLines.forEach((line, i) => {
-    const y = startY + 62 + 48 + i * lineHeight
-    ctx.fillStyle = theme.dividerColor
-    ctx.fillRect(padding, y - 22, 2, 28)
+    const y = dividerY + (is916 ? 60 : 40) + i * lineHeight
+    // Left accent tick
+    ctx.fillStyle = theme.accent
+    ctx.fillRect(padding, y - Math.floor(barFontSize * 0.8), 2, Math.floor(barFontSize * 1.1))
+    // Bar text
     ctx.fillStyle = i % 2 === 0 ? theme.barColor1 : theme.barColor2
-    ctx.fillText(line, padding + 16, y)
+    ctx.fillText(line, padding + 14, y)
   })
 
   // Bottom divider
-  const bottomY = startY + 62 + 48 + wrappedLines.length * lineHeight + 20
+  const lastBarY = dividerY + (is916 ? 60 : 40) + wrappedLines.length * lineHeight
+  const bottomDivY = lastBarY + (is916 ? 20 : 14)
   ctx.strokeStyle = theme.dividerColor
   ctx.lineWidth = 1
   ctx.beginPath()
-  ctx.moveTo(padding, bottomY)
-  ctx.lineTo(width - padding, bottomY)
+  ctx.moveTo(padding, bottomDivY)
+  ctx.lineTo(W - padding, bottomDivY)
   ctx.stroke()
 
   // Watermark
- ctx.font = format.id === '9:16' ? '28px Georgia, serif' : '12px Georgia, serif'
+  ctx.font = `${watermarkFontSize}px Georgia, serif`
   ctx.fillStyle = theme.watermarkColor
   const watermark = 'RHYMEITNOW.COM'
-  const wWidth = ctx.measureText(watermark).width
-  ctx.fillText(watermark, (width - wWidth) / 2, bottomY + 36)
+  const ww = ctx.measureText(watermark).width
+  ctx.fillText(watermark, Math.floor((W - ww) / 2), bottomDivY + (is916 ? 44 : 28))
 
   const link = document.createElement('a')
   link.download = 'my-bars-rhymeitnow.png'
