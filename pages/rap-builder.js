@@ -55,7 +55,7 @@ const lineHeight = format.id === '9:16' ? 120 : 56
 
   // Measure wrapped lines
   const tempCtx = canvas.getContext('2d')
-  tempCtx.font = `italic ${28 * scale}px Georgia, serif`
+  tempCtx.font = format.id === '9:16' ? `italic ${72 * scale}px Georgia, serif` : `italic ${28 * scale}px Georgia, serif`
   const wrappedLines = []
   bars.forEach(bar => {
     const words = bar.split(' ')
