@@ -19,53 +19,41 @@ const EXAMPLES = [
 
 const THEMES = [
   {
-    id: 'dark',
-    label: 'Dark Elegance',
-    previewBg: '#0a0906',
-    previewBorder: '#c8a86a',
-    bg: '#0a0906',
-    accent: '#c8a86a',
-    barColor1: '#f0e4c8',
-    barColor2: '#c8b890',
-    labelColor: '#5a4e38',
-    dividerColor: '#251e10',
-    watermarkColor: '#3a3020',
+    id: 'dark', label: 'Dark Elegance',
+    previewBg: '#0a0906', previewBorder: '#c8a86a',
+    bg: '#0a0906', accent: '#c8a86a',
+    barColor1: '#f0e4c8', barColor2: '#c8b890',
+    labelColor: '#5a4e38', dividerColor: '#251e10', watermarkColor: '#3a3020',
   },
   {
-    id: 'neon',
-    label: 'Neon Night',
-    previewBg: '#0d0018',
-    previewBorder: '#00f5ff',
-    bg: '#0d0018',
-    accent: '#00f5ff',
-    barColor1: '#ffffff',
-    barColor2: '#00f5ff',
-    labelColor: '#7a00ff',
-    dividerColor: '#2a0050',
-    watermarkColor: '#3a0070',
+    id: 'neon', label: 'Neon Night',
+    previewBg: '#0d0018', previewBorder: '#00f5ff',
+    bg: '#0d0018', accent: '#00f5ff',
+    barColor1: '#ffffff', barColor2: '#00f5ff',
+    labelColor: '#7a00ff', dividerColor: '#2a0050', watermarkColor: '#3a0070',
   },
   {
-    id: 'minimal',
-    label: 'Minimalist White',
-    previewBg: '#ffffff',
-    previewBorder: '#111111',
-    bg: '#ffffff',
-    accent: '#111111',
-    barColor1: '#111111',
-    barColor2: '#444444',
-    labelColor: '#888888',
-    dividerColor: '#e0e0e0',
-    watermarkColor: '#cccccc',
+    id: 'minimal', label: 'Minimalist White',
+    previewBg: '#ffffff', previewBorder: '#111111',
+    bg: '#ffffff', accent: '#111111',
+    barColor1: '#111111', barColor2: '#444444',
+    labelColor: '#888888', dividerColor: '#e0e0e0', watermarkColor: '#cccccc',
   },
 ]
 
-function saveAsImage(bars, styleName, theme) {
+const FORMATS = [
+  { id: '16:9', label: '16:9', sub: 'Twitter / Feed', width: 1080, height: 608 },
+  { id: '9:16', label: '9:16', sub: 'TikTok / Stories', width: 1080, height: 1920 },
+]
+
+function saveAsImage(bars, styleName, theme, format) {
   const canvas = document.createElement('canvas')
   const scale = 2
-  const width = 1080
+  const { width, height } = format
   const padding = 80
-  const lineHeight = 52
+  const lineHeight = 56
 
+  // Measure wrapped lines
   const tempCtx = canvas.getContext('2d')
   tempCtx.font = `italic ${28 * scale}px Georgia, serif`
   const wrappedLines = []
@@ -84,40 +72,48 @@ function saveAsImage(bars, styleName, theme) {
     if (current) wrappedLines.push(current)
   })
 
-  const height = 120 + wrappedLines.length * lineHeight + 140
-
   canvas.width = width * scale
   canvas.height = height * scale
   const ctx = canvas.getContext('2d')
   ctx.scale(scale, scale)
 
+  // Background
   ctx.fillStyle = theme.bg
   ctx.fillRect(0, 0, width, height)
 
-  ctx.fillStyle = theme.accent
-  ctx.fillRect(0, 0, width, 4)
+  // For 9:16 — center content vertically
+  const contentHeight = 60 + 48 + wrappedLines.length * lineHeight + 80
+  const startY = format.id === '9:16' ? Math.max(60, (height - contentHeight) / 2) : 0
 
+  // Top accent bar
+  ctx.fillStyle = theme.accent
+  ctx.fillRect(0, startY, width, 4)
+
+  // Style label
   ctx.font = '500 11px Georgia, serif'
   ctx.fillStyle = theme.labelColor
-  ctx.fillText(styleName.toUpperCase() + ' · AI-GENERATED BARS', padding, 44)
+  ctx.fillText(styleName.toUpperCase() + ' · AI-GENERATED BARS', padding, startY + 44)
 
+  // Top divider
   ctx.strokeStyle = theme.dividerColor
   ctx.lineWidth = 1
   ctx.beginPath()
-  ctx.moveTo(padding, 62)
-  ctx.lineTo(width - padding, 62)
+  ctx.moveTo(padding, startY + 62)
+  ctx.lineTo(width - padding, startY + 62)
   ctx.stroke()
 
+  // Bars
   ctx.font = 'italic 28px Georgia, serif'
   wrappedLines.forEach((line, i) => {
-    const y = 62 + 48 + i * lineHeight
+    const y = startY + 62 + 48 + i * lineHeight
     ctx.fillStyle = theme.dividerColor
     ctx.fillRect(padding, y - 22, 2, 28)
     ctx.fillStyle = i % 2 === 0 ? theme.barColor1 : theme.barColor2
     ctx.fillText(line, padding + 16, y)
   })
 
-  const bottomY = 62 + 48 + wrappedLines.length * lineHeight + 20
+  // Bottom divider
+  const bottomY = startY + 62 + 48 + wrappedLines.length * lineHeight + 20
   ctx.strokeStyle = theme.dividerColor
   ctx.lineWidth = 1
   ctx.beginPath()
@@ -125,6 +121,7 @@ function saveAsImage(bars, styleName, theme) {
   ctx.lineTo(width - padding, bottomY)
   ctx.stroke()
 
+  // Watermark
   ctx.font = '12px Georgia, serif'
   ctx.fillStyle = theme.watermarkColor
   const watermark = 'RHYMEITNOW.COM'
@@ -139,7 +136,7 @@ function saveAsImage(bars, styleName, theme) {
 
 function ThemePicker({ selectedTheme, onSelect }) {
   return (
-    <div style={{ marginBottom: '1.25rem' }}>
+    <div style={{ marginBottom: '1rem' }}>
       <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Image Theme</div>
       <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
         {THEMES.map(t => (
@@ -153,13 +150,33 @@ function ThemePicker({ selectedTheme, onSelect }) {
               borderRadius: '6px', fontSize: '0.82rem', cursor: 'pointer',
               fontFamily: 'Georgia, serif', fontWeight: selectedTheme === t.id ? '700' : '400',
             }}>
-            <span style={{
-              width: '12px', height: '12px', borderRadius: '50%',
-              background: t.previewBg,
-              border: `2px solid ${t.previewBorder}`,
-              display: 'inline-block', flexShrink: 0,
-            }} />
+            <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: t.previewBg, border: `2px solid ${t.previewBorder}`, display: 'inline-block', flexShrink: 0 }} />
             {t.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function FormatPicker({ selectedFormat, onSelect }) {
+  return (
+    <div style={{ marginBottom: '1.25rem' }}>
+      <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Image Format</div>
+      <div style={{ display: 'flex', gap: '0.6rem' }}>
+        {FORMATS.map(f => (
+          <button key={f.id} onClick={() => onSelect(f.id)}
+            style={{
+              display: 'flex', flexDirection: 'column', alignItems: 'center',
+              padding: '0.5rem 1.25rem',
+              background: selectedFormat === f.id ? '#c8a86a' : '#130f08',
+              color: selectedFormat === f.id ? '#0e0c08' : '#7a6a4a',
+              border: `1px solid ${selectedFormat === f.id ? '#c8a86a' : '#251e10'}`,
+              borderRadius: '6px', cursor: 'pointer', fontFamily: 'Georgia, serif',
+              fontWeight: selectedFormat === f.id ? '700' : '400',
+            }}>
+            <span style={{ fontSize: '0.95rem', fontWeight: '700' }}>{f.label}</span>
+            <span style={{ fontSize: '0.7rem', opacity: 0.7, marginTop: '2px' }}>{f.sub}</span>
           </button>
         ))}
       </div>
@@ -177,8 +194,10 @@ export default function RapBuilder() {
   const [session, setSession] = useState([])
   const [copied, setCopied] = useState(false)
   const [imageTheme, setImageTheme] = useState('dark')
+  const [imageFormat, setImageFormat] = useState('9:16')
 
   const currentTheme = THEMES.find(t => t.id === imageTheme) || THEMES[0]
+  const currentFormat = FORMATS.find(f => f.id === imageFormat) || FORMATS[1]
   const currentStyleName = STYLES.find(s => s.id === style)?.label || 'Trap'
 
   const buildBars = async (line) => {
@@ -326,13 +345,14 @@ export default function RapBuilder() {
               )}
 
               <ThemePicker selectedTheme={imageTheme} onSelect={setImageTheme} />
+              <FormatPicker selectedFormat={imageFormat} onSelect={setImageFormat} />
 
               <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
                 <button onClick={continueBuilding}
                   style={{ flex: 1, padding: '0.85rem', background: '#c8a86a', color: '#0e0c08', border: 'none', borderRadius: '8px', fontSize: '0.95rem', fontWeight: '700', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
                   Continue Building →
                 </button>
-                <button onClick={() => saveAsImage(results.generated_bars || [], currentStyleName, currentTheme)}
+                <button onClick={() => saveAsImage(results.generated_bars || [], currentStyleName, currentTheme, currentFormat)}
                   style={{ padding: '0.85rem 1.25rem', background: '#130f08', color: '#c8a86a', border: '1px solid #c8a86a', borderRadius: '8px', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontWeight: '700' }}>
                   Save as Image
                 </button>
@@ -349,7 +369,7 @@ export default function RapBuilder() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                 <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase' }}>Your Lyrics So Far</div>
                 <div style={{ display: 'flex', gap: '0.5rem' }}>
-                  <button onClick={() => saveAsImage(session, currentStyleName, currentTheme)}
+                  <button onClick={() => saveAsImage(session, currentStyleName, currentTheme, currentFormat)}
                     style={{ padding: '0.4rem 0.85rem', background: '#1a1510', color: '#c8a86a', border: '1px solid #c8a86a', borderRadius: '6px', fontSize: '0.78rem', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
                     Save as Image
                   </button>
