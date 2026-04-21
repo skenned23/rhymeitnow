@@ -172,6 +172,26 @@ export default function RhymesForWord({ word, content }) {
           ))}
         </div>
 
+        {/* Pro Tip */}
+        {content.pro_tip && (
+          <div style={{ background: '#130f08', border: '1px solid #3a2e1a', borderLeft: '4px solid #c8a86a', borderRadius: '10px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem' }}>
+            <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#c8a86a', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Songwriter Pro Tip</div>
+            <p style={{ fontSize: '14px', color: '#8a7a5a', lineHeight: '1.8', margin: '0' }}>{content.pro_tip}</p>
+          </div>
+        )}
+
+        {/* Rap Builder CTA */}
+        <div style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '10px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <div>
+            <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#c8a86a', textTransform: 'uppercase', marginBottom: '0.25rem' }}>Ready to write?</div>
+            <div style={{ color: '#7a6a4a', fontSize: '14px' }}>Use these rhymes to build rap bars instantly</div>
+          </div>
+          <Link href="/rap-builder"
+            style={{ background: '#c8a86a', color: '#0e0c08', borderRadius: '8px', padding: '0.75rem 1.5rem', fontSize: '14px', fontWeight: '700', fontFamily: 'Georgia, serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            Try Rap Builder →
+          </Link>
+        </div>
+
         {/* Related Words */}
         <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#f0e4c8', fontWeight: '700' }}>
           Related words to explore
