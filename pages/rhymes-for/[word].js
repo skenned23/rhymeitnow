@@ -14,7 +14,30 @@ export async function getStaticProps({ params }) {
   const { word } = params
   const content = wordsContent[word] || null
   if (!content) return { notFound: true }
-  return { props: { word, content } }
+
+  // Parse static rhyme lists from FAQ answers
+  function extractRhymeList(faqAnswer) {
+    if (!faqAnswer) return []
+    const beforePeriod = faqAnswer.split('.')[0]
+    const listPart = beforePeriod.includes(':') ? beforePeriod.split(':')[1] : beforePeriod
+    return listPart
+      .split(',')
+      .map(w => w.trim().toLowerCase().replace(/[^a-z\s-]/g, ''))
+      .filter(w => w.length > 0 && w.length < 20)
+  }
+
+  const faq = content.faq || []
+  const perfectFaq = faq.find(f => f.q && f.q.toLowerCase().includes('perfectly'))
+  const nearFaq = faq.find(f => f.q && f.q.toLowerCase().includes('near'))
+  const slantFaq = faq.find(f => f.q && f.q.toLowerCase().includes('slant'))
+
+  const staticRhymes = {
+    perfect: perfectFaq ? extractRhymeList(perfectFaq.a) : [],
+    near: nearFaq ? extractRhymeList(nearFaq.a) : [],
+    slant: slantFaq ? extractRhymeList(slantFaq.a) : [],
+  }
+
+  return { props: { word, content, staticRhymes } }
 }
 
 const CATEGORIES = [
@@ -48,7 +71,7 @@ function linkifyText(text, currentWord) {
   })
 }
 
-export default function RhymesForWord({ word, content }) {
+export default function RhymesForWord({ word, content, staticRhymes }) {
   const [results, setResults] = useState(null)
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(null)
@@ -117,6 +140,41 @@ export default function RhymesForWord({ word, content }) {
         <p style={{ fontSize: '1rem', lineHeight: '1.8', color: '#8a7a5a', marginBottom: '2rem', borderLeft: '3px solid #c8a86a', paddingLeft: '1rem' }}>
           {linkifyText(content.intro, word)}
         </p>
+
+        {/* Static Rhyme Lists */}
+        {(staticRhymes.perfect.length > 0 || staticRhymes.near.length > 0 || staticRhymes.slant.length > 0) && (
+          <div style={{ marginBottom: '2.5rem' }}>
+            <h2 style={{ fontSize: '1.3rem', marginBottom: '1.25rem', color: '#f0e4c8', fontWeight: '700' }}>
+              Rhymes for "{word}"
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
+              {CATEGORIES.map(cat => (
+                staticRhymes[cat.key].length > 0 && (
+                  <div key={cat.key}>
+                    <div style={{ fontSize: '11px', letterSpacing: '2px', color: cat.accent, textTransform: 'uppercase', marginBottom: '0.75rem', borderBottom: `2px solid ${cat.accent}`, paddingBottom: '0.4rem' }}>
+                      {cat.label}
+                    </div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {staticRhymes[cat.key].map(w => (
+                        allWords.includes(w) && w !== word ? (
+                          <Link key={w} href={`/rhymes-for/${w}`}
+                            style={{ background: '#1e1a0e', border: `1px solid ${cat.accent}33`, borderRadius: '4px', padding: '4px 10px', fontSize: '13px', color: cat.accent, textDecoration: 'none', fontStyle: 'italic' }}>
+                            {w}
+                          </Link>
+                        ) : (
+                          <button key={w} onClick={() => copyWord(w)}
+                            style={{ background: copied === w ? cat.accent : '#1e1a0e', color: copied === w ? '#0e0c08' : '#c8b890', border: `1px solid ${copied === w ? cat.accent : '#302818'}`, borderRadius: '4px', padding: '4px 10px', fontSize: '13px', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+                            {copied === w ? '✓' : w}
+                          </button>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Tool */}
         <div style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '12px', padding: '2rem', marginBottom: '2.5rem' }}>
