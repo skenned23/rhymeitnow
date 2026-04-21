@@ -106,15 +106,13 @@ export default function Generator() {
     const successes = batchResults.filter(r => r.status === 'ok')
     if (successes.length === 0) return ''
     // Produce entries as "word": { ... }, ready to paste before final }
-    return successes
-      .map(r => {
-        const inner = JSON.stringify(r.json, null, 2)
-        // r.json is already { "word": { ... } } shape — extract inner value
-        const parsed = r.json
-        const key = Object.keys(parsed)[0]
-        return `  "${key}": ${JSON.stringify(parsed[key], null, 2)}`
-      })
-      .join(',\n')
+   return ',\n' + successes
+  .map(r => {
+    const parsed = r.json
+    const key = Object.keys(parsed)[0]
+    return `  "${key}": ${JSON.stringify(parsed[key], null, 2)}`
+  })
+  .join(',\n')
   }
 
   const [batchCopied, setBatchCopied] = useState(false)
