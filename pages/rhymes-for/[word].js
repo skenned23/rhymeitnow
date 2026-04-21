@@ -62,7 +62,10 @@ function linkifyText(text, currentWord) {
     if (allWords.includes(lower) && lower !== currentWord) {
       return (
         <Link key={i} href={`/rhymes-for/${lower}`}
-          style={{ color: '#c8a86a', textDecoration: 'underline', textDecorationColor: '#3a2e1a' }}>
+          title={`Search rhymes for "${lower}" →`}
+          style={{ color: "#c8a86a", textDecoration: "underline", textDecorationColor: "#3a2e1a", borderRadius: "3px", padding: "0 2px", transition: "background 0.15s, color 0.15s" }}
+          onMouseEnter={e => { e.currentTarget.style.background = "#c8a86a22"; e.currentTarget.style.color = "#f0d090" }}
+          onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "#c8a86a" }}>
           {part}
         </Link>
       )
