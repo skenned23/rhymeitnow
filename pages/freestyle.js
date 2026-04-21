@@ -44,6 +44,12 @@ export default function Freestyle() {
   const [teleprompter, setTeleprompter] = useState(false)
   const [copied, setCopied] = useState(false)
   const [scrolling, setScrolling] = useState(false)
+  const [scrollSpeed, setScrollSpeed] = useState('normal')
+  const SPEEDS = {
+    slow: { px: 1, interval: 60 },
+    normal: { px: 2, interval: 30 },
+    fast: { px: 3, interval: 20 },
+  }
   const scrollRef = useRef(null)
   const scrollInterval = useRef(null)
 
@@ -99,11 +105,12 @@ export default function Freestyle() {
 
   const startScroll = () => {
     setScrolling(true)
+    const speed = SPEEDS[scrollSpeed]
     scrollInterval.current = setInterval(() => {
       if (scrollRef.current) {
-        scrollRef.current.scrollTop += 2
+        scrollRef.current.scrollTop += speed.px
       }
-    }, 30)
+    }, speed.interval)
   }
 
   const stopScroll = () => {
@@ -189,6 +196,12 @@ export default function Freestyle() {
             <div style={{ height: '50vh' }} />
           </div>
           <div style={s.teleprompterControls}>
+            {['slow', 'normal', 'fast'].map(sp => (
+              <button key={sp} onClick={() => { stopScroll(); setScrollSpeed(sp) }}
+                style={{ padding: '0.6rem 1rem', background: scrollSpeed === sp ? '#c8a86a' : '#1e1a0e', color: scrollSpeed === sp ? '#000' : '#c8a86a', border: '1px solid #3a2e1a', borderRadius: '8px', fontSize: '12px', cursor: 'pointer', fontFamily: 'Georgia, serif', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: scrollSpeed === sp ? '700' : '400' }}>
+                {sp}
+              </button>
+            ))}
             <button onClick={scrolling ? stopScroll : startScroll}
               style={{ padding: '0.75rem 2rem', background: scrolling ? '#c86a6a' : '#c8a86a', color: '#000', border: 'none', borderRadius: '8px', fontSize: '1rem', fontWeight: '700', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
               {scrolling ? '⏸ Pause' : '▶ Scroll'}
