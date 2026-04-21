@@ -31,7 +31,6 @@ const RANDOM_OBJECTS = [
 ]
 
 const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5)
-
 const getRandomObjects = (count = 3) => shuffle(RANDOM_OBJECTS).slice(0, count)
 
 export default function Freestyle() {
@@ -164,10 +163,22 @@ export default function Freestyle() {
       background: '#000', zIndex: 1000, display: 'flex', flexDirection: 'column',
       alignItems: 'center', justifyContent: 'flex-start',
     },
+    teleprompterLogo: {
+      width: '100%', textAlign: 'center', padding: '0.75rem 0',
+      fontSize: '12px', letterSpacing: '5px', color: '#c8a86a',
+      textTransform: 'uppercase', borderBottom: '1px solid #1a1510',
+      background: '#000', flexShrink: 0,
+    },
     teleprompterText: {
       fontSize: 'clamp(1.8rem, 6vw, 3rem)', lineHeight: '1.7', color: '#f0e4c8',
       fontFamily: 'Georgia, serif', textAlign: 'center', padding: '2rem',
       overflowY: 'auto', height: '80vh', width: '100%', maxWidth: '800px',
+    },
+    focusLine: {
+      position: 'fixed', top: '50%', left: 0, right: 0,
+      height: '2px', pointerEvents: 'none', zIndex: 1001,
+      background: 'linear-gradient(to right, transparent, #c8a86a55, #c8a86a, #c8a86a55, transparent)',
+      boxShadow: '0 0 18px 6px #c8a86a33',
     },
     teleprompterControls: {
       position: 'fixed', bottom: 0, left: 0, right: 0,
@@ -189,12 +200,23 @@ export default function Freestyle() {
       {/* Teleprompter Mode */}
       {teleprompter && result && (
         <div style={s.teleprompterOverlay}>
+          {/* Logo */}
+          <div style={s.teleprompterLogo}>
+            RhymeItNow
+          </div>
+
+          {/* Center focus glow line */}
+          <div style={s.focusLine} />
+
+          {/* Scrolling text */}
           <div ref={scrollRef} style={s.teleprompterText}>
+            <div style={{ height: '40vh' }} />
             {result.map((line, i) => (
               <div key={i} style={{ marginBottom: '1rem' }}>{line}</div>
             ))}
             <div style={{ height: '50vh' }} />
           </div>
+
           <div style={s.teleprompterControls}>
             {['slow', 'normal', 'fast'].map(sp => (
               <button key={sp} onClick={() => { stopScroll(); setScrollSpeed(sp) }}
