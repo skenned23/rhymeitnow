@@ -101,9 +101,9 @@ export default function Freestyle() {
     setScrolling(true)
     scrollInterval.current = setInterval(() => {
       if (scrollRef.current) {
-        scrollRef.current.scrollTop += 1
+        scrollRef.current.scrollTop += 2
       }
-    }, 50)
+    }, 30)
   }
 
   const stopScroll = () => {
