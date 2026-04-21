@@ -32,7 +32,7 @@ The JSON must match this exact structure (replace WORD with the actual word):
 }
 
 Rules:
-- The related array must have exactly 8 thematically connected common words
+- The related array must have exactly 8 words derived directly from the intro paragraph you just wrote — pick the most contextually relevant words mentioned or implied in that intro. Do not use generic dictionary synonyms. The related words must make semantic sense to someone who just read the intro.
 - All content must be genuinely useful to a songwriter or poet — not generic filler
 - The pro_tip must be specific and actionable, not vague encouragement
 - Famous uses must reference real, well-known songs or literary works
