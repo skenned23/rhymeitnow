@@ -35,8 +35,10 @@ export default function Generator() {
       if (data.error) {
         setStatus('Error: ' + data.error)
       } else {
-        setOutput(JSON.stringify(data, null, 2))
-        setStatus('Done! Copy the JSON and paste it into words-content.json on GitHub.')
+        const key = Object.keys(data)[0]
+        const formatted = ',\n  "' + key + '": ' + JSON.stringify(data[key], null, 2)
+        setOutput(formatted)
+        setStatus('Done! Copy the JSON and paste it before the final } in words-content.json.')
       }
     } catch (err) {
       setStatus('Error: ' + err.message)
@@ -104,7 +106,7 @@ export default function Generator() {
     const successes = batchResults.filter(r => r.status === 'ok')
     if (successes.length === 0) return ''
     // Produce entries as "word": { ... }, ready to paste before final }
-    return ',\n' + successes
+    return successes
       .map(r => {
         const inner = JSON.stringify(r.json, null, 2)
         // r.json is already { "word": { ... } } shape — extract inner value
@@ -166,7 +168,7 @@ export default function Generator() {
           <>
             <div style={{ marginBottom: '6px' }}><span style={s.label}>1.</span> Type a word → Generate → Copy JSON</div>
             <div style={{ marginBottom: '6px' }}><span style={s.label}>2.</span> Open <code style={s.code}>data/words-content.json</code> on GitHub</div>
-            <div style={{ marginBottom: '6px' }}><span style={s.label}>3.</span> Paste before the final <code style={s.code}>{'}'}</code> — add a comma after the previous entry</div>
+            <div style={{ marginBottom: '6px' }}><span style={s.label}>3.</span> Paste before the final <code style={s.code}>{'}'}</code> — the comma is already included</div>
             <div><span style={s.label}>4.</span> Commit → Vercel deploys → new page live at rhymeitnow.com/rhymes-for/[word]</div>
           </>
         ) : (
