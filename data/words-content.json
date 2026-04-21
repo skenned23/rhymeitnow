@@ -1219,5 +1219,59 @@
     "love",
     "time"
   ]
+},
+  "war": {
+  "intro": "War is one of songwriting's most potent words—it carries immediate emotional weight and works across hip-hop, rock, folk, and pop. The 'or' sound family offers rich rhymes (door, more, pour, core, store), making it versatile for both introspective verses and anthemic choruses. It can mean literal conflict or metaphorical struggle, giving songwriters flexibility to write about personal battles, social upheaval, or romantic conflict.",
+  "famous_uses": [
+    {
+      "context": "\"War\" — Edwin Starr",
+      "note": "The iconic protest anthem pairs 'war' with 'what is it good for' to create a rhetorical hook, rhyming with 'absolutely nothing,' emphasizing futility through repetition rather than traditional rhyme schemes."
+    },
+    {
+      "context": "\"21 Guns\" — Green Day",
+      "note": "Billie Joe Armstrong uses 'war' in the pre-chorus, pairing it with internal rhymes and 'for,' creating a melancholic tone about losing youth to conflict and struggle."
+    },
+    {
+      "context": "\"The War\" — Saul Williams",
+      "note": "Williams employs 'war' as both literal and metaphorical, rhyming it with 'door' and 'floor' to explore systemic oppression, using the word's weight to anchor socially conscious hip-hop lyrics."
+    },
+    {
+      "context": "\"War Pigs\" — Black Sabbath",
+      "note": "The title uses 'war' as a political indictment, with lyrics that rhyme 'war' with 'door' and 'more,' creating a heavy, accusatory tone perfect for metal's aggressive delivery."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What rhymes perfectly with war?",
+      "a": "Door, more, pour, core, store, floor, for, four, soar, roar, before, shore. These all share the 'or' sound and work seamlessly in any genre—they're common enough to feel natural but specific enough to convey meaning (door = escape, more = desire, core = essence)."
+    },
+    {
+      "q": "What are near rhymes for war?",
+      "a": "Wore, or, nor, your, or, gore, lore, boar. These work in rap and modern pop where perfect rhyme isn't required; they create a subtle assonance that sounds intentional rather than forced."
+    },
+    {
+      "q": "What are slant rhymes for war?",
+      "a": "Word, world, swear, where, care, torn, born. Modern hip-hop and indie songwriters use these to avoid predictability—'war' + 'world' creates a near-rhyme that feels intelligent rather than obvious."
+    },
+    {
+      "q": "How do you use war in a rap song?",
+      "a": "Use 'war' at the start or middle of a bar to set up the 'or' rhyme family (more, door, pour, floor, soar). Rappers often employ it as a metaphor for competitive struggle or street conflict—place it in a multi-syllabic rhyme chain like 'war/more/floor/pour' across consecutive bars for momentum. Example: 'Started from the bottom, now we at war / For the money, fame, and a little bit more.'"
+    },
+    {
+      "q": "What is the best rhyme scheme for war in poetry?",
+      "a": "AABB or ABAB work best—war pairs perfectly with consistent end rhymes (door, more, floor). In free verse or slam poetry, use war as an anchor word that recurs thematically, letting other lines orbit around it without strict rhyme. Example: 'We declare war on silence / And door after door opens to resistance.'"
+    }
+  ],
+  "pro_tip": "Avoid the obvious 'war/door/more' triangle by pairing 'war' with unexpected words from the rhyme family—try 'war/soar' to elevate the tone toward transcendence rather than conflict, or 'war/store' for ironic juxtaposition (consumerism as warfare). Place 'war' early in a verse, then delay the rhyme by 2-3 bars; this builds tension and makes the payoff more satisfying.",
+  "related": [
+    "peace",
+    "battle",
+    "fight",
+    "conflict",
+    "struggle",
+    "victory",
+    "enemy",
+    "defense"
+  ]
 }
 }
