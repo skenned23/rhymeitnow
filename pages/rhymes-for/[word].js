@@ -23,6 +23,31 @@ const CATEGORIES = [
   { key: 'slant', label: 'Slant Rhymes', accent: '#8dba8a' },
 ]
 
+const allWords = Object.keys(wordsContent)
+
+function linkifyText(text, currentWord) {
+  if (!text) return text
+  const escaped = allWords
+    .filter(w => w !== currentWord)
+    .map(w => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    .sort((a, b) => b.length - a.length) // longest first to avoid partial matches
+  if (escaped.length === 0) return text
+  const pattern = new RegExp(`\\b(${escaped.join('|')})\\b`, 'gi')
+  const parts = text.split(pattern)
+  return parts.map((part, i) => {
+    const lower = part.toLowerCase()
+    if (allWords.includes(lower) && lower !== currentWord) {
+      return (
+        <Link key={i} href={`/rhymes-for/${lower}`}
+          style={{ color: '#c8a86a', textDecoration: 'underline', textDecorationColor: '#3a2e1a' }}>
+          {part}
+        </Link>
+      )
+    }
+    return part
+  })
+}
+
 export default function RhymesForWord({ word, content }) {
   const [results, setResults] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -90,7 +115,7 @@ export default function RhymesForWord({ word, content }) {
 
         {/* Intro */}
         <p style={{ fontSize: '1rem', lineHeight: '1.8', color: '#8a7a5a', marginBottom: '2rem', borderLeft: '3px solid #c8a86a', paddingLeft: '1rem' }}>
-          {content.intro}
+          {linkifyText(content.intro, word)}
         </p>
 
         {/* Tool */}
@@ -159,7 +184,7 @@ export default function RhymesForWord({ word, content }) {
           ))}
         </div>
 
-        {/* FAQ - Schema markup for Google */}
+        {/* FAQ */}
         <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#f0e4c8', fontWeight: '700' }}>
           Frequently asked questions
         </h2>
@@ -167,7 +192,9 @@ export default function RhymesForWord({ word, content }) {
           {(content.faq || []).map((item, i) => (
             <div key={i} style={{ borderBottom: '1px solid #1e1810', paddingBottom: '1rem', marginBottom: '1rem' }}>
               <div style={{ fontWeight: '700', fontSize: '15px', color: '#d8c8a8', marginBottom: '6px' }}>{item.q}</div>
-              <div style={{ fontSize: '14px', color: '#7a6a4a', lineHeight: '1.7' }}>{item.a}</div>
+              <div style={{ fontSize: '14px', color: '#7a6a4a', lineHeight: '1.7' }}>
+                {linkifyText(item.a, word)}
+              </div>
             </div>
           ))}
         </div>
@@ -176,7 +203,9 @@ export default function RhymesForWord({ word, content }) {
         {content.pro_tip && (
           <div style={{ background: '#130f08', border: '1px solid #3a2e1a', borderLeft: '4px solid #c8a86a', borderRadius: '10px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem' }}>
             <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#c8a86a', textTransform: 'uppercase', marginBottom: '0.5rem' }}>Songwriter Pro Tip</div>
-            <p style={{ fontSize: '14px', color: '#8a7a5a', lineHeight: '1.8', margin: '0' }}>{content.pro_tip}</p>
+            <p style={{ fontSize: '14px', color: '#8a7a5a', lineHeight: '1.8', margin: '0' }}>
+              {linkifyText(content.pro_tip, word)}
+            </p>
           </div>
         )}
 
