@@ -303,6 +303,19 @@ export default function Freestyle() {
                 🔄 Regenerate
               </button>
             </div>
+
+            {/* MusicAPI Affiliate Banner */}
+            <div style={{ background: '#0d0a1a', border: '1px solid #2a1a4a', borderRadius: '10px', padding: '1rem 1.25rem', marginTop: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+              <div>
+                <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#9a50ff', textTransform: 'uppercase', marginBottom: '0.25rem' }}>🎵 Turn Your Freestyle Into a Real Song</div>
+                <div style={{ color: '#7a6a8a', fontSize: '13px' }}>Add a beat and vocals to your bars with MusicAPI</div>
+              </div>
+              <a href="https://www.musicapi.ai?via=stephen-kennedy" target="_blank" rel="noopener noreferrer"
+                style={{ background: '#7a00ff', color: '#ffffff', borderRadius: '8px', padding: '0.6rem 1.25rem', fontSize: '13px', fontWeight: '700', fontFamily: 'Georgia, serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                Try MusicAPI →
+              </a>
+            </div>
+
             <button onClick={handleShuffle} style={{ ...s.shuffleBtn, marginTop: '0.75rem' }}>
               🔀 New Objects → New Challenge
             </button>
