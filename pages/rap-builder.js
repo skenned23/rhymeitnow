@@ -51,11 +51,9 @@ function saveAsImage(bars, styleName, theme, format) {
   const scale = 2
   const is916 = format.id === '9:16'
 
-  // Fixed dimensions — always 1080x608 or 1080x1920
   const W = 1080
   const H = is916 ? 1920 : 608
 
-  // Font sizes
   const barFontSize = is916 ? 52 : 28
   const labelFontSize = is916 ? 24 : 11
   const watermarkFontSize = is916 ? 22 : 12
@@ -67,7 +65,6 @@ function saveAsImage(bars, styleName, theme, format) {
   const ctx = canvas.getContext('2d')
   ctx.scale(scale, scale)
 
-  // Measure wrapped lines using actual render font
   ctx.font = `italic ${barFontSize}px Georgia, serif`
   const maxLineWidth = W - padding * 2
   const wrappedLines = []
@@ -86,28 +83,22 @@ function saveAsImage(bars, styleName, theme, format) {
     if (current) wrappedLines.push(current)
   })
 
-  // Calculate content block height
   const headerH = is916 ? 120 : 80
   const footerH = is916 ? 80 : 60
   const contentH = headerH + wrappedLines.length * lineHeight + footerH
 
-  // Center content vertically for 9:16, top-align for 16:9
   const startY = is916 ? Math.max(80, Math.floor((H - contentH) / 2)) : 0
 
-  // Background
   ctx.fillStyle = theme.bg
   ctx.fillRect(0, 0, W, H)
 
-  // Top accent bar
   ctx.fillStyle = theme.accent
   ctx.fillRect(padding, startY, W - padding * 2, is916 ? 3 : 2)
 
-  // Label
   ctx.font = `500 ${labelFontSize}px Georgia, serif`
   ctx.fillStyle = theme.labelColor
   ctx.fillText(styleName.toUpperCase() + ' · AI-GENERATED BARS', padding, startY + (is916 ? 52 : 36))
 
-  // Top divider
   const dividerY = startY + (is916 ? 68 : 48)
   ctx.strokeStyle = theme.dividerColor
   ctx.lineWidth = 1
@@ -116,19 +107,15 @@ function saveAsImage(bars, styleName, theme, format) {
   ctx.lineTo(W - padding, dividerY)
   ctx.stroke()
 
-  // Bars
   ctx.font = `italic ${barFontSize}px Georgia, serif`
   wrappedLines.forEach((line, i) => {
     const y = dividerY + (is916 ? 60 : 40) + i * lineHeight
-    // Left accent tick
     ctx.fillStyle = theme.accent
     ctx.fillRect(padding, y - Math.floor(barFontSize * 0.8), 2, Math.floor(barFontSize * 1.1))
-    // Bar text
     ctx.fillStyle = i % 2 === 0 ? theme.barColor1 : theme.barColor2
     ctx.fillText(line, padding + 14, y)
   })
 
-  // Bottom divider
   const lastBarY = dividerY + (is916 ? 60 : 40) + wrappedLines.length * lineHeight
   const bottomDivY = lastBarY + (is916 ? 20 : 14)
   ctx.strokeStyle = theme.dividerColor
@@ -138,7 +125,6 @@ function saveAsImage(bars, styleName, theme, format) {
   ctx.lineTo(W - padding, bottomDivY)
   ctx.stroke()
 
-  // Watermark
   ctx.font = `${watermarkFontSize}px Georgia, serif`
   ctx.fillStyle = theme.watermarkColor
   const watermark = 'RHYMEITNOW.COM'
@@ -360,6 +346,18 @@ export default function RapBuilder() {
                   </div>
                 </div>
               )}
+
+              {/* MusicAPI Affiliate Banner */}
+              <div style={{ background: '#0d0a1a', border: '1px solid #2a1a4a', borderRadius: '10px', padding: '1rem 1.25rem', marginBottom: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
+                <div>
+                  <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#9a50ff', textTransform: 'uppercase', marginBottom: '0.25rem' }}>🎵 Turn Your Bars Into a Real Song</div>
+                  <div style={{ color: '#7a6a8a', fontSize: '13px' }}>Add a beat and vocals with MusicAPI — powered by Suno</div>
+                </div>
+                <a href="https://www.musicapi.ai?via=stephen-kennedy" target="_blank" rel="noopener noreferrer"
+                  style={{ background: '#7a00ff', color: '#ffffff', borderRadius: '8px', padding: '0.6rem 1.25rem', fontSize: '13px', fontWeight: '700', fontFamily: 'Georgia, serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+                  Try MusicAPI →
+                </a>
+              </div>
 
               <ThemePicker selectedTheme={imageTheme} onSelect={setImageTheme} />
               <FormatPicker selectedFormat={imageFormat} onSelect={setImageFormat} />
