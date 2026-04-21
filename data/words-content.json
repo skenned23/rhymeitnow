@@ -2491,5 +2491,59 @@
     "design",
     "kind"
   ]
+},
+  "breath": {
+  "intro": "Breath is a powerhouse metaphor in songwriting, symbolizing life, vulnerability, and intimacy. It rhymes with 'death,' creating natural dramatic tension in ballads, hip-hop, and alternative rock. The word carries physical and emotional weight—whether literal (breathlessness from exertion or emotion) or figurative (taking a breath before a confession)—making it essential for slow builds and intimate moments across genres.",
+  "famous_uses": [
+    {
+      "context": "\"Breathe\" — Pink Floyd",
+      "note": "Extended the word into a full track about life and mortality, using the breath metaphor to explore existence. The simplicity of the title paired with complex production created profound effect."
+    },
+    {
+      "context": "\"Take My Breath Away\" — Berlin",
+      "note": "Used breath as a romantic trope, rhyming it with emotional impact rather than a perfect rhyme, creating vulnerability. The lyric became iconic for capturing overwhelmed love."
+    },
+    {
+      "context": "\"Last Breath\" — Eminem",
+      "note": "Rappers use 'breath' to reference technical skill (breath control, staying in pocket) and existential stakes. Eminem paired it with internal rhymes and multi-syllabic patterns for flow emphasis."
+    },
+    {
+      "context": "\"Breath of Life\" — Florence + The Machine",
+      "note": "Combined breath with spiritual/resurrection imagery, using it as a central metaphor for revival and strength. The word anchored an anthemic chorus through repetition."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What rhymes perfectly with breath?",
+      "a": "Death, Seth, Meth, Bethlehem (multi-syllable), Elizabeth (multi-syllable), breadth, saith, and wreath. These are the true perfect rhymes—all share the -eth/-eath sound. Death is the most emotionally loaded and most-used in serious songwriting, creating instant gravity."
+    },
+    {
+      "q": "What are near rhymes for breath?",
+      "a": "Flesh, stress, pest, nest, rest, blessed. These share the vowel or consonant patterns but don't perfectly match the -eth sound. They work well in modern and hip-hop contexts where near-rhymes are expected and valued."
+    },
+    {
+      "q": "What are slant rhymes for breath?",
+      "a": "Berth, earth, worth, beneath, sheathe. Slant rhymes let songwriters stay thematically connected—'breath' and 'earth' evoke life and nature without perfect sound matching. Contemporary artists use these to avoid predictability."
+    },
+    {
+      "q": "How do you use breath in a rap song?",
+      "a": "Layer 'breath' as an internal rhyme or flow marker rather than an end rhyme—rappers often reference breath control, breathing patterns, and stamina as technical metaphors. Place it mid-bar to emphasize delivery: 'I spit without takin' a breath / Flow so cold, they can see it, death.' Pair it with short, punchy bars to mirror actual breathing rhythm."
+    },
+    {
+      "q": "What is the best rhyme scheme for breath in poetry?",
+      "a": "Breath works best in ABAB or AABB schemes where it's paired with death for maximum dramatic impact—classic in elegies and meditative poems. Alternatively, use it as a volta point: open with breath imagery in the first stanza, then shift to death in the second for thematic reversal. Sonnet forms also favor this word in the closing couplet."
+    }
+  ],
+  "pro_tip": "Avoid the obvious 'breath/death' pairing by using breath as a technical marker instead—focus on the act of breathing (pauses, silence, control) rather than the word itself. Try rhyming it with 'rest' or 'stressed' and build the death/mortality theme through imagery rather than direct rhyme. Or flip it: open with breath imagery, then surprise listeners by rhyming with something completely unexpected like 'blessed' or 'address,' subverting the death expectation for emotional impact.",
+  "related": [
+    "death",
+    "life",
+    "heartbeat",
+    "silence",
+    "moment",
+    "alive",
+    "love",
+    "pain"
+  ]
 }
 }
