@@ -2441,5 +2441,55 @@
     "blessed",
     "believing"
   ]
+},
+  "find": {
+  "intro": "\"Find\" is a versatile, high-utility word across all genres—from hip-hop to country ballads to indie rock. It carries emotional weight whether you're searching for love, purpose, or redemption, and it pairs beautifully with words like \"mind,\" \"blind,\" and \"grind.\" The word's flexibility makes it essential for both internal rhyme schemes and end-line closures.",
+  "famous_uses": [
+    {
+      "context": "\"Find Me\" — Sigma featuring Birdy",
+      "note": "The title word anchors an emotional chorus about seeking connection, paired with rhymes like \"remind\" and \"behind,\" creating a longing, introspective mood that drives the song's vulnerability."
+    },
+    {
+      "context": "\"Can't Find My Way Home\" — Blind Melon",
+      "note": "Opens with \"find\" to establish the song's existential struggle; rhymed with \"mind\" to create a meditative, questioning tone that defines 90s alternative rock introspection."
+    },
+    {
+      "context": "\"Find the Words\" — Snow Patrol",
+      "note": "Uses \"find\" as a metaphor for emotional articulation, pairing it with internal rhymes to build tension—a literary technique that transforms a simple search into a deeper exploration of vulnerability."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What rhymes perfectly with \"find\"?",
+      "a": "Mind, blind, grind, kind, bind, wind, signed, behind, rhyme, designed, mankind, unkind. These share the long-I sound and work across all songwriting styles—especially strong in hip-hop (\"grind\"), pop (\"mind\"), and rock (\"blind\")."
+    },
+    {
+      "q": "What are near rhymes for \"find\"?",
+      "a": "Bends, ends, hand, land, stand, trends. These assonant rhymes soften the connection and work well in folk, singer-songwriter, and jazz contexts where perfect rhyming feels too rigid."
+    },
+    {
+      "q": "What are slant rhymes for \"find\"?",
+      "a": "Time, prime, climb, crime, chime, sublime. Modern rappers and alternative songwriters use these consonance-heavy slant rhymes to add unexpected texture and avoid predictability while maintaining a subtle sonic link."
+    },
+    {
+      "q": "How do you use \"find\" in a rap song?",
+      "a": "Lean heavily on the \"ind\" family (grind, bind, signed, unkind) for multi-syllabic internal rhymes that build momentum. Place \"find\" early in a bar and let it cascade into 2-3 follow-up rhymes: \"I find the grind, I'm signed, they're blind to my design.\" This stacking technique keeps energy high and makes the word feel less like a placeholder."
+    },
+    {
+      "q": "What is the best rhyme scheme for \"find\" in poetry?",
+      "a": "AABB (couplets) or ABAB (alternate) structures work beautifully—the word's emotional weight deserves a clear landing. Try ABAB with \"find\" at the end of line 2, then rhyme with \"mind\" or \"blind\" at line 4 for symmetry. Example: \"I search but cannot find / What's lost inside my mind / No map, no compass line / Just hope I'm not too blind.\""
+    }
+  ],
+  "pro_tip": "Instead of pairing \"find\" with the obvious \"mind,\" try burying it in an internal rhyme mid-bar and rhyming the line-end with something unexpected—like \"find the gold in stories untold\" (internal find/gold assonance, external told/untold). This keeps \"find\" conversational rather than preachy, especially powerful in verses where you want search-and-discovery to feel urgent, not philosophical.",
+  "related": [
+    "search",
+    "seek",
+    "lost",
+    "blind",
+    "mind",
+    "grind",
+    "design",
+    "kind"
+  ]
 }
 }
