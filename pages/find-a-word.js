@@ -73,34 +73,10 @@ export default function FindAWord() {
     setError(null)
 
     try {
-      const response = await fetch('https://api.anthropic.com/v1/messages', {
+     '/api/find-a-word'
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [
-            {
-              role: 'user',
-              content: `You are a master lexicographer and word finder. The user is looking for a specific word or concept. Give them the BEST word that fits.
-
-User's description: "${searchQuery}"
-
-Respond ONLY with a valid JSON object in this exact format, no markdown, no preamble:
-{
-  "word": "the word",
-  "pronunciation": "phonetic pronunciation e.g. peh-TRI-kor",
-  "part_of_speech": "noun / verb / adjective / etc",
-  "origin": "Language of origin e.g. Greek, Latin, Japanese",
-  "definition": "A clear, vivid definition in 1-2 sentences",
-  "example": "A compelling example sentence using the word naturally",
-  "why_it_fits": "A brief explanation of why this word perfectly captures what they described",
-  "also_consider": ["alternative_word_1", "alternative_word_2", "alternative_word_3"]
-}`
-            }
-          ]
-        })
-      })
+       body: JSON.stringify({ query: searchQuery }),
 
       const data = await response.json()
       const text = data.content?.[0]?.text || ''
