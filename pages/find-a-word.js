@@ -73,7 +73,7 @@ export default function FindAWord() {
     setError(null)
 
     try {
-     '/api/find-a-word'
+     const response = await fetch('/api/find-a-word', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
        body: JSON.stringify({ query: searchQuery }),
