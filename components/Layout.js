@@ -10,7 +10,8 @@ export function SiteNav() {
       <div style={{ display: 'flex', gap: '1.5rem' }}>
         <Link href="/" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Rhyme Finder</Link>
         <Link href="/rap-builder" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Rap Builder</Link>
-       <Link href="/freestyle" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>🎤 Freestyle</Link>
+        <Link href="/freestyle" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>🎤 Freestyle</Link>
+        <Link href="/find-a-word" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Find a Word</Link>
         <Link href="/about" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>About</Link>
         <Link href="/contact" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Contact</Link>
       </div>
@@ -25,6 +26,7 @@ export function SiteFooter() {
         <div style={{ display: 'flex', gap: '1.25rem' }}>
           <Link href="/freestyle" style={{ fontSize: '0.75rem', color: '#3a3020', textDecoration: 'none' }}>Freestyle</Link>
           <Link href="/rap-builder" style={{ fontSize: '0.75rem', color: '#3a3020', textDecoration: 'none' }}>Rap Builder</Link>
+          <Link href="/find-a-word" style={{ fontSize: '0.75rem', color: '#3a3020', textDecoration: 'none' }}>Find a Word</Link>
           <Link href="/about" style={{ fontSize: '0.75rem', color: '#3a3020', textDecoration: 'none' }}>About</Link>
           <Link href="/contact" style={{ fontSize: '0.75rem', color: '#3a3020', textDecoration: 'none' }}>Contact</Link>
           <Link href="/privacy" style={{ fontSize: '0.75rem', color: '#3a3020', textDecoration: 'none' }}>Privacy</Link>
