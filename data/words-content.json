@@ -7748,5 +7748,55 @@
     "breakup",
     "resilience"
   ]
+},
+  "wings": {
+  "intro": "Wings is one of the most versatile and emotionally rich words in songwriting, spanning everything from literal flight to metaphorical freedom, transcendence, and spiritual elevation. It appears across genres—from rock anthems and pop ballads to hip-hop and country—and pairs beautifully with words about soaring, breaking free, and transformation. The word carries inherent uplift and majesty, making it perfect for climactic moments, choruses, and moments of personal breakthrough.",
+  "famous_uses": [
+    {
+      "context": "\"Wings\" — Birdy",
+      "note": "The entire song uses wings as a central metaphor for escape and freedom, with soaring melodies that echo the word's emotional weight, creating an ethereal connection between sound and meaning."
+    },
+    {
+      "context": "\"Learn to Fly\" — Foo Fighters",
+      "note": "Wings pairs with 'fly' and 'sky' in a classic ascending rhyme scheme that reinforces the song's theme of overcoming obstacles and finding hope through a journey upward."
+    },
+    {
+      "context": "\"Like an Angel\" — Eminem",
+      "note": "Used in rap as a symbol of protection and transcendence, rhymed with 'things' and 'sings' to create internal momentum in bars that describe resilience and spiritual guidance."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What rhymes perfectly with wings?",
+      "a": "Perfect rhymes include: things, brings, rings, kings, sings, strings, clings, springs, stings, and flings. These all share the -ings ending and create a natural, resonant sound that feels complete and satisfying in any genre."
+    },
+    {
+      "q": "What are near rhymes for wings?",
+      "a": "Near rhymes include: winds, wins, lens, and spins. These work when you want a subtle off-rhyme that feels contemporary or slightly discordant without fully breaking the rhyme scheme."
+    },
+    {
+      "q": "What are slant rhymes for wings?",
+      "a": "Slant rhymes include: hymns, limbs, dims, and whims. Modern songwriters use these to create tension or intimacy, particularly in alternative and indie songs where perfect rhymes might feel too obvious."
+    },
+    {
+      "q": "How do you use wings in a rap song?",
+      "a": "In rap, wings works best when paired with dynamic rhymes like 'brings,' 'clings,' or 'sings'—use it to anchor a metaphor about rising above struggle or claiming power. Place it at the end of a line for maximum impact, or double-time it mid-bar for emphasis: 'They tried to break me down / But I grew my wings / Now I'm way above the ground.'"
+    },
+    {
+      "q": "What is the best rhyme scheme for wings in poetry?",
+      "a": "Wings shines in AABB or ABAB schemes because the -ings sound is so satisfying that readers expect resolution. Try an AABA pattern where wings anchors the first and final lines for a circular, transformative effect, perfect for sonnets or free verse with strong emotional arcs."
+    }
+  ],
+  "pro_tip": "Instead of pairing wings only with obvious words like 'sky' or 'things,' try unexpected combinations: 'wings and sins,' 'wings and wins,' or even 'broken wings and violin strings.' This creates friction and originality while keeping the metaphor grounded. In rap, delay the rhyme—introduce wings early in a verse, then bring back a rhyming word in the final bar for a callback effect that feels intentional and powerful.",
+  "related": [
+    "freedom",
+    "flight",
+    "soaring",
+    "transcendence",
+    "breaking free",
+    "uplift",
+    "spiritual",
+    "transformation"
+  ]
 }
 }
