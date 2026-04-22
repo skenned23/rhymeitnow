@@ -5238,5 +5238,55 @@
     "cool",
     "introspective"
   ]
+},
+  "month": {
+  "intro": "Month is a temporal anchor in songwriting that works best when paired with emotional milestones or seasonal shifts. Its clean, single-syllable punch rhymes naturally with \"front,\" \"want,\" and \"haunt,\" making it favored in country, pop, and hip-hop for marking time's passage. The word carries weight when used to measure heartbreak, waiting, or personal transformation—it suggests duration without being as vague as \"time\" or as specific as a particular date.",
+  "famous_uses": [
+    {
+      "context": "\"One More Month\" — Various Artists",
+      "note": "Month creates urgency in countdown narratives, pairing with rhymes like \"won't\" and \"front\" to emphasize emotional desperation and the pressure of fleeting time."
+    },
+    {
+      "context": "\"Same Old Song\" — The Whispers",
+      "note": "Used to reflect on repetitive heartbreak across seasons, with \"month\" rhyming against \"haunt\" to suggest lingering emotional pain that refuses to fade."
+    },
+    {
+      "context": "\"November Rain\" — Guns N' Roses",
+      "note": "Month references in rock ballads anchor abstract loss to concrete temporal experience, creating intimacy through seasonal specificity rather than naming exact months."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What rhymes perfectly with month?",
+      "a": "Perfect rhymes are limited due to month's unique sound, but near-perfect options include: front, won't, haunt, want, font, jaunt, vaunt, gaunt, flaunt, and taunt. The -unt/-ont sound family dominates, which is why most month rhymes carry either forward momentum (front, jaunt) or haunting quality (haunt, gaunt)."
+    },
+    {
+      "q": "What are near rhymes for month?",
+      "a": "Near rhymes include: once, run, sun, done, none, and shun. These share the 'uh' vowel sound but lack the final consonant, creating a softer assonance useful when perfect rhymes feel forced or limit your lyrical message."
+    },
+    {
+      "q": "What are slant rhymes for month?",
+      "a": "Slant rhymes like: bummed, numb, dumb, sum, and come work in modern hip-hop and indie songwriting by leaning on the nasal 'um' sound. These create rhythmic cohesion without strict rhyme, useful for avoiding the 'front/want' rut that every songwriter eventually hits."
+    },
+    {
+      "q": "How do you use month in a rap song?",
+      "a": "In rap, month works best in hook-writing or narrative detail—anchor it to specific emotional states rather than calendar facts. Place it at the end of a bar where \"front\" or \"want\" can follow naturally, as in: 'Been waiting a month / now I'm calling you out / fronting like nothing but I know what you're about.' The temporal specificity adds credibility to street narratives and breakup bars."
+    },
+    {
+      "q": "What is the best rhyme scheme for month in poetry?",
+      "a": "Month suits AABB or ABAB schemes where you can pair it with \"haunt\" or \"want\" in alternating or consecutive lines. In free verse, use month at line breaks to create tension between temporal passing and emotional stasis. Example: 'A month of silence / between us—what once / felt infinite / now fits in a footnote.'"
+    }
+  ],
+  "pro_tip": "Skip the obvious 'month/front' pairing and instead use month with slant rhymes like 'come' or assonance with 'sun'—this creates a dreamy, subtle effect that avoids the predictable country-song feel. Try placing month mid-bar rather than at the line end: 'In a month I'll be over you / but today I'm still / standing at your door.' This delays the rhyme and forces listeners to sit with the emotion before resolution lands.",
+  "related": [
+    "temporal",
+    "emotional",
+    "heartbreak",
+    "waiting",
+    "transformation",
+    "duration",
+    "seasonal",
+    "passage"
+  ]
 }
 }
