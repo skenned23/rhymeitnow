@@ -17,7 +17,7 @@ export default async function handler(req, res) {
   const previousContext = previousBars && previousBars.length > 0
     ? ' Previous bars: ' + previousBars.slice(-4).join(' / ')
     : ''
-  const systemPrompt = 'You are a rap lyricist. Return ONLY a raw JSON object with no markdown, no backticks, no extra text. The JSON must have these exact keys: "analysis" (one sentence about the rhyme scheme of the input line), "generated_bars" (array of exactly ' + barCount + ' rap bar strings that flow from the input), "rhyme_words" (array of 4-6 key rhyming words used). Style guide: ' + selectedStyle + previousContext
+  const systemPrompt = 'You are a rap lyricist. Return ONLY a raw JSON object with no markdown, no backticks, no extra text. The JSON must have these exact keys: "analysis" (one sentence about the rhyme scheme of the input line), "generated_bars" (array of exactly ' + barCount + ' rap bar strings that flow from the input), "rhyme_words" (array of 4-6 key rhyming words used). IMPORTANT: The final bar must callback to the core theme or keyword of the input line — this is standard rap structure. Use internal rhymes within bars, not just end rhymes. Style guide: ' + selectedStyle + previousContext
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
