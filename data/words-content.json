@@ -14086,5 +14086,59 @@
     "loss",
     "surrender"
   ]
+},
+  "all": {
+  "intro": "\"All\" is one of the most versatile words in songwriting, functioning as both an emotional intensifier and a structural anchor. Its short, punchy sound pairs naturally with one-syllable rhymes (fall, call, wall, ball) and works across genres from country ballads to hip-hop. The word carries weight when used sparingly—it can convey totality, desperation, or inevitability depending on context, making it essential for building climactic moments in lyrics.",
+  "famous_uses": [
+    {
+      "context": "\"All Too Well\" — Taylor Swift",
+      "note": "Swift uses \"all\" to anchor emotional intensity, rhyming it with \"fall\" and \"call\" to create a repeating, obsessive pattern that mirrors the song's fixation on memory and loss."
+    },
+    {
+      "context": "\"All of Me\" — John Legend",
+      "note": "Legend pairs \"all\" with \"call\" and \"wall,\" building a devotional crescendo that emphasizes total surrender and vulnerability, making the word a cornerstone of romantic intensity."
+    },
+    {
+      "context": "\"Give It All\" — The Weeknd",
+      "note": "The Weeknd uses \"all\" as a motivational anchor in trap-R&B, rhyming it with \"fall\" to create tension between ambition and risk, establishing a dominant refrain."
+    },
+    {
+      "context": "\"In the End\" — Linkin Park",
+      "note": "The bridge uses \"all\" with \"fall\" in a melancholic minor key, emphasizing futility and acceptance—a perfect example of how the word shifts meaning based on melodic and emotional context."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What rhymes perfectly with \"all\"?",
+      "a": "Fall, call, wall, ball, small, tall, stall, hall, mall, crawl, sprawl. These one-syllable rhymes share the long-aw sound and are so common in English that they work in nearly every genre—they're the backbone of 'all' songwriting."
+    },
+    {
+      "q": "What are near rhymes for \"all\"?",
+      "a": "Awl, awol, haul, maul, brawl, shawl. These maintain the aw-sound but with slight consonant variations, giving you flexibility when perfect rhymes feel overused or too predictable."
+    },
+    {
+      "q": "What are slant rhymes for \"all\"?",
+      "a": "Oil, soil, soul, toll, roll, goal. Modern songwriters use these assonant rhymes to create subtle texture and avoid the predictability of perfect rhymes while keeping the word's emotional anchor intact."
+    },
+    {
+      "q": "How do you use \"all\" in a rap song?",
+      "a": "In rap, \"all\" works best as a refrain or hook anchor because its brevity cuts through production. Pair it with multi-syllabic internal rhymes in the verse (e.g., \"stall/crawl/sprawl\") to create dynamic contrast. Example: \"They said I'd fall, but I never stall / Ball in their court, but I got it all\"—the word gains impact through repetition and varied placement."
+    },
+    {
+      "q": "What is the best rhyme scheme for \"all\" in poetry?",
+      "a": "AABB or ABAB schemes work best with \"all\" because the frequent aw-sound rhyme family is so rich. Consider end-stopping lines with \"all\" to create emphatic closures, or use it in couplets for aphoristic weight. Example: \"I gave you all / And watched you fall.\""
+    }
+  ],
+  "pro_tip": "Instead of pairing \"all\" with predictable rhymes like \"fall\" or \"call,\" try slant rhymes with \"soul\" or \"goal\" to sound fresher—this keeps the emotional weight while avoiding cliché. Also, place \"all\" at the start of a line rather than the end to shift its energy from resolution to proposition: \"All of me knows you're gone\" hits harder than \"I gave you all.\"",
+  "related": [
+    "rhymes",
+    "intensifier",
+    "anchor",
+    "climactic",
+    "devotional",
+    "refrain",
+    "futility",
+    "assonant"
+  ]
 }
 }
