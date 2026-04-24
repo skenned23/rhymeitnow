@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { SiteNav, SiteFooter } from '../components/Layout'
 
 const EXAMPLES = ['moon', 'fire', 'dream', 'rain', 'time', 'love', 'night', 'gold']
@@ -17,7 +18,6 @@ const CLUSTERS = {
   soul: ['whole', 'goal', 'roll', 'heart', 'mind', 'life'],
   home: ['roam', 'alone', 'road', 'heart', 'soul', 'bone'],
   moon: ['soon', 'tune', 'night', 'star', 'dream', 'sky'],
-  fire: ['desire', 'higher', 'inspire', 'rain', 'pain', 'night'],
   gold: ['bold', 'cold', 'hold', 'soul', 'old', 'told'],
   hope: ['cope', 'rope', 'soul', 'dream', 'faith', 'light'],
   fear: ['tear', 'near', 'clear', 'year', 'dark', 'heart'],
@@ -30,6 +30,7 @@ const CATEGORIES = [
 const POPULAR = ['love', 'moon', 'fire', 'rain', 'time', 'night', 'dream', 'heart', 'soul', 'star', 'home', 'life', 'hope', 'pain', 'sky']
 
 export default function Home() {
+  const router = useRouter()
   const [word, setWord] = useState('')
   const [results, setResults] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -47,6 +48,15 @@ export default function Home() {
     }, 2200)
     return () => clearInterval(t)
   }, [])
+
+  // Auto-search when redirected from a missing word page
+  useEffect(() => {
+    if (router.query.word) {
+      const w = router.query.word
+      setWord(w)
+      findRhymes(w)
+    }
+  }, [router.query.word])
 
   const findRhymes = async (searchWord) => {
     const w = (searchWord || word).trim()
