@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { word } = params
   const content = wordsContent[word] || null
-  if (!content) return { notFound: true }
+ if (!content) return { redirect: { destination: `/?word=${word}`, permanent: false } }
 
   // Parse static rhyme lists from FAQ answers
   function extractRhymeList(faqAnswer) {
