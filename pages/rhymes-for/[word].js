@@ -4,6 +4,21 @@ import Link from 'next/link'
 import { SiteNav, SiteFooter } from '../../components/Layout'
 import wordsContent from '../../data/words-content.json'
 
+function getWordBenefit(word) {
+  const w = word.toLowerCase()
+  const rules = [
+    [['love','heart','kiss','darling','soul','forever','together','desire','adore','lonely','miss','broken','tears','romance','sweet','babe','baby'], 'for Ballads & Heartbreak Songs'],
+    [['fire','rage','war','fight','beast','savage','blood','grind','hustle','king','queen','power','throne','demon','hate','revenge','rise','gun','blade','trap','street','flex','drip','cash','money','gold','shine','ice','smoke','fly','kill','win','fame','rap','bars','flow','rhyme','idiot','ruined','hurts'], 'for Rap & Intense Verse'],
+    [['night','dark','shadow','ghost','moon','cold','rain','storm','lost','alone','empty','silence','fade','gone','dead','fear','scream','algebra'], 'for Moody & Dark Lyrics'],
+    [['dance','beat','song','party','fun','vibe','move','alive','happy','smile','laugh','wild','hockey'], 'for Upbeat & Feel-Good Songs'],
+    [['tree','river','sea','ocean','wave','wind','earth','sun','flower','bird','water','stone','hill','field','spring','summer','autumn','winter','snow'], 'for Folk & Nature-Inspired Lyrics'],
+  ]
+  for (const [keywords, benefit] of rules) {
+    if (keywords.includes(w)) return benefit
+  }
+  return 'for Songwriters & Rap Lyrics'
+}
+
 export async function getStaticPaths() {
   const words = Object.keys(wordsContent)
   const paths = words.map(word => ({ params: { word } }))
@@ -13,7 +28,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { word } = params
   const content = wordsContent[word] || null
- if (!content) return { redirect: { destination: `/?word=${word}`, permanent: false } }
+  if (!content) return { redirect: { destination: `/?word=${word}`, permanent: false } }
 
   // Parse static rhyme lists from FAQ answers
   function extractRhymeList(faqAnswer) {
@@ -37,7 +52,9 @@ export async function getStaticProps({ params }) {
     slant: slantFaq ? extractRhymeList(slantFaq.a) : [],
   }
 
-  return { props: { word, content, staticRhymes } }
+  const wordBenefit = getWordBenefit(word)
+
+  return { props: { word, content, staticRhymes, wordBenefit } }
 }
 
 const CATEGORIES = [
@@ -74,7 +91,7 @@ function linkifyText(text, currentWord) {
   })
 }
 
-export default function RhymesForWord({ word, content, staticRhymes }) {
+export default function RhymesForWord({ word, content, staticRhymes, wordBenefit }) {
   const [results, setResults] = useState(null)
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(null)
@@ -107,7 +124,7 @@ export default function RhymesForWord({ word, content, staticRhymes }) {
   return (
     <>
       <Head>
-        <title>Words That Rhyme With {word} — Perfect, Near & Slant Rhymes | RhymeItNow</title>
+        <title>Words That Rhyme With {word} | {wordBenefit} | RhymeItNow</title>
         <meta name="description" content={`Find perfect, near, and slant rhymes for "${word}" instantly. Free AI-powered rhyme finder for poets and songwriters. No login required.`} />
         <meta property="og:title" content={`Rhymes for "${word}" | RhymeItNow`} />
         <meta property="og:description" content={content.intro} />
