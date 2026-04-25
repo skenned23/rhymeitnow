@@ -32,8 +32,8 @@ export default async function handler(req, res) {
 
   const styleGuides = {
     'free-verse': 'Free verse: no strict rhyme scheme required, but use natural rhythm, line breaks for emphasis, and fresh unexpected imagery. Let the language breathe.',
-    'sonnet': 'Sonnet: follow the ABAB CDCD EFEF GG rhyme scheme. Use iambic pentameter where possible. Build toward a volta (turn) and a closing couplet that resolves the tension.',
-    'haiku': 'Haiku: 3 lines only — 5 syllables, 7 syllables, 5 syllables. Focus on a single sensory image from nature or everyday life. Capture a fleeting moment.',
+    'sonnet': 'Sonnet: STRICTLY 14 lines. Follow the ABAB CDCD EFEF GG rhyme scheme exactly — every end word must rhyme as specified. Use iambic pentameter (10 syllables per line, alternating unstressed/stressed beats). Build toward a volta (turn) at line 9 where the emotional direction shifts. Close with a rhyming couplet (lines 13-14) that resolves the central tension. Do not deviate from this structure under any circumstances.',
+    'haiku': 'Haiku: STRICTLY 3 lines only. Line 1: exactly 5 syllables. Line 2: exactly 7 syllables. Line 3: exactly 5 syllables. Count every syllable carefully. Focus on a single sensory image from nature or everyday life. Capture one fleeting moment. No rhyme required.',
     'ballad': 'Ballad: alternating 4-line stanzas with ABCB or ABAB rhyme. Tell a story with narrative momentum. Use simple, musical language with a refrain-like quality.',
     'spoken-word': 'Spoken word: conversational but elevated. Use repetition, anaphora, and rhythmic build. Write for the ear — it should sound powerful when read aloud. Bridge between poetry and performance.',
   }
@@ -46,7 +46,7 @@ export default async function handler(req, res) {
     'reflective': 'Tone: reflective and introspective. Use memory, time, the self. Imagery should feel quiet and contemplative.',
   }
 
-  const lineCount = (parseInt(stanzas) || 1) * 4
+  const lineCount = style === 'sonnet' ? 14 : style === 'haiku' ? 3 : (parseInt(stanzas) || 1) * 4
   const selectedStyle = styleGuides[style] || styleGuides['free-verse']
   const selectedTone = toneGuides[tone] || toneGuides['reflective']
   const previousContext = previousLines && previousLines.length > 0
