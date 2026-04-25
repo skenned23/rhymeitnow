@@ -1,0 +1,495 @@
+import { useState } from 'react'
+import Head from 'next/head'
+import { SiteNav, SiteFooter } from '../components/Layout'
+
+const STYLES = [
+  { id: 'free-verse', label: 'Free Verse', desc: 'No rules, pure expression — let the words find their own form' },
+  { id: 'sonnet', label: 'Sonnet', desc: 'ABAB CDCD EFEF GG — the classical structure of Shakespeare' },
+  { id: 'haiku', label: 'Haiku', desc: '5-7-5 syllables — nature, brevity, and a single striking image' },
+  { id: 'ballad', label: 'Ballad', desc: 'Narrative storytelling with a musical, rhythmic flow' },
+  { id: 'spoken-word', label: 'Spoken Word', desc: 'Conversational, raw, performed — where rap and poetry meet' },
+]
+
+const TONES = [
+  { id: 'dark', label: 'Dark & Moody' },
+  { id: 'romantic', label: 'Romantic' },
+  { id: 'spiritual', label: 'Spiritual' },
+  { id: 'nature', label: 'Nature-Inspired' },
+  { id: 'reflective', label: 'Reflective' },
+]
+
+const EXAMPLES = [
+  "The morning light falls soft across the floor",
+  "I carry grief the way the ocean carries ships",
+  "In every ending lives a quiet seed",
+  "She spoke in colors no one else could name",
+]
+
+const THEMES = [
+  {
+    id: 'parchment',
+    label: 'Parchment',
+    previewBg: '#f5f0e8', previewBorder: '#8a7a5a',
+    bg: '#f5f0e8', accent: '#5a3e1b',
+    barColor1: '#2a1f0e', barColor2: '#5a3e1b',
+    labelColor: '#8a7a5a', dividerColor: '#d4c9b0', watermarkColor: '#c4b89a',
+  },
+  {
+    id: 'midnight',
+    label: 'Midnight',
+    previewBg: '#0e0c14', previewBorder: '#9a7abf',
+    bg: '#0e0c14', accent: '#9a7abf',
+    barColor1: '#e8e0f0', barColor2: '#9a7abf',
+    labelColor: '#5a4a7a', dividerColor: '#1e1828', watermarkColor: '#3a2a5a',
+  },
+  {
+    id: 'forest',
+    label: 'Forest',
+    previewBg: '#0d1208', previewBorder: '#6a9a5a',
+    bg: '#0d1208', accent: '#6a9a5a',
+    barColor1: '#e0ead8', barColor2: '#6a9a5a',
+    labelColor: '#4a6a3a', dividerColor: '#1a2010', watermarkColor: '#2a3a1a',
+  },
+]
+
+const FORMATS = [
+  { id: '16:9', label: '16:9', sub: 'Twitter / Feed', width: 1080, height: 608 },
+  { id: '9:16', label: '9:16', sub: 'Instagram / Stories', width: 1080, height: 1920 },
+]
+
+function saveAsImage(lines, styleName, theme, format) {
+  const canvas = document.createElement('canvas')
+  const scale = 2
+  const is916 = format.id === '9:16'
+  const W = 1080
+  const H = is916 ? 1920 : 608
+  const barFontSize = is916 ? 52 : 28
+  const labelFontSize = is916 ? 24 : 11
+  const watermarkFontSize = is916 ? 22 : 12
+  const padding = is916 ? 90 : 80
+  const lineHeight = is916 ? 80 : 52
+
+  canvas.width = W * scale
+  canvas.height = H * scale
+  const ctx = canvas.getContext('2d')
+  ctx.scale(scale, scale)
+
+  ctx.font = `italic ${barFontSize}px Georgia, serif`
+  const maxLineWidth = W - padding * 2
+  const wrappedLines = []
+  lines.forEach(line => {
+    const words = line.split(' ')
+    let current = ''
+    words.forEach(word => {
+      const test = current ? current + ' ' + word : word
+      if (ctx.measureText(test).width > maxLineWidth) {
+        if (current) wrappedLines.push(current)
+        current = word
+      } else {
+        current = test
+      }
+    })
+    if (current) wrappedLines.push(current)
+  })
+
+  const headerH = is916 ? 120 : 80
+  const footerH = is916 ? 80 : 60
+  const contentH = headerH + wrappedLines.length * lineHeight + footerH
+  const startY = is916 ? Math.max(80, Math.floor((H - contentH) / 2)) : 0
+
+  ctx.fillStyle = theme.bg
+  ctx.fillRect(0, 0, W, H)
+
+  ctx.fillStyle = theme.accent
+  ctx.fillRect(padding, startY, W - padding * 2, is916 ? 3 : 2)
+
+  ctx.font = `500 ${labelFontSize}px Georgia, serif`
+  ctx.fillStyle = theme.labelColor
+  ctx.fillText(styleName.toUpperCase() + ' · AI-GENERATED VERSE', padding, startY + (is916 ? 52 : 36))
+
+  const dividerY = startY + (is916 ? 68 : 48)
+  ctx.strokeStyle = theme.dividerColor
+  ctx.lineWidth = 1
+  ctx.beginPath()
+  ctx.moveTo(padding, dividerY)
+  ctx.lineTo(W - padding, dividerY)
+  ctx.stroke()
+
+  ctx.font = `italic ${barFontSize}px Georgia, serif`
+  wrappedLines.forEach((line, i) => {
+    const y = dividerY + (is916 ? 60 : 40) + i * lineHeight
+    ctx.fillStyle = theme.accent
+    ctx.fillRect(padding, y - Math.floor(barFontSize * 0.8), 2, Math.floor(barFontSize * 1.1))
+    ctx.fillStyle = i % 2 === 0 ? theme.barColor1 : theme.barColor2
+    ctx.fillText(line, padding + 14, y)
+  })
+
+  const lastBarY = dividerY + (is916 ? 60 : 40) + wrappedLines.length * lineHeight
+  const bottomDivY = lastBarY + (is916 ? 20 : 14)
+  ctx.strokeStyle = theme.dividerColor
+  ctx.lineWidth = 1
+  ctx.beginPath()
+  ctx.moveTo(padding, bottomDivY)
+  ctx.lineTo(W - padding, bottomDivY)
+  ctx.stroke()
+
+  ctx.font = `${watermarkFontSize}px Georgia, serif`
+  ctx.fillStyle = theme.watermarkColor
+  const watermark = 'RHYMEITNOW.COM'
+  const ww = ctx.measureText(watermark).width
+  ctx.fillText(watermark, Math.floor((W - ww) / 2), bottomDivY + (is916 ? 44 : 28))
+
+  const link = document.createElement('a')
+  link.download = 'my-verse-rhymeitnow.png'
+  link.href = canvas.toDataURL('image/png')
+  link.click()
+}
+
+function ThemePicker({ selectedTheme, onSelect }) {
+  return (
+    <div style={{ marginBottom: '1rem' }}>
+      <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Image Theme</div>
+      <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
+        {THEMES.map(t => (
+          <button key={t.id} onClick={() => onSelect(t.id)}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              padding: '0.45rem 0.9rem',
+              background: selectedTheme === t.id ? '#9a7abf' : '#130f08',
+              color: selectedTheme === t.id ? '#0e0c14' : '#7a6a4a',
+              border: `1px solid ${selectedTheme === t.id ? '#9a7abf' : '#251e10'}`,
+              borderRadius: '6px', fontSize: '0.82rem', cursor: 'pointer',
+              fontFamily: 'Georgia, serif', fontWeight: selectedTheme === t.id ? '700' : '400',
+            }}>
+            <span style={{ width: '12px', height: '12px', borderRadius: '50%', background: t.previewBg, border: `2px solid ${t.previewBorder}`, display: 'inline-block', flexShrink: 0 }} />
+            {t.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function FormatPicker({ selectedFormat, onSelect }) {
+  return (
+    <div style={{ marginBottom: '1.25rem' }}>
+      <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Image Format</div>
+      <div style={{ display: 'flex', gap: '0.6rem' }}>
+        {FORMATS.map(f => (
+          <button key={f.id} onClick={() => onSelect(f.id)}
+            style={{
+              display: 'flex', flexDirection: 'column', alignItems: 'center',
+              padding: '0.5rem 1.25rem',
+              background: selectedFormat === f.id ? '#9a7abf' : '#130f08',
+              color: selectedFormat === f.id ? '#0e0c14' : '#7a6a4a',
+              border: `1px solid ${selectedFormat === f.id ? '#9a7abf' : '#251e10'}`,
+              borderRadius: '6px', cursor: 'pointer', fontFamily: 'Georgia, serif',
+              fontWeight: selectedFormat === f.id ? '700' : '400',
+            }}>
+            <span style={{ fontSize: '0.95rem', fontWeight: '700' }}>{f.label}</span>
+            <span style={{ fontSize: '0.7rem', opacity: 0.7, marginTop: '2px' }}>{f.sub}</span>
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+export default function PoetryBuilder() {
+  const [inputLine, setInputLine] = useState('')
+  const [style, setStyle] = useState('free-verse')
+  const [tone, setTone] = useState('reflective')
+  const [stanzas, setStanzas] = useState(1)
+  const [results, setResults] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+  const [session, setSession] = useState([])
+  const [copied, setCopied] = useState(false)
+  const [imageTheme, setImageTheme] = useState('midnight')
+  const [imageFormat, setImageFormat] = useState('9:16')
+  const [poemTitle, setPoemTitle] = useState(null)
+  const [generatingTitle, setGeneratingTitle] = useState(false)
+
+  const currentTheme = THEMES.find(t => t.id === imageTheme) || THEMES[0]
+  const currentFormat = FORMATS.find(f => f.id === imageFormat) || FORMATS[1]
+  const currentStyleName = STYLES.find(s => s.id === style)?.label || 'Free Verse'
+
+  const buildVerse = async (line) => {
+    const inputToUse = line || inputLine
+    if (!inputToUse.trim()) return
+    setLoading(true)
+    setError(null)
+    setResults(null)
+    setPoemTitle(null)
+    try {
+      const res = await fetch('/api/poetry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ line: inputToUse.trim(), style, tone, stanzas, previousLines: session }),
+      })
+      const data = await res.json()
+      if (data.error) throw new Error(data.error)
+      setResults(data)
+      setSession(prev => [...prev, inputToUse.trim(), ...(data.generated_lines || [])])
+    } catch {
+      setError('Could not generate verse right now. Please try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const generateTitle = async () => {
+    if (!results?.generated_lines) return
+    setGeneratingTitle(true)
+    try {
+      const res = await fetch('/api/poetry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          line: results.generated_lines.join(' '),
+          style, tone, stanzas: 0,
+          titleOnly: true,
+        }),
+      })
+      const data = await res.json()
+      if (data.title) setPoemTitle(data.title)
+    } catch {
+      setPoemTitle(null)
+    } finally {
+      setGeneratingTitle(false)
+    }
+  }
+
+  const continueBuilding = () => {
+    const lastLine = results?.generated_lines?.[results.generated_lines.length - 1]
+    if (lastLine) { setInputLine(lastLine); setResults(null); buildVerse(lastLine) }
+  }
+
+  const copySession = () => {
+    const text = poemTitle ? `${poemTitle}\n\n${session.join('\n')}` : session.join('\n')
+    navigator.clipboard?.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 1500)
+  }
+
+  const clearSession = () => { setSession([]); setResults(null); setInputLine(''); setPoemTitle(null) }
+
+  const accent = '#9a7abf'
+
+  return (
+    <>
+      <Head>
+        <title>Poetry Builder — AI Poem Generator for Poets | RhymeItNow</title>
+        <meta name="description" content="Build beautiful poems with AI. Type a line and our poetry generator creates the next stanza — free verse, sonnet, haiku, ballad, and spoken word. Free poetry builder." />
+        <meta property="og:title" content="Poetry Builder — AI Poem Generator | RhymeItNow" />
+        <link rel="canonical" href="https://rhymeitnow.com/poetry-builder" />
+      </Head>
+
+      <SiteNav />
+
+      <main>
+        <div style={{ textAlign: 'center', padding: '2.5rem 2rem 1.5rem' }}>
+          <div style={{ fontSize: '0.7rem', letterSpacing: '5px', color: '#7a6a4a', textTransform: 'uppercase', marginBottom: '0.75rem' }}>AI-Powered Poetry Tool</div>
+          <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontWeight: '700', margin: '0 0 0.5rem', color: '#f0e4c8', letterSpacing: '-1px', lineHeight: 1.1 }}>Poetry Builder</h1>
+          <p style={{ color: '#6a5c40', fontSize: '1rem', margin: '0 0 2rem', maxWidth: '480px', display: 'inline-block', lineHeight: 1.6 }}>
+            Type a line. AI builds the next stanza — using elevated, evocative language built for the page, not the beat.
+          </p>
+        </div>
+
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 1.5rem 4rem' }}>
+
+          {/* Style Picker */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <div style={{ fontSize: '0.7rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Form</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {STYLES.map(s => (
+                <button key={s.id} onClick={() => setStyle(s.id)}
+                  style={{ padding: '0.5rem 1rem', background: style === s.id ? accent : '#130f08', color: style === s.id ? '#0e0c08' : '#7a6a4a', border: `1px solid ${style === s.id ? accent : '#251e10'}`, borderRadius: '6px', fontSize: '0.85rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontWeight: style === s.id ? '700' : '400' }}>
+                  {s.label}
+                </button>
+              ))}
+            </div>
+            <div style={{ fontSize: '0.75rem', color: '#3a3020', marginTop: '0.5rem' }}>{STYLES.find(s => s.id === style)?.desc}</div>
+          </div>
+
+          {/* Tone Picker */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <div style={{ fontSize: '0.7rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Tone</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+              {TONES.map(t => (
+                <button key={t.id} onClick={() => setTone(t.id)}
+                  style={{ padding: '0.5rem 1rem', background: tone === t.id ? accent : '#130f08', color: tone === t.id ? '#0e0c08' : '#7a6a4a', border: `1px solid ${tone === t.id ? accent : '#251e10'}`, borderRadius: '6px', fontSize: '0.85rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontWeight: tone === t.id ? '700' : '400' }}>
+                  {t.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Stanza Count */}
+          <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ fontSize: '0.7rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase' }}>Generate</div>
+            {[1, 2, 3, 4].map(n => (
+              <button key={n} onClick={() => setStanzas(n)}
+                style={{ width: '36px', height: '36px', background: stanzas === n ? accent : '#130f08', color: stanzas === n ? '#0e0c08' : '#7a6a4a', border: `1px solid ${stanzas === n ? accent : '#251e10'}`, borderRadius: '6px', fontSize: '0.85rem', cursor: 'pointer', fontWeight: stanzas === n ? '700' : '400' }}>
+                {n}
+              </button>
+            ))}
+            <div style={{ fontSize: '0.75rem', color: '#3a3020' }}>{stanzas === 1 ? 'stanza (4 lines)' : `stanzas (${stanzas * 4} lines)`}</div>
+          </div>
+
+          {/* Input */}
+          <div style={{ marginBottom: '1rem' }}>
+            <div style={{ fontSize: '0.7rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Your Opening Line</div>
+            <textarea value={inputLine} onChange={e => setInputLine(e.target.value)}
+              onKeyDown={e => { if (e.key === 'Enter' && e.metaKey) buildVerse() }}
+              placeholder="Type your opening line here..." rows={3}
+              style={{ width: '100%', padding: '1rem 1.2rem', fontSize: '1rem', background: '#181410', border: '1px solid #3a2e1a', borderRadius: '8px', color: '#f0e4c8', fontFamily: 'Georgia, serif', fontStyle: 'italic', boxSizing: 'border-box', resize: 'vertical', lineHeight: '1.6' }} />
+          </div>
+
+          {/* Examples */}
+          <div style={{ marginBottom: '1.5rem' }}>
+            <span style={{ fontSize: '0.72rem', color: '#3a3020', marginRight: '0.5rem' }}>Try:</span>
+            {EXAMPLES.map(ex => (
+              <button key={ex} onClick={() => setInputLine(ex)}
+                style={{ background: 'none', border: 'none', color: '#5a4e38', fontSize: '0.72rem', cursor: 'pointer', textDecoration: 'underline', marginRight: '0.75rem', fontStyle: 'italic', padding: 0 }}>
+                "{ex.substring(0, 32)}..."
+              </button>
+            ))}
+          </div>
+
+          {/* Generate Button */}
+          <button onClick={() => buildVerse()} disabled={loading || !inputLine.trim()}
+            style={{ width: '100%', padding: '1rem', background: loading || !inputLine.trim() ? '#1e1a10' : accent, color: loading || !inputLine.trim() ? '#4a4030' : '#0e0c08', border: 'none', borderRadius: '8px', fontSize: '1.05rem', fontWeight: '700', cursor: loading || !inputLine.trim() ? 'not-allowed' : 'pointer', fontFamily: 'Georgia, serif', letterSpacing: '0.5px', marginBottom: '2rem' }}>
+            {loading ? 'Weaving your verse...' : `Build ${stanzas === 1 ? '1 Stanza' : stanzas + ' Stanzas'} →`}
+          </button>
+
+          {loading && (
+            <div style={{ textAlign: 'center', padding: '2rem' }}>
+              <div style={{ display: 'inline-block', width: '28px', height: '28px', border: '2px solid #2a2010', borderTop: `2px solid ${accent}`, borderRadius: '50%', animation: 'spin 0.8s linear infinite', marginBottom: '1rem' }} />
+              <p style={{ color: '#5a4e38', fontSize: '0.9rem', fontStyle: 'italic' }}>AI is crafting your verse with imagery and meter...</p>
+              <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+            </div>
+          )}
+
+          {error && <div style={{ textAlign: 'center', padding: '1rem', color: '#c87a5a' }}><p>{error}</p></div>}
+
+          {results && !loading && (
+            <div style={{ animation: 'fadeIn 0.3s ease' }}>
+              <style>{`@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }`}</style>
+
+              {/* Analysis */}
+              <div style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '10px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+                <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: accent, textTransform: 'uppercase', marginBottom: '0.75rem' }}>Craft Notes</div>
+                <div style={{ fontSize: '0.88rem', color: '#7a6a4a', lineHeight: '1.7' }}>{results.analysis}</div>
+              </div>
+
+              {/* Generated Verse */}
+              <div style={{ background: '#0e0c08', border: '1px solid #251e10', borderTop: `3px solid ${accent}`, borderRadius: '10px', padding: '1.5rem', marginBottom: '1.5rem' }}>
+                <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: accent, textTransform: 'uppercase', marginBottom: '1rem' }}>Generated Verse — {currentStyleName}</div>
+                {poemTitle && (
+                  <div style={{ fontSize: '1.1rem', color: '#f0e4c8', fontWeight: '700', marginBottom: '1rem', fontStyle: 'italic', borderBottom: '1px solid #251e10', paddingBottom: '0.75rem' }}>{poemTitle}</div>
+                )}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                  {(results.generated_lines || []).map((line, i) => (
+                    <div key={i} style={{ fontSize: '1.05rem', color: '#f0e4c8', fontStyle: 'italic', lineHeight: '1.7', paddingLeft: '1rem', borderLeft: `2px solid #251e10` }}>{line}</div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Key Imagery */}
+              {results.imagery_words?.length > 0 && (
+                <div style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '10px', padding: '1.25rem', marginBottom: '1.5rem' }}>
+                  <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: '#7aafc8', textTransform: 'uppercase', marginBottom: '0.75rem' }}>Key Imagery & Rhyme Words</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    {results.imagery_words.map(w => (
+                      <span key={w} style={{ background: '#1a1a28', border: '1px solid #2a2a40', borderRadius: '4px', padding: '0.3rem 0.75rem', fontSize: '0.88rem', color: '#7aafc8', fontStyle: 'italic' }}>{w}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Generate Title Button */}
+              {!poemTitle && (
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <button onClick={generateTitle} disabled={generatingTitle}
+                    style={{ padding: '0.6rem 1.25rem', background: '#130f08', color: accent, border: `1px solid ${accent}`, borderRadius: '8px', fontSize: '0.88rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+                    {generatingTitle ? 'Generating title...' : '✦ Generate a Title for this Poem'}
+                  </button>
+                </div>
+              )}
+
+              <ThemePicker selectedTheme={imageTheme} onSelect={setImageTheme} />
+              <FormatPicker selectedFormat={imageFormat} onSelect={setImageFormat} />
+
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                <button onClick={continueBuilding}
+                  style={{ flex: 1, padding: '0.85rem', background: accent, color: '#0e0c08', border: 'none', borderRadius: '8px', fontSize: '0.95rem', fontWeight: '700', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
+                  Continue Writing →
+                </button>
+                <button onClick={() => saveAsImage(results.generated_lines || [], currentStyleName, currentTheme, currentFormat)}
+                  style={{ padding: '0.85rem 1.25rem', background: '#130f08', color: accent, border: `1px solid ${accent}`, borderRadius: '8px', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'Georgia, serif', fontWeight: '700' }}>
+                  Save as Image
+                </button>
+                <button onClick={() => { setResults(null); setInputLine(''); setPoemTitle(null) }}
+                  style={{ padding: '0.85rem 1.25rem', background: '#130f08', color: '#7a6a4a', border: '1px solid #251e10', borderRadius: '8px', fontSize: '0.95rem', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
+                  New Line
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Session */}
+          {session.length > 0 && (
+            <div style={{ marginTop: '2.5rem', background: '#0a0906', border: '1px solid #1e1810', borderRadius: '12px', padding: '1.5rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+                <div style={{ fontSize: '0.65rem', letterSpacing: '3px', color: '#5a4e38', textTransform: 'uppercase' }}>Your Poem So Far</div>
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <button onClick={() => saveAsImage(session, currentStyleName, currentTheme, currentFormat)}
+                    style={{ padding: '0.4rem 0.85rem', background: '#1a1510', color: accent, border: `1px solid ${accent}`, borderRadius: '6px', fontSize: '0.78rem', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
+                    Save as Image
+                  </button>
+                  <button onClick={copySession}
+                    style={{ padding: '0.4rem 0.85rem', background: copied ? accent : '#1a1510', color: copied ? '#0e0c08' : '#7a6a4a', border: '1px solid #2a2010', borderRadius: '6px', fontSize: '0.78rem', cursor: 'pointer', fontFamily: 'Georgia, serif' }}>
+                    {copied ? '✓ Copied' : 'Copy All'}
+                  </button>
+                  <button onClick={clearSession}
+                    style={{ padding: '0.4rem 0.85rem', background: '#1a1510', color: '#5a4030', border: '1px solid #2a2010', borderRadius: '6px', fontSize: '0.78rem', cursor: 'pointer' }}>
+                    Clear
+                  </button>
+                </div>
+              </div>
+              {poemTitle && (
+                <div style={{ fontSize: '1rem', color: '#f0e4c8', fontWeight: '700', marginBottom: '0.75rem', fontStyle: 'italic' }}>{poemTitle}</div>
+              )}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
+                {session.map((line, i) => (
+                  <div key={i} style={{ fontSize: '0.95rem', color: i % 2 === 0 ? '#c8b890' : '#f0e4c8', fontStyle: 'italic', lineHeight: '1.7', paddingLeft: '0.75rem', borderLeft: `2px solid ${i % 2 === 0 ? '#251e10' : '#3a2e1a'}` }}>
+                    {line}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* How it works */}
+          {!results && !loading && session.length === 0 && (
+            <div style={{ marginTop: '1rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+              {[
+                ['1. Write your line', "Type any opening line — a feeling, an image, anything stirring in your mind."],
+                ['2. Choose your form', 'Free verse, sonnet, haiku, ballad, or spoken word — pick the structure that fits your vision.'],
+                ['3. AI builds the stanza', 'Claude uses elevated, evocative language — metaphor, imagery, and meter — to continue your poem naturally.'],
+              ].map(([title, desc]) => (
+                <div key={title} style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '8px', padding: '1.25rem' }}>
+                  <div style={{ fontSize: '0.7rem', letterSpacing: '2px', color: accent, textTransform: 'uppercase', marginBottom: '0.5rem' }}>{title}</div>
+                  <div style={{ fontSize: '0.82rem', color: '#5a4e38', lineHeight: '1.6' }}>{desc}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </main>
+
+      <SiteFooter />
+    </>
+  )
+}
