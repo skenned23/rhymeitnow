@@ -22348,5 +22348,55 @@
     "mystery",
     "flow"
   ]
+},
+  "kids": {
+  "intro": "Kids is a versatile anchor word in songwriting, spanning from nostalgic introspection to social commentary. It pairs naturally with -ids rhymes (lids, hids, bids, grids) and works across hip-hop, country, indie, and pop. The word carries emotional weight—innocence, responsibility, lost youth, or hope for the future—making it a go-to for both vulnerable verses and hard-hitting hooks.",
+  "famous_uses": [
+    {
+      "context": "Kids — Current Joys",
+      "note": "Used as a reflective anchor about childhood innocence and growing up, paired with simple one-syllable rhymes to create a conversational, intimate tone that amplifies the nostalgic emotion."
+    },
+    {
+      "context": "Kids — MGMT",
+      "note": "Deployed in the chorus as a hook to explore themes of youth and recklessness, rhyming 'kids' with nearby sounds to create a dreamy, vulnerable atmosphere that defines the entire song's melancholic identity."
+    },
+    {
+      "context": "Kids — Kanye West (feat. Mos Def)",
+      "note": "Used in a rapid-fire rap context where 'kids' rhymes internally with multi-syllabic words, creating urgency and momentum while discussing fatherhood and legacy, showcasing how the word flexes in trap and boom-bap production."
+    }
+  ],
+  "faq": [
+    {
+      "q": "What rhymes perfectly with kids?",
+      "a": "Lids, hids, bids, grids, rids, skids, slid, forbids, amid, pyramid. These are hard -ids sounds—one syllable, clean rhymes that work in both slow ballads and fast-paced rap verses. The family is tight and punchy, making it ideal for memorable hooks."
+    },
+    {
+      "q": "What are near rhymes for kids?",
+      "a": "Lids, gigs, rigs, digs, figs, wigs, big, fig. These -igs and partial -ids sounds feel close enough in modern production—especially in rap and indie music—to create a sense of coherence without strict rhyming, useful for contemporary, relaxed flows."
+    },
+    {
+      "q": "What are slant rhymes for kids?",
+      "a": "Hid, bid, grid, mid, did, lid. These work as slant rhymes by leaning on the short 'i' vowel sound while shifting the final consonant slightly, creating an off-kilter, introspective feel that modern songwriters use to avoid predictability."
+    },
+    {
+      "q": "How do you use kids in a rap song?",
+      "a": "Anchor 'kids' at the end of a bar to land it on a beat drop, then follow with rapid internal rhymes from the -ids family (bids, lids, grids) to maintain momentum. Place it in the second or third bar of a verse for maximum impact: 'Used to chase dreams when we were just kids / Now we making moves, placing our bids.' This creates both melodic coherence and conversational flow."
+    },
+    {
+      "q": "What is the best rhyme scheme for kids in poetry?",
+      "a": "Kids works best in AABB or ABAB schemes where the -ids rhyme returns frequently, creating a rhythmic anchor that mirrors childhood repetition and innocence. Try a volta (turn) where 'kids' appears early in nostalgia, then returns later with ironic or mature contrast: 'We were wild kids / Now we understand the grids / Of responsibility.'"
+    }
+  ],
+  "pro_tip": "Instead of pairing 'kids' with predictable rhymes like 'hids' or 'bids,' try embedding it in a longer line where it rhymes with an unexpected word from a different semantic field—like 'kids' rhyming with 'grids' to juxtapose childhood freedom against systems and structure. This creates cognitive friction that makes the listener lean in. Also, use 'kids' mid-line as an internal rhyme rather than always at the end—it feels fresher and less obvious.",
+  "related": [
+    "innocence",
+    "childhood",
+    "responsibility",
+    "nostalgia",
+    "vulnerability",
+    "youth",
+    "coming-of-age",
+    "introspection"
+  ]
 }
 }
