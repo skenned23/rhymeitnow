@@ -155,6 +155,21 @@ export default function RhymesForWord({ word, content, staticRhymes, wordBenefit
         <h1 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: '700', color: '#f0e4c8', marginBottom: '1rem', letterSpacing: '-0.5px' }}>
           Words That Rhyme With "{word}"
         </h1>
+{/* Quick Action Buttons */}
+        <div style={{ display: 'flex', gap: '10px', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
+          <Link href="/rap-builder"
+            style={{ background: '#c8a86a', color: '#0e0c08', borderRadius: '8px', padding: '0.6rem 1.25rem', fontSize: '13px', fontWeight: '700', fontFamily: 'Georgia, serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            🎵 Rap Builder
+          </Link>
+          <Link href={`/freestyle?word=${word}`}
+            style={{ background: '#1e1a0e', color: '#7aafc8', border: '1px solid #7aafc855', borderRadius: '8px', padding: '0.6rem 1.25rem', fontSize: '13px', fontWeight: '700', fontFamily: 'Georgia, serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            🎤 Freestyle Challenge
+          </Link>
+          <Link href="/poetry-builder"
+            style={{ background: '#1e1a0e', color: '#8dba8a', border: '1px solid #8dba8a55', borderRadius: '8px', padding: '0.6rem 1.25rem', fontSize: '13px', fontWeight: '700', fontFamily: 'Georgia, serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            ✍️ Poetry Builder
+          </Link>
+        </div>
 
         {/* Intro */}
         <p style={{ fontSize: '1rem', lineHeight: '1.8', color: '#8a7a5a', marginBottom: '2rem', borderLeft: '3px solid #c8a86a', paddingLeft: '1rem' }}>
