@@ -4,7 +4,7 @@ export default function Sitemap() {}
 
 export async function getServerSideProps({ res }) {
   const baseUrl = 'https://rhymeitnow.com'
- const staticPages = ['', '/about', '/contact', '/rap-builder', '/freestyle']
+const staticPages = ['', '/about', '/contact', '/rap-builder', '/freestyle', '/poetry-builder']
   
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
