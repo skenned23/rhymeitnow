@@ -106,7 +106,8 @@ export default function Freestyle() {
 
   const copyResult = () => {
     if (!result) return
-    navigator.clipboard?.writeText(result.join('\n'))
+    const branded = result.join('\n') + '\n\n🎤 Built with rhymeitnow.com'
+    navigator.clipboard?.writeText(branded)
     setCopied(true)
     setTimeout(() => setCopied(false), 1600)
   }
