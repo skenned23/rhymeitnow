@@ -1,5 +1,6 @@
 // pages/freestyle.js
 import { useState, useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SiteNav, SiteFooter } from '../components/Layout'
@@ -34,6 +35,7 @@ const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5)
 const getRandomObjects = (count = 3) => shuffle(RANDOM_OBJECTS).slice(0, count)
 
 export default function Freestyle() {
+  const router = useRouter()
   const [objects, setObjects] = useState([])
   const [customInput, setCustomInput] = useState('')
   const [style, setStyle] = useState('trap')
@@ -55,6 +57,13 @@ export default function Freestyle() {
   useEffect(() => {
     setObjects(getRandomObjects(3))
   }, [])
+
+  // Read ?word= from URL and pre-load it
+  useEffect(() => {
+    if (router.query.word) {
+      setObjects([router.query.word])
+    }
+  }, [router.query.word])
 
   const handleShuffle = () => {
     setObjects(getRandomObjects(3))
@@ -200,15 +209,8 @@ export default function Freestyle() {
       {/* Teleprompter Mode */}
       {teleprompter && result && (
         <div style={s.teleprompterOverlay}>
-          {/* Logo */}
-          <div style={s.teleprompterLogo}>
-            RhymeItNow
-          </div>
-
-          {/* Center focus glow line */}
+          <div style={s.teleprompterLogo}>RhymeItNow</div>
           <div style={s.focusLine} />
-
-          {/* Scrolling text */}
           <div ref={scrollRef} style={s.teleprompterText}>
             <div style={{ height: '40vh' }} />
             {result.map((line, i) => (
@@ -216,7 +218,6 @@ export default function Freestyle() {
             ))}
             <div style={{ height: '50vh' }} />
           </div>
-
           <div style={s.teleprompterControls}>
             {['slow', 'normal', 'fast'].map(sp => (
               <button key={sp} onClick={() => { stopScroll(); setScrollSpeed(sp) }}
@@ -237,7 +238,6 @@ export default function Freestyle() {
       )}
 
       <main style={s.main}>
-        {/* Hero */}
         <div style={s.hero}>
           <div style={s.badge}>🎤 Freestyle Challenge</div>
           <h1 style={s.h1}>Rap About Anything</h1>
@@ -300,7 +300,6 @@ export default function Freestyle() {
           </div>
         </div>
 
-        {/* Generate */}
         <button onClick={generate} disabled={loading || objects.length === 0} style={s.generateBtn}>
           {loading ? 'Building bars...' : '🔥 Generate Freestyle'}
         </button>
