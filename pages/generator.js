@@ -18,6 +18,59 @@ export default function Generator() {
   const [output, setOutput] = useState('')
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [committing, setCommitting] = useState(false)
+  const [commitStatus, setCommitStatus] = useState('')
+
+  const commitSingle = async () => {
+    if (!output) return
+    setCommitting(true)
+    setCommitStatus('Committing...')
+    try {
+      const key = word.trim().toLowerCase()
+      const res = await fetch('/api/generate-word', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word: key }),
+      })
+      const data = await res.json()
+      const commitRes = await fetch('/api/commit-words', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ newWords: data }),
+      })
+      const result = await commitRes.json()
+      if (result.error) setCommitStatus('Error: ' + result.error)
+      else setCommitStatus('✓ Committed! Vercel is deploying now.')
+    } catch (err) {
+      setCommitStatus('Error: ' + err.message)
+    }
+    setCommitting(false)
+  }
+
+  const commitBatch = async () => {
+    const successes = batchResults.filter(r => r.status === 'ok')
+    if (successes.length === 0) return
+    setCommitting(true)
+    setBatchProgress('Committing to GitHub...')
+    try {
+      const newWords = {}
+      successes.forEach(r => {
+        const key = Object.keys(r.json)[0]
+        newWords[key] = r.json[key]
+      })
+      const commitRes = await fetch('/api/commit-words', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ newWords }),
+      })
+      const result = await commitRes.json()
+      if (result.error) setBatchProgress('Error: ' + result.error)
+      else setBatchProgress(`✓ Committed ${result.committed.length} words! Vercel deploying now.`)
+    } catch (err) {
+      setBatchProgress('Error: ' + err.message)
+    }
+    setCommitting(false)
+  }
 
   // ── Single mode ──────────────────────────────────────────────
   const generate = async () => {
@@ -205,12 +258,18 @@ export default function Generator() {
 
           {status && <p style={status.startsWith('Error') ? s.statusErr : s.statusOk}>{status}</p>}
 
-          {output && (
+         {output && (
             <div>
               <pre style={s.pre}>{output}</pre>
-              <button onClick={copy} style={s.btn(false, 'secondary')}>
-                {copied ? 'Copied!' : 'Copy JSON'}
-              </button>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button onClick={copy} style={s.btn(false, 'secondary')}>
+                  {copied ? 'Copied!' : 'Copy JSON'}
+                </button>
+                <button onClick={commitSingle} disabled={committing} style={s.btn(committing)}>
+                  {committing ? 'Committing...' : 'Commit to GitHub'}
+                </button>
+              </div>
+              {commitStatus && <p style={commitStatus.startsWith('Error') ? s.statusErr : s.statusOk}>{commitStatus}</p>}
             </div>
           )}
         </>
@@ -230,10 +289,15 @@ export default function Generator() {
             <button onClick={runBatch} disabled={batchRunning || !wordList.trim()} style={s.btn(batchRunning || !wordList.trim())}>
               {batchRunning ? 'Running...' : 'Generate All'}
             </button>
-            {batchBlock && (
-              <button onClick={copyBatch} style={s.btn(false, 'secondary')}>
-                {batchCopied ? 'Copied!' : 'Copy JSON Block'}
-              </button>
+           {batchBlock && (
+              <>
+                <button onClick={copyBatch} style={s.btn(false, 'secondary')}>
+                  {batchCopied ? 'Copied!' : 'Copy JSON Block'}
+                </button>
+                <button onClick={commitBatch} disabled={committing} style={s.btn(committing)}>
+                  {committing ? 'Committing...' : 'Commit to GitHub'}
+                </button>
+              </>
             )}
           </div>
 
