@@ -17,6 +17,11 @@ export default function App({ Component, pageProps }) {
           gtag('config', 'G-G9J2CD6H48');
         `}
       </Script>
+      <Script
+        src="https://analytics.ahrefs.com/analytics.js"
+        data-key="97nNRRzi2WQAW7rKzjrUSg"
+        strategy="afterInteractive"
+      />
       <Component {...pageProps} />
       <Analytics />
     </>
