@@ -24,9 +24,16 @@ export default async function handler(req, res) {
     const getJson = await getRes.json()
     if (!getRes.ok) return res.status(500).json({ error: 'Failed to fetch file: ' + getJson.message })
 
-    const sha = getJson.sha
-    const currentContent = JSON.parse(Buffer.from(getJson.content, 'base64').toString('utf8'))
-
+  const sha = getJson.sha
+    let currentContent
+    if (getJson.content) {
+      currentContent = JSON.parse(Buffer.from(getJson.content, 'base64').toString('utf8'))
+    } else if (getJson.download_url) {
+      const dlRes = await fetch(getJson.download_url)
+      currentContent = await dlRes.json()
+    } else {
+      return res.status(500).json({ error: 'Could not retrieve file content' })
+    }
     // 2. Merge new words in
     const merged = { ...currentContent, ...newWords }
 
