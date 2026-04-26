@@ -298,6 +298,17 @@ export default function RhymesForWord({ word, content, staticRhymes, wordBenefit
             Try Rap Builder →
           </Link>
         </div>
+{/* Freestyle CTA */}
+        <div style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '10px', padding: '1.25rem 1.5rem', marginBottom: '2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <div>
+            <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#7aafc8', textTransform: 'uppercase', marginBottom: '0.25rem' }}>Practice your flow</div>
+            <div style={{ color: '#7a6a4a', fontSize: '14px' }}>Use "{word}" in a 30-second Freestyle Challenge</div>
+          </div>
+          <Link href={`/freestyle?word=${word}`}
+            style={{ background: '#7aafc8', color: '#0e0c08', borderRadius: '8px', padding: '0.75rem 1.5rem', fontSize: '14px', fontWeight: '700', fontFamily: 'Georgia, serif', textDecoration: 'none', whiteSpace: 'nowrap' }}>
+            Start Freestyle →
+          </Link>
+        </div>
 
         {/* Related Words */}
         <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#f0e4c8', fontWeight: '700' }}>
