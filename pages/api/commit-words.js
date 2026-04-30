@@ -22,11 +22,11 @@ export default async function handler(req, res) {
     })
     const fileData = await getRes.json()
     const sha = fileData.sha
-    const currentContent = Buffer.from(fileData.content, 'base64').toString('utf8')
+    const currentContent = Buffer.from(fileData.content.replace(/\n/g, ''), 'base64').toString('utf8')
 
     // 2. Insert new content before the final closing }
     const trimmed = currentContent.trimEnd()
-const lastBrace = trimmed.lastIndexOf('}')
+    const lastBrace = trimmed.lastIndexOf('}')
     if (lastBrace === -1) {
       return res.status(500).json({ error: 'Could not find closing brace in words-content.json' })
     }
