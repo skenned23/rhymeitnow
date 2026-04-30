@@ -27,7 +27,8 @@ export default async function handler(req, res) {
     // 2. Insert new content before the final closing }
     const trimmed = currentContent.trimEnd()
     const lastBrace = trimmed.lastIndexOf('}')
-    if (lastBrace === -1) {
+    console.log('lastBrace:', lastBrace, 'trimmed end:', JSON.stringify(trimmed.slice(-30)))
+if (lastBrace === -1) {
       return res.status(500).json({ error: 'Could not find closing brace in words-content.json' })
     }
 
