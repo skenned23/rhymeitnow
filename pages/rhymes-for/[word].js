@@ -1,10 +1,14 @@
 import { useState } from 'react'
+import fs from 'fs'
+import path from 'path'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SiteNav, SiteFooter } from '../../components/Layout'
-import wordsContent from '../../data/words-content.json'
 
 export async function getStaticPaths() {
+  const filePath = path.join(process.cwd(), 'data', 'words-content.json')
+  const raw = fs.readFileSync(filePath, 'utf-8')
+  const wordsContent = JSON.parse(raw)
   const words = Object.keys(wordsContent)
   const paths = words.map(word => ({ params: { word } }))
   return { paths, fallback: 'blocking' }
@@ -12,6 +16,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { word } = params
+  const filePath = path.join(process.cwd(), 'data', 'words-content.json')
+  const raw = fs.readFileSync(filePath, 'utf-8')
+  const wordsContent = JSON.parse(raw)
   const content = wordsContent[word] || null
   if (!content) return { notFound: true }
   return { props: { word, content } }
@@ -76,24 +83,20 @@ export default function RhymesForWord({ word, content }) {
 
       <main style={{ maxWidth: '820px', margin: '0 auto', padding: '2rem 1.5rem' }}>
 
-        {/* Breadcrumb */}
         <div style={{ fontSize: '13px', color: '#5a4e38', marginBottom: '1.5rem' }}>
           <Link href="/" style={{ color: '#c8a86a', textDecoration: 'none' }}>RhymeItNow</Link>
           <span style={{ margin: '0 0.5rem', color: '#3a3020' }}>→</span>
           <span>Rhymes for "{word}"</span>
         </div>
 
-        {/* H1 */}
         <h1 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: '700', color: '#f0e4c8', marginBottom: '1rem', letterSpacing: '-0.5px' }}>
           Words That Rhyme With "{word}"
         </h1>
 
-        {/* Intro */}
         <p style={{ fontSize: '1rem', lineHeight: '1.8', color: '#8a7a5a', marginBottom: '2rem', borderLeft: '3px solid #c8a86a', paddingLeft: '1rem' }}>
           {content.intro}
         </p>
 
-        {/* Tool */}
         <div style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '12px', padding: '2rem', marginBottom: '2.5rem' }}>
           {!results && !loading && (
             <div style={{ textAlign: 'center' }}>
@@ -146,7 +149,6 @@ export default function RhymesForWord({ word, content }) {
           )}
         </div>
 
-        {/* Famous Uses */}
         <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#f0e4c8', fontWeight: '700' }}>
           Famous uses of "{word}" in music and poetry
         </h2>
@@ -159,7 +161,6 @@ export default function RhymesForWord({ word, content }) {
           ))}
         </div>
 
-        {/* FAQ - Schema markup for Google */}
         <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#f0e4c8', fontWeight: '700' }}>
           Frequently asked questions
         </h2>
@@ -172,7 +173,6 @@ export default function RhymesForWord({ word, content }) {
           ))}
         </div>
 
-        {/* Related Words */}
         <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: '#f0e4c8', fontWeight: '700' }}>
           Related words to explore
         </h2>
@@ -185,7 +185,6 @@ export default function RhymesForWord({ word, content }) {
           ))}
         </div>
 
-        {/* CTA */}
         <div style={{ textAlign: 'center', padding: '2rem', background: '#130f08', border: '1px solid #251e10', borderRadius: '12px' }}>
           <div style={{ fontSize: '14px', color: '#5a4e38', marginBottom: '0.75rem' }}>Search any word on RhymeItNow</div>
           <Link href="/" style={{ display: 'inline-block', padding: '0.85rem 2rem', background: '#c8a86a', color: '#0e0c08', borderRadius: '8px', fontSize: '15px', fontWeight: '700', textDecoration: 'none', fontFamily: 'Georgia, serif' }}>
