@@ -38,6 +38,8 @@ export default function Generator() {
   const [committing, setCommitting] = useState(false)
   const [commitStatus, setCommitStatus] = useState('')
   const [currentWord, setCurrentWord] = useState('')
+  const [wordStatus, setWordStatus] = useState({}) // { word: 'pending' | 'done' | 'error' }
+  const [batchList, setBatchList] = useState([])
 
   const generate = async () => {
     const words = mode === 'single'
@@ -49,11 +51,16 @@ export default function Generator() {
     setLoading(true)
     setOutput('')
     setCommitStatus('')
+    setBatchList(words)
+    const initialStatus = {}
+    words.forEach(w => { initialStatus[w] = 'pending' })
+    setWordStatus(initialStatus)
 
     let fullOutput = ''
 
     for (const word of words) {
       setCurrentWord(word)
+      setWordStatus(prev => ({ ...prev, [word]: 'generating' }))
       try {
         const res = await fetch('/api/generate-word', {
           method: 'POST',
@@ -64,10 +71,12 @@ export default function Generator() {
         if (data.content) {
           fullOutput += '\n' + data.content.trim()
           setOutput(fullOutput.trim())
+          setWordStatus(prev => ({ ...prev, [word]: 'done' }))
         }
       } catch (e) {
         fullOutput += `\n// Error generating "${word}"`
         setOutput(fullOutput.trim())
+        setWordStatus(prev => ({ ...prev, [word]: 'error' }))
       }
     }
 
@@ -170,6 +179,25 @@ export default function Generator() {
                 style={{ marginTop: '0.5rem', padding: '0.75rem 1.5rem', background: loading || !batchWords.trim() ? '#1e1a10' : '#c8a86a', color: loading || !batchWords.trim() ? '#4a4030' : '#0e0c08', border: 'none', borderRadius: '6px', fontSize: '0.9rem', fontWeight: '700', cursor: loading || !batchWords.trim() ? 'not-allowed' : 'pointer', fontFamily: 'Georgia, serif' }}>
                 {loading ? `Generating "${currentWord}"...` : 'Generate Batch'}
               </button>
+            </div>
+          )}
+
+          {/* Word Progress List */}
+          {batchList.length > 0 && (
+            <div style={{ background: '#130f08', border: '1px solid #2a2010', borderRadius: '8px', padding: '0.75rem 1rem', marginBottom: '1rem' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem 1.25rem' }}>
+                {batchList.map(w => (
+                  <div key={w} style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', fontSize: '0.82rem', fontStyle: 'italic' }}>
+                    {wordStatus[w] === 'done' && <span style={{ color: '#8dba8a' }}>✓</span>}
+                    {wordStatus[w] === 'generating' && <span style={{ color: '#c8a86a' }}>⟳</span>}
+                    {wordStatus[w] === 'error' && <span style={{ color: '#c87a5a' }}>✗</span>}
+                    {wordStatus[w] === 'pending' && <span style={{ color: '#3a3020' }}>○</span>}
+                    <span style={{ color: wordStatus[w] === 'done' ? '#8dba8a' : wordStatus[w] === 'generating' ? '#c8a86a' : wordStatus[w] === 'error' ? '#c87a5a' : '#3a3020' }}>
+                      {w}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
