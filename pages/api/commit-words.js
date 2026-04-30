@@ -1,6 +1,4 @@
 // pages/api/commit-words.js
-// Appends new word JSON into data/words-content.json on GitHub
-
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).end()
 
@@ -10,32 +8,37 @@ export default async function handler(req, res) {
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN
   const REPO = 'skenned23/rhymeitnow'
   const FILE_PATH = 'data/words-content.json'
-  const API_URL = `https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`
+  const BASE = `https://api.github.com/repos/${REPO}`
 
   try {
-    // 1. Get current file
-    const getRes = await fetch(API_URL, {
+    // 1. Get file SHA and download URL
+    const metaRes = await fetch(`${BASE}/contents/${FILE_PATH}`, {
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
         Accept: 'application/vnd.github+json',
       },
     })
-    const fileData = await getRes.json()
-    const sha = fileData.sha
-    const currentContent = Buffer.from(fileData.content.replace(/\n/g, ''), 'base64').toString('utf8')
+    const metaData = await metaRes.json()
+    const sha = metaData.sha
+    const downloadUrl = metaData.download_url
 
-    // 2. Insert new content before the final closing }
+    // 2. Fetch actual content via download_url (no size limit)
+    const rawRes = await fetch(downloadUrl, {
+      headers: { Authorization: `Bearer ${GITHUB_TOKEN}` },
+    })
+    const currentContent = await rawRes.text()
+
+    // 3. Insert before final closing }
     const trimmed = currentContent.trimEnd()
     const lastBrace = trimmed.lastIndexOf('}')
-    console.log('lastBrace:', lastBrace, 'trimmed end:', JSON.stringify(trimmed.slice(-30)))
-if (lastBrace === -1) {
+    if (lastBrace === -1) {
       return res.status(500).json({ error: 'Could not find closing brace in words-content.json' })
     }
 
     const newContent = trimmed.slice(0, lastBrace) + content.trim() + '\n}'
 
-    // 3. Commit updated file
-    const updateRes = await fetch(API_URL, {
+    // 4. Commit updated file
+    const updateRes = await fetch(`${BASE}/contents/${FILE_PATH}`, {
       method: 'PUT',
       headers: {
         Authorization: `Bearer ${GITHUB_TOKEN}`,
