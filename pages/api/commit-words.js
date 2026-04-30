@@ -25,12 +25,13 @@ export default async function handler(req, res) {
     const currentContent = Buffer.from(fileData.content, 'base64').toString('utf8')
 
     // 2. Insert new content before the final closing }
-    const lastBrace = currentContent.lastIndexOf('}')
+    const trimmed = currentContent.trimEnd()
+const lastBrace = trimmed.lastIndexOf('}')
     if (lastBrace === -1) {
       return res.status(500).json({ error: 'Could not find closing brace in words-content.json' })
     }
 
-    const newContent = currentContent.slice(0, lastBrace) + content.trim() + '\n}'
+    const newContent = trimmed.slice(0, lastBrace) + content.trim() + '\n}'
 
     // 3. Commit updated file
     const updateRes = await fetch(API_URL, {
