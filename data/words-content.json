@@ -157,4 +157,40 @@
     "pro_tip": "The secret to using 'hot' effectively is avoiding its most obvious rhymes in your first draft. Instead of 'got/hot/not,' try compound constructions: 'hot' rhyming with 'long shot,' 'hit the spot,' or 'connect the dot.' For example: 'Temperature rising, fever dream hot / She walked in the room and my heart just stopped.' The enjambment creates surprise while the slant rhyme with 'stopped' feels fresh.",
     "related": ["fire", "heat", "burning", "cool", "cold", "shot", "got", "spot"]
   }
+,
+  "shot": {
+    "intro": "Shot belongs to the versatile '-ot' rhyme family, making it one of the most dynamic words in contemporary songwriting. This punchy, single-syllable word carries immense weight across hip-hop, rock, country, and pop, often conveying themes of opportunity, violence, alcohol, photography, or athletic triumph. Its hard consonant ending gives it a percussive quality that lands with impact on downbeats.",
+    "famous_uses": [
+      { "context": "Lose Yourself — Eminem", "note": "The iconic 'You only get one shot, do not miss your chance to blow' uses 'shot' as the emotional anchor of the chorus, rhyming it with 'not' and 'got' in a motivational context about seizing opportunity." },
+      { "context": "Shot Through the Heart — Bon Jovi", "note": "Uses 'shot' in its violent/romantic metaphor sense, pairing it with 'to blame' in an ABAB scheme that emphasizes the betrayal theme." },
+      { "context": "Shots — LMFAO ft. Lil Jon", "note": "Transforms 'shot' into a repetitive party anthem hook, demonstrating how the word's percussive quality works for EDM and club tracks when layered with 'hot' and 'got'." }
+    ],
+    "faq": [
+      { "q": "What rhymes perfectly with shot?", "a": "Perfect rhymes include: got, not, hot, lot, pot, dot, rot, slot, knot, spot, trot, squat, plot, cot, bought, fought, thought, taught, caught, brought. These share the exact '-ot' ending and work seamlessly in any rhyme position." },
+      { "q": "What are near rhymes for shot?", "a": "Near rhymes include: shout, shut, shop, shock, sharp, short, shirt, shift, shaft, shoot. These share similar consonant sounds or vowel qualities without being exact matches, useful for avoiding predictable rhymes." },
+      { "q": "What are slant rhymes for shot?", "a": "Slant rhymes include: shed, shred, should, ship, shade, shadow, showed, shared. These maintain the 'sh' onset while varying the ending, creating subtle sonic connections for sophisticated writing." },
+      { "q": "How do you use shot in a rap song?", "a": "In rap, 'shot' is incredibly versatile—use it for gun references, basketball metaphors, drinking culture, or opportunity themes. Stack it with multisyllabic rhymes like 'long shot/wrong spot/strong plot' or use it as a punchline anchor. Its hard 't' ending makes it perfect for emphasizing bars and creating rhythmic stops." },
+      { "q": "What is the best rhyme scheme for shot in poetry?", "a": "For poetry, 'shot' works excellently in AABB couplets for emphatic statements, or ABAB quatrains where it can land on strong beats. In sonnets, save it for the volta or final couplet for maximum impact. The word's brevity suits iambic meter well, naturally falling on stressed syllables." }
+    ],
+    "pro_tip": "When writing with 'shot,' consider its triple meaning potential—a single line can layer opportunity, violence, and alcohol themes simultaneously for depth. Try compound setups: 'Took my shot at the top, now they watching / Every plot that I got, they keep clocking.' Notice how 'shot' sets up a chain of '-ot' rhymes while carrying both ambition and aggression. For emotional ballads, pair 'shot' with softer rhymes like 'thought' or 'caught' to create tension between the word's hardness and vulnerable themes.",
+    "related": ["got", "not", "hot", "spot", "opportunity", "gunshot", "screenshot", "snapshot"]
+  }
+,
+  "caught": {
+    "intro": "Caught belongs to the versatile '-ought/-aught' rhyme family, one of the most emotionally charged sound groups in songwriting. This word appears frequently in pop, R&B, country, and hip-hop, often carrying themes of vulnerability, surprise, romantic entanglement, or being exposed. Its single-syllable punch makes it perfect for landing on strong beats, while its meaning naturally creates narrative tension.",
+    "famous_uses": [
+      { "context": "Caught Up — Usher", "note": "Usher uses 'caught' as the central hook, pairing it with 'thought' and 'not' to build a web of romantic confusion, employing internal rhyme throughout the chorus." },
+      { "context": "You Oughta Know — Alanis Morissette", "note": "Morissette rhymes within the '-ought' family extensively, using 'caught' to convey the raw emotion of betrayal with perfect rhyme precision." },
+      { "context": "Hotline Bling — Drake", "note": "Drake employs 'caught' in near-rhyme patterns with 'call' and 'all,' demonstrating how hip-hop loosens traditional rhyme rules for flow." }
+    ],
+    "faq": [
+      { "q": "What rhymes perfectly with caught?", "a": "Perfect rhymes include: bought, brought, fought, thought, taught, sought, wrought, ought, naught, fraught, taut, distraught. These share the exact '-ought/-aught' ending sound and work seamlessly in traditional verse and pop songwriting." },
+      { "q": "What are near rhymes for caught?", "a": "Near rhymes include: hot, not, got, lot, shot, spot, knot, dot, plot, rot. These '-ot' words share similar vowel placement and are frequently used in hip-hop and contemporary pop where exact rhyme is less critical than flow." },
+      { "q": "What are slant rhymes for caught?", "a": "Slant rhymes include: call, fall, all, wall, crawl, fault, salt, halt, walk. These share phonetic elements without perfect matching, adding sophistication and unpredictability to lyrics." },
+      { "q": "How do you use caught in a rap song?", "a": "In rap, 'caught' works powerfully at bar endings or as a pivot word in multi-syllabic chains. Try stacking it with 'thought,' 'bought,' and 'fought' for a hard-hitting quadruple rhyme, or stretch into phrases like 'caught up' / 'brought what' / 'thought of.' It's ideal for storytelling about street life, relationships, or personal reflection." },
+      { "q": "What is the best rhyme scheme for caught in poetry?", "a": "For poetry, 'caught' excels in ABAB schemes where it can anchor alternating lines, or in couplets (AA) for immediate impact. Its emotional weight suits sonnets addressing love or loss, and its abundance of perfect rhymes makes it forgiving for traditional forms." }
+    ],
+    "pro_tip": "Use 'caught' as a tension-builder by placing it before a reveal or emotional climax. The word implies something happening to the subject rather than by them, creating instant vulnerability. For maximum impact, set up the rhyme with 'thought' in the preceding line to create anticipation: 'I never thought I'd feel this way / Until your eyes caught mine that day.' This thought-caught pairing is a classic for good reason—it connects mental state to physical moment.",
+    "related": ["thought", "bought", "fought", "taught", "brought", "love", "heart", "feelings", "trapped", "found", "lost", "surprised", "exposed", "vulnerable"]
+  }
 }
