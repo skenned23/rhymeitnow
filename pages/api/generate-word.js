@@ -26,7 +26,8 @@ For each word, generate a JSON object with this exact structure (no markdown, no
       { "q": "What is the best rhyme scheme for WORD in poetry?", "a": "Advice on rhyme schemes that work well with this word." }
     ],
     "pro_tip": "One paragraph of advanced, specific advice for songwriters or poets using this word. Include an example lyric snippet.",
-    "related": ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7", "tag8"]
+    "related": ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7", "tag8"],
+    "seo_benefit": "4-6 word benefit phrase describing this word's best use — e.g. 'for Ballads & Heartbreak Songs' or 'for Rap & Intense Verse' or 'for Country & Folk Lyrics'"
   }
 
 IMPORTANT: Output ONLY valid JSON in this exact format. No extra text. Start with a comma. Replace WORD with the actual word throughout.`
