@@ -63,7 +63,7 @@ export default function RhymesForWord({ word, content }) {
   return (
     <>
       <Head>
-        <title>Words That Rhyme With {word} — Perfect, Near & Slant Rhymes | RhymeItNow</title>
+        <title>Words That Rhyme With {word} | {content.seo_benefit || 'Perfect, Near & Slant Rhymes'} | RhymeItNow</title>
         <meta name="description" content={`Find perfect, near, and slant rhymes for "${word}" instantly. Free AI-powered rhyme finder for poets and songwriters. No login required.`} />
         <meta property="og:title" content={`Rhymes for "${word}" | RhymeItNow`} />
         <meta property="og:description" content={content.intro} />
