@@ -90,7 +90,7 @@ export default function RhymesForWord({ word, content }) {
         </div>
 
         <h1 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: '700', color: '#f0e4c8', marginBottom: '1rem', letterSpacing: '-0.5px' }}>
-          Words That Rhyme With "{word}"
+          Words That Rhyme With "{word}" — Rhymes for Songwriters & Poets
         </h1>
 
         <p style={{ fontSize: '1rem', lineHeight: '1.8', color: '#8a7a5a', marginBottom: '2rem', borderLeft: '3px solid #c8a86a', paddingLeft: '1rem' }}>
