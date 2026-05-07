@@ -13,6 +13,9 @@ For each word, generate a JSON object with this exact structure (no markdown, no
 ,
   "WORD": {
     "intro": "2-3 sentence intro about the word's use in songwriting/poetry. Mention the rhyme family, genres it appears in, and emotional weight.",
+    "perfect": ["word1", "word2", "word3", "word4", "word5", "word6", "word7", "word8"],
+    "near": ["word1", "word2", "word3", "word4", "word5", "word6", "word7", "word8"],
+    "slant": ["word1", "word2", "word3", "word4", "word5", "word6", "word7", "word8"],
     "famous_uses": [
       { "context": "Song title — Artist", "note": "How this artist used the word and what rhyme technique they employed." },
       { "context": "Song title — Artist", "note": "..." },
@@ -30,7 +33,7 @@ For each word, generate a JSON object with this exact structure (no markdown, no
     "seo_benefit": "4-6 word benefit phrase describing this word's best use — e.g. 'for Ballads & Heartbreak Songs' or 'for Rap & Intense Verse' or 'for Country & Folk Lyrics'"
   }
 
-IMPORTANT: Output ONLY valid JSON in this exact format. No extra text. Start with a comma. Replace WORD with the actual word throughout.`
+IMPORTANT: Output ONLY valid JSON in this exact format. No extra text. Start with a comma. Replace WORD with the actual word throughout. For perfect/near/slant arrays, provide real rhyming words only — no placeholders.`
 
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
@@ -55,4 +58,3 @@ IMPORTANT: Output ONLY valid JSON in this exact format. No extra text. Start wit
     res.status(500).json({ error: err.message })
   }
 }
-
