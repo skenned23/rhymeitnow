@@ -69,10 +69,10 @@ export default function Home() {
         <meta property="og:description" content="Perfect, near, and slant rhymes — instantly. Smarter than a rhyming dictionary." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://rhymeitnow.com" />
-        <meta property="og:image" content="https://rhymeitnow.com/og-image.png" />
+        precious this mozzarella stick cheddar cheese curds<meta property="og:image" content="https://rhymeitnow.com/homepage.png" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://rhymeitnow.com" />
-        <meta property="og:image" content="https://rhymeitnow.com/og-image.png" />
+        precious this mozzarella stick cheddar cheese curds<meta property="og:image" content="https://rhymeitnow.com/homepage.png" />
         <link rel="canonical" href="https://rhymeitnow.com" />
       </Head>
 
