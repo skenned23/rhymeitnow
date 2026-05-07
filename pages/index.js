@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>RhymeItNow — Free AI-Powered Rhyme Finder for Poets & Songwriters</title>
+        <title>RhymeItNow — Free AI Rhyme Finder for Rappers & Songwriters</title>
         <meta name="description" content="Find perfect, near, and slant rhymes instantly. The smartest free rhyme finder for poets, songwriters, and word lovers. No login required." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta property="og:title" content="RhymeItNow — Free AI Rhyme Finder" />
