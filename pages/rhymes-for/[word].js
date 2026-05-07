@@ -60,6 +60,8 @@ export default function RhymesForWord({ word, content }) {
     setTimeout(() => setCopied(null), 1400)
   }
 
+  const hasStaticRhymes = content.perfect?.length || content.near?.length || content.slant?.length
+
   return (
     <>
       <Head>
@@ -96,6 +98,31 @@ export default function RhymesForWord({ word, content }) {
         <p style={{ fontSize: '1rem', lineHeight: '1.8', color: '#8a7a5a', marginBottom: '2rem', borderLeft: '3px solid #c8a86a', paddingLeft: '1rem' }}>
           {content.intro}
         </p>
+
+        {hasStaticRhymes && (
+          <div style={{ marginBottom: '2.5rem' }}>
+            <h2 style={{ fontSize: '1.3rem', marginBottom: '1.25rem', color: '#f0e4c8', fontWeight: '700' }}>
+              Rhymes for "{word}"
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+              {CATEGORIES.map(cat => (
+                (content[cat.key]?.length > 0) && (
+                  <div key={cat.key} style={{ background: '#130f08', borderRadius: '10px', padding: '1.25rem', borderTop: `3px solid ${cat.accent}` }}>
+                    <div style={{ fontSize: '11px', letterSpacing: '2px', color: cat.accent, textTransform: 'uppercase', marginBottom: '0.75rem' }}>{cat.label}</div>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {content[cat.key].map(w => (
+                        <button key={w} onClick={() => copyWord(w)}
+                          style={{ background: copied === w ? cat.accent : '#1e1a0e', color: copied === w ? '#0e0c08' : '#c8b890', border: `1px solid ${copied === w ? cat.accent : '#302818'}`, borderRadius: '4px', padding: '4px 10px', fontSize: '13px', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+                          {copied === w ? '✓' : w}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )
+              ))}
+            </div>
+          </div>
+        )}
 
         <div style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '12px', padding: '2rem', marginBottom: '2.5rem' }}>
           {!results && !loading && (
