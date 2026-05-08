@@ -102,7 +102,7 @@ export default function RhymesForWord({ word, content }) {
         {hasStaticRhymes && (
           <div style={{ marginBottom: '2.5rem' }}>
             <h2 style={{ fontSize: '1.3rem', marginBottom: '1.25rem', color: '#f0e4c8', fontWeight: '700' }}>
-              Rhymes for "{word}"
+            What Rhymes With "{word}"?
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
               {CATEGORIES.map(cat => (
