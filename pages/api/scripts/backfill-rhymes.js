@@ -2,7 +2,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const ANTHROPIC_API_KEY = "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"
+const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY
 const WORDS_FILE = path.join(__dirname, '../../../data/words-content.json')
 const DELAY_MS = 1000
 const BATCH_SIZE = 50
