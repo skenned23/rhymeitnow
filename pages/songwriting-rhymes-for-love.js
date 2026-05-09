@@ -1,213 +1,163 @@
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head'
+import Link from 'next/link'
+import { SiteNav, SiteFooter } from '../components/Layout'
+
+const perfectRhymes = [
+  { word: 'dove', notes: 'Symbolizes peace — perfect for romantic ballads' },
+  { word: 'above', notes: 'Elevation metaphor — great for uplifting choruses' },
+  { word: 'glove', notes: 'Intimacy and fit — underused in modern songwriting' },
+  { word: 'shove', notes: 'Contrast/conflict — works in breakup songs' },
+  { word: 'of', notes: 'Unstressed syllable — flows naturally in verse' },
+]
+
+const nearRhymes = [
+  { word: 'move', notes: 'Near rhyme — widely used in pop and R&B' },
+  { word: 'prove', notes: "Great for declarations — 'I'll prove my love'" },
+  { word: 'groove', notes: 'Rhythm-forward — natural in funk and soul' },
+  { word: 'soothe', notes: 'Soft vowel — ideal for slow ballads' },
+  { word: 'truth', notes: 'Emotional weight — common in country songwriting' },
+  { word: 'youth', notes: 'Nostalgia angle — strong in folk and indie' },
+  { word: 'lose', notes: 'Vulnerability — works in heartbreak verses' },
+  { word: 'choose', notes: 'Agency theme — strong in empowerment anthems' },
+  { word: 'blue', notes: 'Color/mood — one of the most cited near rhymes' },
+  { word: 'through', notes: 'Journey metaphor — perfect for bridge sections' },
+  { word: 'knew', notes: 'Past tense — strong in reflective storytelling' },
+  { word: 'true', notes: 'Sincerity — the most common near rhyme for love' },
+]
+
+const slantRhymes = [
+  { word: 'heart', notes: 'Slant rhyme — the most used pairing in pop history' },
+  { word: 'start', notes: 'New beginnings — works in verse-to-chorus transitions' },
+  { word: 'apart', notes: 'Distance and longing — classic in country and soul' },
+  { word: 'art', notes: 'Creative identity — strong in alternative and indie' },
+  { word: 'enough', notes: 'Insecurity theme — resonates in emotional ballads' },
+  { word: 'rough', notes: 'Texture and struggle — common in blues-influenced writing' },
+  { word: 'tough', notes: 'Resilience — works in anthems and power ballads' },
+  { word: 'come', notes: 'Motion and desire — flows naturally in rhythmic verses' },
+  { word: 'run', notes: 'Escape theme — strong in breakup and chase narratives' },
+  { word: 'one', notes: 'Unity — the most versatile slant rhyme for love' },
+]
+
+function RhymeTable({ rhymes, accent }) {
+  return (
+    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px', marginBottom: '1.5rem' }}>
+      <thead>
+        <tr style={{ borderBottom: `2px solid ${accent}` }}>
+          <th style={{ padding: '8px 12px', textAlign: 'left', color: accent, fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase' }}>Word</th>
+          <th style={{ padding: '8px 12px', textAlign: 'left', color: accent, fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase' }}>Songwriter Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {rhymes.map((r, i) => (
+          <tr key={i} style={{ borderBottom: '1px solid #1e1810' }}>
+            <td style={{ padding: '10px 12px', color: '#f0e4c8', fontWeight: '700', fontStyle: 'italic', width: '120px' }}>{r.word}</td>
+            <td style={{ padding: '10px 12px', color: '#7a6a4a', lineHeight: '1.6' }}>{r.notes}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+}
 
 export default function SongwritingRhymesForLove() {
-  const perfectRhymes = [
-    { word: "dove", notes: "Symbolizes peace — perfect for romantic ballads" },
-    { word: "above", notes: "Elevation metaphor — great for uplifting choruses" },
-    { word: "glove", notes: "Intimacy and fit — underused in modern songwriting" },
-    { word: "shove", notes: "Contrast/conflict — works in breakup songs" },
-    { word: "of", notes: "Unstressed syllable — flows naturally in verse" },
-  ];
-
-  const nearRhymes = [
-    { word: "move", notes: "Near rhyme — widely used in pop and R&B" },
-    { word: "prove", notes: "Great for declarations — 'I'll prove my love'" },
-    { word: "groove", notes: "Rhythm-forward — natural in funk and soul" },
-    { word: "soothe", notes: "Soft vowel — ideal for slow ballads" },
-    { word: "truth", notes: "Emotional weight — common in country songwriting" },
-    { word: "youth", notes: "Nostalgia angle — strong in folk and indie" },
-    { word: "lose", notes: "Vulnerability — works in heartbreak verses" },
-    { word: "choose", notes: "Agency theme — strong in empowerment anthems" },
-    { word: "blue", notes: "Color/mood — one of the most cited near rhymes" },
-    { word: "through", notes: "Journey metaphor — perfect for bridge sections" },
-    { word: "knew", notes: "Past tense — strong in reflective storytelling" },
-    { word: "true", notes: "Sincerity — the most common near rhyme for love" },
-  ];
-
-  const slantRhymes = [
-    { word: "heart", notes: "Slant rhyme — the most used pairing in pop history" },
-    { word: "start", notes: "New beginnings — works in verse-to-chorus transitions" },
-    { word: "apart", notes: "Distance and longing — classic in country and soul" },
-    { word: "art", notes: "Creative identity — strong in alternative and indie" },
-    { word: "enough", notes: "Insecurity theme — resonates in emotional ballads" },
-    { word: "rough", notes: "Texture and struggle — common in blues-influenced writing" },
-    { word: "tough", notes: "Resilience — works in anthems and power ballads" },
-    { word: "come", notes: "Motion and desire — flows naturally in rhythmic verses" },
-    { word: "run", notes: "Escape theme — strong in breakup and chase narratives" },
-    { word: "one", notes: "Unity — the most versatile slant rhyme for love" },
-  ];
-
   return (
     <>
       <Head>
         <title>Best Near Rhymes for Love in Songwriting (2026) | RhymeItNow</title>
-        <meta
-          name="description"
-          content="The 35 best near rhymes, slant rhymes, and perfect rhymes for love in songwriting. Used by professional songwriters across pop, R&B, country, and hip-hop."
-        />
+        <meta name="description" content="The 27 best near rhymes, slant rhymes, and perfect rhymes for love in songwriting. Used by professional songwriters across pop, R&B, country, and hip-hop." />
         <link rel="canonical" href="https://rhymeitnow.com/songwriting-rhymes-for-love" />
       </Head>
 
-      <main style={{ maxWidth: "800px", margin: "0 auto", padding: "40px 20px", fontFamily: "Georgia, serif", color: "#1a1a2e" }}>
+      <SiteNav />
 
-        {/* Breadcrumb */}
-        <nav style={{ fontSize: "13px", marginBottom: "24px", color: "#666" }}>
-          <Link href="/">Home</Link> › <Link href="/rhymes-for/love">Rhymes for Love</Link> › Songwriting
-        </nav>
+      <main style={{ maxWidth: '820px', margin: '0 auto', padding: '2rem 1.5rem' }}>
 
-        {/* H1 — BLUF format */}
-        <h1 style={{ fontSize: "32px", fontWeight: "700", marginBottom: "16px", lineHeight: "1.3" }}>
+        <div style={{ fontSize: '13px', color: '#5a4e38', marginBottom: '1.5rem' }}>
+          <Link href="/" style={{ color: '#c8a86a', textDecoration: 'none' }}>RhymeItNow</Link>
+          <span style={{ margin: '0 0.5rem', color: '#3a3020' }}>→</span>
+          <Link href="/rhymes-for/love" style={{ color: '#c8a86a', textDecoration: 'none' }}>Rhymes for Love</Link>
+          <span style={{ margin: '0 0.5rem', color: '#3a3020' }}>→</span>
+          <span>Songwriting</span>
+        </div>
+
+        <h1 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.4rem)', fontWeight: '700', color: '#f0e4c8', marginBottom: '1rem', letterSpacing: '-0.5px' }}>
           Best Near Rhymes for Love in Songwriting (2026)
         </h1>
 
-        {/* Answer first — BLUF */}
-        <p style={{ fontSize: "18px", lineHeight: "1.7", marginBottom: "24px", borderLeft: "4px solid #6c63ff", paddingLeft: "16px", background: "#f8f7ff", padding: "16px" }}>
-          The best near rhymes for love in songwriting are <strong>true, move, prove, blue, through, and heart</strong> — used in over 60% of Billboard Hot 100 songs that rhyme with love. Perfect rhymes like <em>dove</em> and <em>above</em> are melodically clean; near rhymes like <em>true</em> and <em>blue</em> give songwriters more emotional flexibility.
+        <p style={{ fontSize: '1rem', lineHeight: '1.8', color: '#8a7a5a', marginBottom: '2rem', borderLeft: '3px solid #c8a86a', paddingLeft: '1rem' }}>
+          The best near rhymes for love in songwriting are <strong style={{ color: '#c8a86a' }}>true, move, prove, blue, through, and heart</strong> — used in over 60% of Billboard Hot 100 songs that rhyme with love. Perfect rhymes like <em>dove</em> and <em>above</em> are melodically clean; near rhymes like <em>true</em> and <em>blue</em> give songwriters more emotional flexibility.
         </p>
 
-        {/* Stats block — 5+ stats for Perplexity */}
-        <div style={{ background: "#f0f0f8", borderRadius: "8px", padding: "20px", marginBottom: "32px" }}>
-          <h2 style={{ fontSize: "18px", marginBottom: "12px" }}>Key Facts for Songwriters</h2>
-          <ul style={{ lineHeight: "2", paddingLeft: "20px" }}>
-            <li><strong>Love</strong> has 5 perfect single-syllable rhymes in standard English.</li>
-            <li><strong>Near rhymes</strong> for love number over 40 when including vowel-shift options.</li>
-            <li><strong>"True"</strong> is the most commonly paired near rhyme for love in pop music since 1980.</li>
-            <li><strong>Slant rhymes</strong> account for roughly 70% of all love rhymes used in country songwriting.</li>
-            <li><strong>"Above"</strong> and <strong>"dove"</strong> appear in more than 2,000 commercially released English-language songs.</li>
-            <li>Songs using <strong>near rhymes</strong> instead of perfect rhymes score higher on emotional authenticity in listener studies.</li>
+        <div style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '12px', padding: '1.5rem', marginBottom: '2.5rem' }}>
+          <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#c8a86a', textTransform: 'uppercase', marginBottom: '1rem' }}>Key Facts for Songwriters</div>
+          <ul style={{ lineHeight: '2', paddingLeft: '1.25rem', color: '#7a6a4a', fontSize: '14px' }}>
+            <li><strong style={{ color: '#d8c8a8' }}>Love</strong> has 5 perfect single-syllable rhymes in standard English.</li>
+            <li><strong style={{ color: '#d8c8a8' }}>Near rhymes</strong> for love number over 40 when including vowel-shift options.</li>
+            <li><strong style={{ color: '#d8c8a8' }}>"True"</strong> is the most commonly paired near rhyme for love in pop music since 1980.</li>
+            <li><strong style={{ color: '#d8c8a8' }}>Slant rhymes</strong> account for roughly 70% of all love rhymes used in country songwriting.</li>
+            <li><strong style={{ color: '#d8c8a8' }}>"Above"</strong> and <strong style={{ color: '#d8c8a8' }}>"dove"</strong> appear in more than 2,000 commercially released English-language songs.</li>
+            <li>Songs using <strong style={{ color: '#d8c8a8' }}>near rhymes</strong> instead of perfect rhymes score higher on emotional authenticity in listener studies.</li>
           </ul>
         </div>
 
-        {/* Section 1 — Perfect Rhymes */}
-        <section style={{ marginBottom: "40px" }}>
-          <h2 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "16px", borderBottom: "2px solid #6c63ff", paddingBottom: "8px" }}>
-            Perfect Rhymes for Love in Songwriting
-          </h2>
-          <p style={{ marginBottom: "16px", lineHeight: "1.7" }}>
-            Perfect rhymes share an identical vowel sound and ending. For love (/lʌv/), only 5 true perfect rhymes exist in common English — which is why professional songwriters rely heavily on near rhymes.
-          </p>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "15px" }}>
-            <thead>
-              <tr style={{ background: "#6c63ff", color: "white" }}>
-                <th style={{ padding: "10px", textAlign: "left" }}>Word</th>
-                <th style={{ padding: "10px", textAlign: "left" }}>Songwriter Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {perfectRhymes.map((r, i) => (
-                <tr key={i} style={{ background: i % 2 === 0 ? "#f8f7ff" : "white" }}>
-                  <td style={{ padding: "10px", fontWeight: "700" }}>{r.word}</td>
-                  <td style={{ padding: "10px", color: "#444" }}>{r.notes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#f0e4c8', marginBottom: '0.75rem' }}>Perfect Rhymes for Love in Songwriting</h2>
+        <p style={{ fontSize: '14px', color: '#7a6a4a', lineHeight: '1.7', marginBottom: '1rem' }}>
+          Perfect rhymes share an identical vowel sound and ending. For love (/lʌv/), only 5 true perfect rhymes exist in common English — which is why professional songwriters rely heavily on near rhymes.
+        </p>
+        <RhymeTable rhymes={perfectRhymes} accent="#c8a86a" />
 
-        {/* Section 2 — Near Rhymes */}
-        <section style={{ marginBottom: "40px" }}>
-          <h2 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "16px", borderBottom: "2px solid #6c63ff", paddingBottom: "8px" }}>
-            Near Rhymes for Love in Songwriting
-          </h2>
-          <p style={{ marginBottom: "16px", lineHeight: "1.7" }}>
-            Near rhymes (also called slant rhymes or half rhymes) share a similar but not identical sound. Near rhymes give songwriters more word options and are preferred in pop, R&B, and hip-hop for their flexibility. The /uː/ vowel shift is the most natural near rhyme family for love.
-          </p>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "15px" }}>
-            <thead>
-              <tr style={{ background: "#6c63ff", color: "white" }}>
-                <th style={{ padding: "10px", textAlign: "left" }}>Word</th>
-                <th style={{ padding: "10px", textAlign: "left" }}>Songwriter Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {nearRhymes.map((r, i) => (
-                <tr key={i} style={{ background: i % 2 === 0 ? "#f8f7ff" : "white" }}>
-                  <td style={{ padding: "10px", fontWeight: "700" }}>{r.word}</td>
-                  <td style={{ padding: "10px", color: "#444" }}>{r.notes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#f0e4c8', marginBottom: '0.75rem', marginTop: '2rem' }}>Near Rhymes for Love in Songwriting</h2>
+        <p style={{ fontSize: '14px', color: '#7a6a4a', lineHeight: '1.7', marginBottom: '1rem' }}>
+          Near rhymes share a similar but not identical sound. They are preferred in pop, R&B, and hip-hop for their flexibility. The /uː/ vowel shift is the most natural near rhyme family for love.
+        </p>
+        <RhymeTable rhymes={nearRhymes} accent="#7aafc8" />
 
-        {/* Section 3 — Slant Rhymes */}
-        <section style={{ marginBottom: "40px" }}>
-          <h2 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "16px", borderBottom: "2px solid #6c63ff", paddingBottom: "8px" }}>
-            Slant Rhymes for Love by Genre
-          </h2>
-          <p style={{ marginBottom: "16px", lineHeight: "1.7" }}>
-            Slant rhymes share consonants or partial vowel sounds. These are the most creative rhyme choices and are widely used in country, folk, and hip-hop where lyrical storytelling takes priority over phonetic precision.
-          </p>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontSize: "15px" }}>
-            <thead>
-              <tr style={{ background: "#6c63ff", color: "white" }}>
-                <th style={{ padding: "10px", textAlign: "left" }}>Word</th>
-                <th style={{ padding: "10px", textAlign: "left" }}>Songwriter Notes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {slantRhymes.map((r, i) => (
-                <tr key={i} style={{ background: i % 2 === 0 ? "#f8f7ff" : "white" }}>
-                  <td style={{ padding: "10px", fontWeight: "700" }}>{r.word}</td>
-                  <td style={{ padding: "10px", color: "#444" }}>{r.notes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#f0e4c8', marginBottom: '0.75rem', marginTop: '2rem' }}>Slant Rhymes for Love by Genre</h2>
+        <p style={{ fontSize: '14px', color: '#7a6a4a', lineHeight: '1.7', marginBottom: '1rem' }}>
+          Slant rhymes share consonants or partial vowel sounds. These are widely used in country, folk, and hip-hop where lyrical storytelling takes priority over phonetic precision.
+        </p>
+        <RhymeTable rhymes={slantRhymes} accent="#8dba8a" />
 
-        {/* Section 4 — Fan-out queries */}
-        <section style={{ marginBottom: "40px" }}>
-          <h2 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "16px", borderBottom: "2px solid #6c63ff", paddingBottom: "8px" }}>
-            How to Use Love Rhymes in Different Song Structures
-          </h2>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#f0e4c8', marginBottom: '1rem', marginTop: '2.5rem' }}>How to Use Love Rhymes in Different Song Structures</h2>
+        <div style={{ display: 'grid', gap: '10px', marginBottom: '2.5rem' }}>
+          {[
+            { label: 'In a Verse', text: "Near rhymes like true, knew, and through work best in verses because they feel conversational and don't force unnatural word order." },
+            { label: 'In a Chorus', text: 'Perfect rhymes like above and dove land harder in a chorus because the phonetic match feels satisfying on repeat listens.' },
+            { label: 'In a Bridge', text: 'Slant rhymes like heart, apart, and start create tension that resolves in the final chorus — a technique used in over 80% of pop bridges since 2000.' },
+            { label: 'For Rap Verses', text: 'Hip-hop favors multisyllabic near rhymes. Pairing love with enough, above, and shove in the same bar creates internal rhyme density that scores higher with listeners for flow.' },
+          ].map((item, i) => (
+            <div key={i} style={{ background: '#130f08', borderRadius: '8px', padding: '1rem 1.25rem', borderLeft: '3px solid #c8a86a' }}>
+              <div style={{ fontSize: '13px', fontWeight: '700', color: '#c8a86a', marginBottom: '4px' }}>{item.label}</div>
+              <div style={{ fontSize: '14px', color: '#7a6a4a', lineHeight: '1.6' }}>{item.text}</div>
+            </div>
+          ))}
+        </div>
 
-          <h3 style={{ fontSize: "18px", marginBottom: "8px" }}>In a Verse</h3>
-          <p style={{ marginBottom: "16px", lineHeight: "1.7" }}>
-            Verses carry story and detail. Near rhymes like <strong>true, knew,</strong> and <strong>through</strong> work best in verses because they feel conversational and don't force unnatural word order.
-          </p>
-
-          <h3 style={{ fontSize: "18px", marginBottom: "8px" }}>In a Chorus</h3>
-          <p style={{ marginBottom: "16px", lineHeight: "1.7" }}>
-            Choruses need punch and memorability. Perfect rhymes like <strong>above</strong> and <strong>dove</strong> land harder in a chorus because the phonetic match feels satisfying on repeat listens.
-          </p>
-
-          <h3 style={{ fontSize: "18px", marginBottom: "8px" }}>In a Bridge</h3>
-          <p style={{ marginBottom: "16px", lineHeight: "1.7" }}>
-            Bridges are emotional peaks. Slant rhymes like <strong>heart, apart,</strong> and <strong>start</strong> create tension that resolves in the final chorus — a technique used in over 80% of pop bridges since 2000.
-          </p>
-
-          <h3 style={{ fontSize: "18px", marginBottom: "8px" }}>For Rap Verses</h3>
-          <p style={{ marginBottom: "16px", lineHeight: "1.7" }}>
-            Hip-hop favors multisyllabic near rhymes. Pairing <strong>love</strong> with <strong>enough, above, and shove</strong> in the same bar creates internal rhyme density that scores higher with listeners for flow and complexity.
-          </p>
-        </section>
-
-        {/* CTA */}
-        <div style={{ background: "#6c63ff", color: "white", borderRadius: "8px", padding: "24px", textAlign: "center", marginBottom: "32px" }}>
-          <h2 style={{ fontSize: "22px", marginBottom: "12px" }}>Find More Rhymes Instantly</h2>
-          <p style={{ marginBottom: "16px", opacity: "0.9" }}>
-            RhymeItNow generates perfect, near, and slant rhymes for any word — built specifically for songwriters and rappers.
-          </p>
-          <Link href="/?word=love" style={{ background: "white", color: "#6c63ff", padding: "12px 28px", borderRadius: "6px", fontWeight: "700", textDecoration: "none", fontSize: "16px" }}>
+        <div style={{ textAlign: 'center', padding: '2rem', background: '#130f08', border: '1px solid #251e10', borderRadius: '12px', marginBottom: '2.5rem' }}>
+          <div style={{ fontSize: '14px', color: '#5a4e38', marginBottom: '0.75rem' }}>Find rhymes for any word instantly</div>
+          <Link href="/?word=love" style={{ display: 'inline-block', padding: '0.85rem 2rem', background: '#c8a86a', color: '#0e0c08', borderRadius: '8px', fontSize: '15px', fontWeight: '700', textDecoration: 'none', fontFamily: 'Georgia, serif' }}>
             Find Rhymes for Love →
           </Link>
         </div>
 
-        {/* Internal links */}
-        <section>
-          <h2 style={{ fontSize: "20px", marginBottom: "16px" }}>Related Songwriting Rhyme Guides</h2>
-          <ul style={{ lineHeight: "2.2", paddingLeft: "20px" }}>
-            <li><Link href="/rhymes-for/heart">What Rhymes With Heart — For Songwriters</Link></li>
-            <li><Link href="/rhymes-for/fire">What Rhymes With Fire — For Rap & Rock</Link></li>
-            <li><Link href="/rhymes-for/night">What Rhymes With Night — For Ballads</Link></li>
-            <li><Link href="/rhymes-for/time">What Rhymes With Time — For Country & Folk</Link></li>
-            <li><Link href="/rhymes-for/pain">What Rhymes With Pain — For Emotional Songs</Link></li>
-          </ul>
-        </section>
+        <h2 style={{ fontSize: '1.3rem', fontWeight: '700', color: '#f0e4c8', marginBottom: '1rem' }}>Related Songwriting Rhyme Guides</h2>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '2.5rem' }}>
+          {[
+            { href: '/rhymes-for/heart', label: 'Rhymes for Heart' },
+            { href: '/rhymes-for/fire', label: 'Rhymes for Fire' },
+            { href: '/rhymes-for/night', label: 'Rhymes for Night' },
+            { href: '/rhymes-for/time', label: 'Rhymes for Time' },
+            { href: '/rhymes-for/pain', label: 'Rhymes for Pain' },
+          ].map(r => (
+            <Link key={r.href} href={r.href} style={{ background: '#130f08', border: '1px solid #251e10', borderRadius: '20px', padding: '6px 14px', fontSize: '14px', color: '#7a6a4a', textDecoration: 'none', fontStyle: 'italic' }}>
+              {r.label}
+            </Link>
+          ))}
+        </div>
 
       </main>
+
+      <SiteFooter />
     </>
-  );
+  )
 }
