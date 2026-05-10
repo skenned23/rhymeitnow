@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /generator
 
 Sitemap: https://rhymeitnow.com/sitemap.xml

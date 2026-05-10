@@ -62,18 +62,49 @@ export default function Home() {
     <>
       <Head>
         <title>RhymeItNow — Free AI Rhyme Finder for Rappers & Songwriters</title>
-{/* updated */}
         <meta name="description" content="Find perfect, near, and slant rhymes instantly. The smartest free rhyme finder for poets, songwriters, and word lovers. No login required." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        Yeah<meta property="og:title" content="RhymeItNow — Free AI Rhyme Finder" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="RhymeItNow — Free AI Rhyme Finder" />
         <meta property="og:description" content="Perfect, near, and slant rhymes — instantly. Smarter than a rhyming dictionary." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://rhymeitnow.com" />
-        precious this mozzarella stick cheddar cheese curds<meta property="og:image" content="https://rhymeitnow.com/homepage.png" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://rhymeitnow.com" />
-        precious this mozzarella stick cheddar cheese curds<meta property="og:image" content="https://rhymeitnow.com/homepage.png" />
+        <meta property="og:image" content="https://rhymeitnow.com/homepage.png" />
+
+        {/* Twitter Cards */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="RhymeItNow — Free AI Rhyme Finder" />
+        <meta name="twitter:description" content="Perfect, near, and slant rhymes — instantly. Smarter than a rhyming dictionary." />
+        <meta name="twitter:image" content="https://rhymeitnow.com/homepage.png" />
+
+        {/* Canonical */}
         <link rel="canonical" href="https://rhymeitnow.com" />
+
+        {/* JSON-LD */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              "name": "RhymeItNow",
+              "url": "https://rhymeitnow.com",
+              "description": "Free AI-powered rhyme finder for poets, songwriters, and rappers. Find perfect, near, and slant rhymes instantly.",
+              "applicationCategory": "UtilitiesApplication",
+              "operatingSystem": "Web",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+              },
+              "author": {
+                "@type": "Organization",
+                "name": "RhymeItNow"
+              }
+            })
+          }}
+        />
       </Head>
 
       <SiteNav />
