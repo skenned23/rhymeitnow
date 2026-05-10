@@ -39,8 +39,9 @@ export default function Generator() {
   const [committing, setCommitting] = useState(false)
   const [commitStatus, setCommitStatus] = useState('')
   const [currentWord, setCurrentWord] = useState('')
-  const [wordStatus, setWordStatus] = useState({}) // { word: 'pending' | 'done' | 'error' }
+  const [wordStatus, setWordStatus] = useState({})
   const [batchList, setBatchList] = useState([])
+  const [apiError, setApiError] = useState('')
 
   const generate = async () => {
     const words = mode === 'single'
@@ -51,6 +52,7 @@ export default function Generator() {
 
     setLoading(true)
     setOutput('')
+    setApiError('')
     setCommitStatus('')
     setBatchList(words)
     const initialStatus = {}
@@ -69,14 +71,19 @@ export default function Generator() {
           body: JSON.stringify({ word }),
         })
         const data = await res.json()
-        if (data.content) {
+        if (data.error) {
+          setApiError(`API Error on "${word}": ${data.error}`)
+          setWordStatus(prev => ({ ...prev, [word]: 'error' }))
+        } else if (data.content) {
           fullOutput += '\n' + data.content.trim()
           setOutput(fullOutput.trim())
           setWordStatus(prev => ({ ...prev, [word]: 'done' }))
+        } else {
+          setApiError(`Empty response for "${word}" — check API key and model string`)
+          setWordStatus(prev => ({ ...prev, [word]: 'error' }))
         }
       } catch (e) {
-        fullOutput += `\n// Error generating "${word}"`
-        setOutput(fullOutput.trim())
+        setApiError(`Network error on "${word}": ${e.message}`)
         setWordStatus(prev => ({ ...prev, [word]: 'error' }))
       }
     }
@@ -199,6 +206,13 @@ export default function Generator() {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {/* API Error Display */}
+          {apiError && (
+            <div style={{ background: '#1a0a0a', border: '1px solid #5a2a2a', borderRadius: '8px', padding: '0.75rem 1rem', marginBottom: '1rem', fontSize: '0.82rem', color: '#c87a5a' }}>
+              ✗ {apiError}
             </div>
           )}
 
