@@ -52,9 +52,15 @@ IMPORTANT: Output ONLY valid JSON in this exact format. No extra text. Start wit
     })
 
     const data = await response.json()
+
+    if (data.error) {
+      return res.status(200).json({ content: '', error: data.error.message })
+    }
+
     const content = data.content?.[0]?.text || ''
-    res.status(200).json({ content })
+    return res.status(200).json({ content })
+
   } catch (err) {
-    res.status(500).json({ error: err.message })
+    return res.status(500).json({ error: err.message })
   }
 }
