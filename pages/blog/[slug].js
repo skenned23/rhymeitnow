@@ -34,7 +34,7 @@ export default function BlogPost({ title, date, content }) {
         <a href="/blog" style={{ color: "#6366f1", fontSize: "0.9rem", textDecoration: "none" }}>← Back to Blog</a>
         <h1 style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", fontWeight: "700", margin: "1rem 0 0.5rem", lineHeight: "1.3" }}>{title}</h1>
         <p style={{ color: "#999", fontSize: "0.85rem", marginBottom: "2rem" }}>{date}</p>
-        <div style={{ fontSize: "1rem", lineHeight: "1.9", color: "#333" }}>
+        <div style={{ fontSize: "1rem", lineHeight: "1.9", color: "#e5e5e5" }}>
           <ReactMarkdown
             components={{
               h2: ({children}) => <h2 style={{ fontSize: "1.3rem", fontWeight: "700", marginTop: "2rem", marginBottom: "0.75rem" }}>{children}</h2>,
