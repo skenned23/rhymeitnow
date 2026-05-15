@@ -14,7 +14,8 @@ export function SiteNav() {
         <Link href="/freestyle" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Freestyle</Link>
         <Link href="/poetry-builder" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Poetry Builder</Link>
         <Link href="/find-a-word" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Find a Word</Link>
-        <Link href="/about" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>About</Link>
+        <Link href="/blog" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Blog</Link>
+<Link href="/about" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>About</Link>
         <Link href="/contact" style={{ fontSize: '0.78rem', color: '#5a4e38', letterSpacing: '1px', textDecoration: 'none' }}>Contact</Link>
       </div>
     </nav>
