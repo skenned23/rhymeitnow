@@ -160772,4 +160772,26 @@
     "related": ["wander", "journey", "explore", "roam", "drift", "travel", "quest", "adventure"],
     "seo_benefit": "for Folk, Country & Adventure Lyrics"
   }
+,
+  "rake": {
+    "intro": "Rake sits at a crossroads of rustic imagery and moral complexity, making it a compelling word for country, folk, and literary poetry. Its rhyme family (-ake) is one of the most fertile in English, pairing naturally with words like 'take,' 'make,' and 'shake' to create crisp, punchy lines. From pastoral garden scenes to the archaic meaning of a dissolute rogue, 'rake' carries both earthy grit and dramatic tension.",
+    "perfect": ["take", "make", "shake", "lake", "bake", "wake", "stake", "break"],
+    "near": ["rack", "race", "ache", "fake", "grace", "place", "late", "gate"],
+    "slant": ["dark", "black", "track", "mark", "back", "shack", "stark", "lark"],
+    "famous_uses": [
+      { "context": "Rake — The National", "note": "The National use 'rake' as a metaphor for obsessive gathering and self-destruction, pairing it with near rhymes and sparse indie rock instrumentation to evoke existential dread." },
+      { "context": "The Rake's Song — The Decemberists", "note": "Colin Meloy leans into the archaic meaning of 'rake' as a libertine villain, using internal rhymes and folk cadences to build a dark narrative ballad." },
+      { "context": "Rake and Rambling Boy — Various Folk Tradition", "note": "In traditional folk music, 'rake' rhymes naturally with 'take' and 'forsake' within classic AABB schemes, emphasizing themes of wandering and moral looseness." }
+    ],
+    "faq": [
+      { "q": "What rhymes perfectly with rake?", "a": "Perfect rhymes for rake include: take, make, shake, lake, bake, wake, stake, break, cake, fake, flake, quake, snake, ache, and forsake. These all share the clean -ake vowel sound and are widely used in country, pop, and folk songwriting to create tight, memorable couplets." },
+      { "q": "What are near rhymes for rake?", "a": "Near rhymes include rack, race, ache, grace, place, late, gate, and fade. These share partial vowel or consonant sounds with rake and are useful when you want a softer, less emphatic rhyme that keeps momentum without feeling forced." },
+      { "q": "What are slant rhymes for rake?", "a": "Slant rhymes include dark, black, track, mark, back, shack, stark, and lark. These share consonant clusters or approximate vowel sounds and are favored in indie folk, alt-country, and literary poetry where sonic suggestion is preferred over strict rhyme." },
+      { "q": "How do you use rake in a rap song?", "a": "In rap, 'rake' works best in fast flows where the hard -ake ending punches at the bar's close. Pair it with 'stake,' 'take,' and 'break' for multi-bar schemes. You can also play on the double meaning — the garden tool versus the rogue — for wordplay that rewards attentive listeners. Try internal rhymes like 'wide awake on the take' to add density to your verse." },
+      { "q": "What is the best rhyme scheme for rake in poetry?", "a": "The AABB couplet scheme suits rake well because its sharp ending sound creates a satisfying rhythmic click. For more complexity, try ABAB quatrains alternating rake with a near rhyme like 'late' or 'grace' on the B lines, which softens the repetition and gives the poem a more contemplative feel. Villanelles and ballads especially benefit from rake's dual meanings as a structural anchor word." }
+    ],
+    "pro_tip": "When using 'rake' in a lyric, consider deploying its double meaning as a structural twist — open the verse with the innocent garden image and close it with the 'dissolute wanderer' connotation. This semantic pivot creates an emotional gut-punch that listeners feel before they consciously process it. For example: 'I left the garden tools to rust in the rain / I was a rake in both senses of the name.' The callback rewards re-listens and elevates the writing from clever to resonant.",
+    "related": ["take", "make", "forsake", "wanderer", "folk", "country", "garden", "rogue"],
+    "seo_benefit": "for Country, Folk & Literary Lyrics"
+  }
 }
