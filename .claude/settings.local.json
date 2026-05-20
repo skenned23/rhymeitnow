@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(watch:watch)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "PowerShell(python \"C:/Users/steve/.claude/plugins/cache/claude-video/watch/0.1.3/scripts/setup.py\" --check 2>&1)",
+      "PowerShell(ffprobe *)",
+      "Bash(mkdir -p /tmp/watch_mexico)",
+      "Bash(ffmpeg -i \"c:/WORLD CUP/Mexico/Mexico.mp3\" -an -vcodec copy /tmp/watch_mexico/cover.jpg -y)",
+      "Read(//c/Users/steve/.config/watch/**)",
+      "Bash(ffprobe -v quiet -print_format json -show_format \"c:/WORLD CUP/Mexico/Mexico.mp3\")"
+    ]
+  }
+}
