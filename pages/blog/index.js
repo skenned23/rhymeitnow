@@ -30,7 +30,7 @@ export default function BlogIndex({ posts }) {
         <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           {posts.map((post) => (
             <div key={post.slug} style={{ borderBottom: "1px solid #eee", paddingBottom: "1.5rem" }}>
-              <Link href={`/blog/${post.slug}`} style={{ fontSize: "1.3rem", fontWeight: "700", color: "#1a1a1a", textDecoration: "none" }}>
+              <Link href={`/blog/${post.slug}`} style={{ fontSize: "1.3rem", fontWeight: "700", color: "#ffffff", textDecoration: "none" }}>
                 {post.title}
               </Link>
               <p style={{ fontSize: "0.85rem", color: "#999", margin: "0.25rem 0 0.5rem" }}>{post.date}</p>
