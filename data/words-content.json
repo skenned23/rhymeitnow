@@ -167689,4 +167689,41 @@
     "related": ["performance", "rap", "hip-hop", "battle", "flow", "verse", "stage", "spoken word"],
     "seo_benefit": "for Rap, Hip-Hop & Battle Verse"
   }
+,
+  "LATE": {
+    "intro": "\"Late\" belongs to the long-A rhyme family (-ate), one of the most versatile and widely used sound families in popular music and poetry. It carries emotional weight ranging from regret and urgency to inevitability, making it a staple in ballads, country, hip-hop, and R&B. Its single syllable punches cleanly at the end of a bar or verse line, giving lyricists a reliable anchor for storytelling.",
+    "perfect": ["fate", "wait", "great", "state", "gate", "plate", "mate", "straight"],
+    "near": ["say", "face", "place", "space", "race", "take", "wake", "shade"],
+    "slant": ["last", "lace", "lane", "date", "lack", "lame", "back", "bare"],
+    "famous_uses": [
+      { "context": "Better Late Than Never — various artists", "note": "This phrase-title leans into the philosophical acceptance of delay, pairing 'late' with 'fate' and 'great' throughout verses to create a sense of earned resolution." },
+      { "context": "Too Late to Apologize — Timbaland ft. OneRepublic", "note": "The word 'late' is the emotional crux of the lyric, rhymed against 'wait' and 'straight' to hammer home irreversible loss in a pop-R&B context." },
+      { "context": "Late — Ben Folds", "note": "Ben Folds uses 'late' as both a time reference and a commentary on mortality, pairing it with near rhymes and conversational slant matches to deepen the eulogy-like tone." }
+    ],
+    "faq": [
+      {
+        "q": "What rhymes perfectly with LATE?",
+        "a": "Perfect rhymes for 'late' include: fate, wait, great, state, gate, plate, mate, straight, rate, weight, date, bait, hate, create, and celebrate. These all share the clean -ate ending and are workhorses of pop, country, and rap songwriting. 'Fate' and 'wait' are especially common pairings because they reinforce themes of time and destiny that often surround the word 'late.'"
+      },
+      {
+        "q": "What are near rhymes for LATE?",
+        "a": "Near rhymes for 'late' include: say, face, place, space, race, take, wake, shade, came, and name. These share either the long-A vowel sound or a similar open syllable feel without the hard -t ending. They're excellent for writers who want sonic continuity without feeling boxed into an obvious rhyme scheme, particularly useful in indie folk or conscious rap."
+      },
+      {
+        "q": "What are slant rhymes for LATE?",
+        "a": "Slant rhymes for 'late' include: last, lace, lane, lack, lame, back, bare, and laid. These share partial consonant or vowel sounds and give a looser, more poetic connection. Slant rhymes are favored in literary poetry and alternative music where a perfect rhyme might feel too neat or forced."
+      },
+      {
+        "q": "How do you use LATE in a rap song?",
+        "a": "In rap, 'late' works best at the end of a bar where you can set up a multisyllabic rhyme chain using the -ate family: fate, weight, straight, elevate, dedicate. Try internal rhymes like 'running late / tempting fate / can't wait' for a dense, layered flow. The word also works thematically in introspective or storytelling rap, especially in verses about missed opportunities or time running out."
+      },
+      {
+        "q": "What is the best rhyme scheme for LATE in poetry?",
+        "a": "The AABB couplet scheme works beautifully with 'late' because the -ate family offers so many clean pairings. An ABAB quatrain also shines — for example, pairing 'late' (line 1) with 'straight' (line 3) while using near rhymes in the even lines to avoid monotony. For more experimental poetry, try ending a stanza with 'late' as an isolated line for maximum emotional weight, letting the silence after it land like a full stop."
+      }
+    ],
+    "pro_tip": "The most powerful use of 'late' in a lyric is when it carries double meaning — referring both to the time of day or delay and to the idea of something or someone being gone forever (as in 'the late great'). Try leaning into that ambiguity for emotional depth. For example: 'I showed up at your door too late / the ghost of us just stood there in the gate' — here 'late' triggers both a temporal image and a sense of irreversible loss, while 'gate' closes the couplet with a hard, definitive sound that mirrors the emotional shutting down.",
+    "related": ["time", "regret", "fate", "urgency", "deadline", "loss", "waiting", "inevitability"],
+    "seo_benefit": "for Ballads, Pop & Emotional Storytelling"
+  }
 }
