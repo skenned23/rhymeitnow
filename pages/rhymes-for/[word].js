@@ -16,6 +16,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { word } = params
+
+  // Redirect uppercase URLs to lowercase
+  if (word !== word.toLowerCase()) {
+    return {
+      redirect: {
+        destination: `/rhymes-for/${word.toLowerCase()}`,
+        permanent: true,
+      },
+    }
+  }
+
   const filePath = path.join(process.cwd(), 'data', 'words-content.json')
   const raw = fs.readFileSync(filePath, 'utf-8')
   const wordsContent = JSON.parse(raw)
