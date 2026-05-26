@@ -20,10 +20,7 @@ export async function getStaticProps({ params }) {
   // Redirect uppercase URLs to lowercase
   if (word !== word.toLowerCase()) {
     return {
-      redirect: {
-        destination: `/rhymes-for/${word.toLowerCase()}`,
-        permanent: true,
-      },
+      notFound: true,
     }
   }
 
