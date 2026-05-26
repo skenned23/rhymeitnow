@@ -35,7 +35,13 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Could not find closing brace in words-content.json' })
     }
 
-    const newContent = trimmed.slice(0, lastBrace) + content.trim() + '\n}'
+    const sanitized = content.trim()
+  .replace(/[\u2018\u2019]/g, "'")
+  .replace(/[\u201C\u201D]/g, '"')
+  .replace(/\u2013|\u2014/g, '-')
+  .replace(/[^\x00-\x7F]/g, '')
+
+const newContent = trimmed.slice(0, lastBrace) + sanitized + '\n}'
 
     // 4. Commit updated file
     const updateRes = await fetch(`${BASE}/contents/${FILE_PATH}`, {
