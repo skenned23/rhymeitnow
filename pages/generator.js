@@ -8,7 +8,7 @@ const SYSTEM_PROMPT = `You are a rhyme content expert generating structured JSON
 For each word, generate a JSON object with this exact structure (no markdown, no explanation, just valid JSON starting with a comma and the key):
 
 ,
-  "WORD": {
+  "word": {
     "intro": "2-3 sentence intro about the word's use in songwriting/poetry. Mention the rhyme family, genres it appears in, and emotional weight.",
     "famous_uses": [
       { "context": "Song title — Artist", "note": "How this artist used the word and what rhyme technique they employed." },
