@@ -19,12 +19,7 @@ export async function getStaticProps({ params }) {
 
   // Redirect uppercase URLs to lowercase
   if (word !== word.toLowerCase()) {
-    return {
-      redirect: {
-        destination: `/rhymes-for/${word.toLowerCase()}`,
-        permanent: true,
-      }
-    }
+    return { notFound: true }
   }
 
   const filePath = path.join(process.cwd(), 'data', 'words-content.json')
@@ -34,12 +29,7 @@ export async function getStaticProps({ params }) {
 
   // Redirect unknown words to homepage
   if (!content) {
-    return {
-      redirect: {
-        destination: '/',
-        permanent: true,
-      }
-    }
+    return { notFound: true }
   }
 
   return { props: { word, content } }
