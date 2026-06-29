@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import Head from "next/head";
 import { SiteNav, SiteFooter } from "../../components/Layout";
 
 export async function getStaticPaths() {
@@ -21,14 +22,22 @@ export async function getStaticProps({ params }) {
     props: {
       title: data.title || params.slug,
       date: data.date || "",
+      description: data.description || "",
       content,
     },
   };
 }
 
-export default function BlogPost({ title, date, content }) {
+export default function BlogPost({ title, date, description, content }) {
   return (
     <>
+      <Head>
+        <title>{title} | RhymeItNow</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <link rel="canonical" href={`https://rhymeitnow.com/blog/${title.toLowerCase().replace(/\s+/g, '-')}`} />
+      </Head>
       <SiteNav />
       <div style={{ maxWidth: "760px", margin: "0 auto", padding: "2rem 1rem" }}>
         <a href="/blog" style={{ color: "#6366f1", fontSize: "0.9rem", textDecoration: "none" }}>← Back to Blog</a>
