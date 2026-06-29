@@ -15,15 +15,6 @@ const nextConfig = {
       },
     ]
   },
-  async redirects() {
-    return [
-      {
-        source: '/rhymes-for/:word',
-        destination: '/rhymes-with/:word',
-        permanent: true,
-      },
-    ]
-  },
 }
 
 module.exports = nextConfig
