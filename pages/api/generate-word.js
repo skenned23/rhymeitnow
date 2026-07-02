@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 For each word, generate a JSON object with this exact structure (no markdown, no explanation, just valid JSON starting with a comma and the key):
 
 ,
-  "WORD": {
+  "word": {
     "intro": "2-3 sentence intro about the word's use in songwriting/poetry. Mention the rhyme family, genres it appears in, and emotional weight.",
     "perfect": ["word1", "word2", "word3", "word4", "word5", "word6", "word7", "word8"],
     "near": ["word1", "word2", "word3", "word4", "word5", "word6", "word7", "word8"],
@@ -22,18 +22,18 @@ For each word, generate a JSON object with this exact structure (no markdown, no
       { "context": "Song title — Artist", "note": "..." }
     ],
     "faq": [
-      { "q": "What rhymes perfectly with WORD?", "a": "List 10-15 perfect rhymes with brief explanation of their use." },
-      { "q": "What are near rhymes for WORD?", "a": "List 8-10 near rhymes with explanation." },
-      { "q": "What are slant rhymes for WORD?", "a": "List 6-8 slant rhymes with explanation." },
-      { "q": "How do you use WORD in a rap song?", "a": "Practical advice for rappers using this word." },
-      { "q": "What is the best rhyme scheme for WORD in poetry?", "a": "Advice on rhyme schemes that work well with this word." }
+      { "q": "What rhymes perfectly with [word]?", "a": "List 10-15 perfect rhymes with brief explanation of their use." },
+      { "q": "What are near rhymes for [word]?", "a": "List 8-10 near rhymes with explanation." },
+      { "q": "What are slant rhymes for [word]?", "a": "List 6-8 slant rhymes with explanation." },
+      { "q": "How do you use [word] in a rap song?", "a": "Practical advice for rappers using this word." },
+      { "q": "What is the best rhyme scheme for [word] in poetry?", "a": "Advice on rhyme schemes that work well with this word." }
     ],
     "pro_tip": "One paragraph of advanced, specific advice for songwriters or poets using this word. Include an example lyric snippet.",
     "related": ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag7", "tag8"],
     "seo_benefit": "4-6 word benefit phrase describing this word's best use — e.g. 'for Ballads & Heartbreak Songs' or 'for Rap & Intense Verse' or 'for Country & Folk Lyrics'"
   }
 
-IMPORTANT: Output ONLY valid JSON in this exact format. No extra text. Start with a comma. Replace WORD with the actual word throughout. For perfect/near/slant arrays, provide real rhyming words only — no placeholders.`
+IMPORTANT: Output ONLY valid JSON in this exact format. No extra text. Start with a comma. Use the actual word in lowercase as the JSON key. Replace [word] with the actual word throughout in the FAQ questions. For perfect/near/slant arrays, provide real rhyming words only — no placeholders.`
 
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
