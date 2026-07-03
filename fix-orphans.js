@@ -9,8 +9,8 @@ while (i < lines.length) {
   const line = lines[i].trim();
   const prevLine = result.length > 0 ? result[result.length-1].trim() : '';
   
+  // Catch orphan entries - intro without a key
   if (line.startsWith('"intro":') && (prevLine === ',' || prevLine === '')) {
-    // Skip this orphan entry block until we hit the closing }
     let depth = 1;
     i++;
     while (i < lines.length && depth > 0) {
@@ -21,15 +21,34 @@ while (i < lines.length) {
       }
       i++;
     }
-    // Remove trailing comma from previous line if present
     if (result.length > 0 && result[result.length-1].trim() === ',') {
       result.pop();
     }
     removed++;
-  } else {
-    result.push(lines[i]);
-    i++;
+    continue;
   }
+
+  // Catch entries where JSON ends prematurely mid-value
+  if (line.startsWith('"intro":') && i > 0) {
+    const twoBack = result.length > 1 ? result[result.length-2].trim() : '';
+    if (twoBack === '}' || twoBack === '},') {
+      let depth = 1;
+      i++;
+      while (i < lines.length && depth > 0) {
+        const l = lines[i];
+        for (const ch of l) {
+          if (ch === '{') depth++;
+          if (ch === '}') depth--;
+        }
+        i++;
+      }
+      removed++;
+      continue;
+    }
+  }
+
+  result.push(lines[i]);
+  i++;
 }
 
 fs.writeFileSync('data/words-content.json', result.join('\n'));
