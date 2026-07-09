@@ -32,7 +32,18 @@ export async function getStaticProps({ params }) {
     return { notFound: true }
   }
 
-  return { props: { word, content } }
+  // Figure out which rhyme/related words already have their own page.
+  // Only those get turned into internal links — everything else stays
+  // as copy-to-clipboard so we never link to a page that doesn't exist yet.
+  const candidateWords = [
+    ...(content.perfect || []),
+    ...(content.near || []),
+    ...(content.slant || []),
+    ...(content.related || []),
+  ]
+  const existingWords = candidateWords.filter(w => wordsContent[w])
+
+  return { props: { word, content, existingWords } }
 }
 
 const CATEGORIES = [
@@ -41,11 +52,13 @@ const CATEGORIES = [
   { key: 'slant', label: 'Slant Rhymes', accent: '#8dba8a' },
 ]
 
-export default function RhymesForWord({ word, content }) {
+export default function RhymesForWord({ word, content, existingWords }) {
   const [results, setResults] = useState(null)
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(null)
   const [inputWord, setInputWord] = useState('')
+
+  const existingSet = new Set(existingWords || [])
 
   const findRhymes = async (w) => {
     const searchWord = w || word
@@ -72,6 +85,21 @@ export default function RhymesForWord({ word, content }) {
   }
 
   const hasStaticRhymes = content.perfect?.length || content.near?.length || content.slant?.length
+
+  // Shared button style for the copy-to-clipboard fallback
+  const chipStyle = (isCopied, accent) => ({
+    background: isCopied ? accent : '#1e1a0e',
+    color: isCopied ? '#0e0c08' : '#c8b890',
+    border: `1px solid ${isCopied ? accent : '#302818'}`,
+    borderRadius: '4px',
+    padding: '4px 10px',
+    fontSize: '13px',
+    cursor: 'pointer',
+    fontFamily: 'Georgia, serif',
+    fontStyle: 'italic',
+    textDecoration: 'none',
+    display: 'inline-block',
+  })
 
   return (
     <>
@@ -122,10 +150,15 @@ export default function RhymesForWord({ word, content }) {
                     <div style={{ fontSize: '11px', letterSpacing: '2px', color: cat.accent, textTransform: 'uppercase', marginBottom: '0.75rem' }}>{cat.label}</div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                       {content[cat.key].map(w => (
-                        <button key={w} onClick={() => copyWord(w)}
-                          style={{ background: copied === w ? cat.accent : '#1e1a0e', color: copied === w ? '#0e0c08' : '#c8b890', border: `1px solid ${copied === w ? cat.accent : '#302818'}`, borderRadius: '4px', padding: '4px 10px', fontSize: '13px', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
-                          {copied === w ? '✓' : w}
-                        </button>
+                        existingSet.has(w) ? (
+                          <Link key={w} href={`/rhymes-for/${w}`} style={chipStyle(false, cat.accent)}>
+                            {w}
+                          </Link>
+                        ) : (
+                          <button key={w} onClick={() => copyWord(w)} style={chipStyle(copied === w, cat.accent)}>
+                            {copied === w ? '✓' : w}
+                          </button>
+                        )
                       ))}
                     </div>
                   </div>
@@ -172,9 +205,11 @@ export default function RhymesForWord({ word, content }) {
                   <div key={cat.key} style={{ borderTop: `3px solid ${cat.accent}`, paddingTop: '0.75rem' }}>
                     <div style={{ fontSize: '11px', letterSpacing: '2px', color: cat.accent, textTransform: 'uppercase', marginBottom: '0.75rem' }}>{cat.label}</div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {/* Live search results come from the API, not build-time data,
+                          so we can't safely verify these words have their own page —
+                          keep these as copy-to-clipboard only. */}
                       {(results[cat.key] || []).map(w => (
-                        <button key={w} onClick={() => copyWord(w)}
-                          style={{ background: copied === w ? cat.accent : '#1e1a0e', color: copied === w ? '#0e0c08' : '#c8b890', border: `1px solid ${copied === w ? cat.accent : '#302818'}`, borderRadius: '4px', padding: '4px 10px', fontSize: '13px', cursor: 'pointer', fontFamily: 'Georgia, serif', fontStyle: 'italic' }}>
+                        <button key={w} onClick={() => copyWord(w)} style={chipStyle(copied === w, cat.accent)}>
                           {copied === w ? '✓' : w}
                         </button>
                       ))}
