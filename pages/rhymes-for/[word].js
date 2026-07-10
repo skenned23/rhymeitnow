@@ -257,6 +257,32 @@ export default function RhymesForWord({ word, content, existingWords }) {
             </Link>
           ))}
         </div>
+<div style={{ textAlign: 'center', padding: '2rem', background: '#130f08', border: '1px solid #251e10', borderRadius: '12px', marginBottom: '1.5rem' }}>
+
+  <div style={{ fontSize: '16px', color: '#d8c8a8', marginBottom: '1rem', fontWeight: '700' }}>
+
+    Got your rhymes for "{word}"? Turn them into bars.
+
+  </div>
+
+  <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+
+    <Link href="/rap-builder" style={{ display: 'inline-block', padding: '0.85rem 1.75rem', background: '#c8a86a', color: '#0e0c08', borderRadius: '8px', fontSize: '15px', fontWeight: '700', textDecoration: 'none', fontFamily: 'Georgia, serif' }}>
+
+      Try the Rap Builder →
+
+    </Link>
+
+    <Link href="/freestyle" style={{ display: 'inline-block', padding: '0.85rem 1.75rem', background: 'transparent', color: '#c8a86a', border: '1px solid #c8a86a', borderRadius: '8px', fontSize: '15px', fontWeight: '700', textDecoration: 'none', fontFamily: 'Georgia, serif' }}>
+
+      Freestyle Challenge →
+
+    </Link>
+
+  </div>
+
+</div>
+
 
         <div style={{ textAlign: 'center', padding: '2rem', background: '#130f08', border: '1px solid #251e10', borderRadius: '12px' }}>
           <div style={{ fontSize: '14px', color: '#5a4e38', marginBottom: '0.75rem' }}>Search any word on RhymeItNow</div>
