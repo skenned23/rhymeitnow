@@ -26,6 +26,8 @@ const SPECIFIC_STYLES = [
 ]
 
 const BAR_OPTIONS = ['4', '8', '16', 'full-song']
+const MOODS = ['any', 'dark', 'euphoric', 'nostalgic', 'emotional', 'aggressive', 'chill', 'romantic', 'cinematic']
+const VOCAL_OPTIONS = ['any', 'instrumental', 'female', 'male', 'duet']
 
 const RANDOM_OBJECTS = [
   'a rusted stop sign', 'a half-eaten sandwich', 'a cracked smartphone',
@@ -52,6 +54,11 @@ export default function Freestyle() {
   const [customInput, setCustomInput] = useState('')
   const [style, setStyle] = useState('trap')
   const [showSpecific, setShowSpecific] = useState(false)
+  const [mood, setMood] = useState('any')
+  const [vocals, setVocals] = useState('any')
+  const [sunoPrompt, setSunoPrompt] = useState(null)
+  const [sunoLoading, setSunoLoading] = useState(false)
+  const [sunoCopied, setSunoCopied] = useState(false)
   const [bars, setBars] = useState('8')
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState(null)
@@ -74,6 +81,7 @@ export default function Freestyle() {
   const handleShuffle = () => {
     setObjects(getRandomObjects(3))
     setResult(null)
+    setSunoPrompt(null)
   }
 
   const addCustomObject = () => {
@@ -91,6 +99,7 @@ export default function Freestyle() {
     if (objects.length === 0) return
     setLoading(true)
     setResult(null)
+    setSunoPrompt(null)
     setTeleprompter(false)
 
     const isFullSong = bars === 'full-song'
@@ -124,6 +133,34 @@ export default function Freestyle() {
     navigator.clipboard?.writeText(text)
     setCopied(true)
     setTimeout(() => setCopied(false), 1600)
+  }
+
+  const getSunoPrompt = async () => {
+    if (!result) return
+    setSunoLoading(true)
+    setSunoPrompt(null)
+    const lyricsText = bars === 'full-song'
+      ? result.map(section => `[${section.label}]\n${section.lines.join('\n')}`).join('\n\n')
+      : result.join('\n')
+    try {
+      const res = await fetch('/api/suno-prompt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ lyrics: lyricsText, style, mood, vocals }),
+      })
+      const data = await res.json()
+      setSunoPrompt(data.suno_prompt || null)
+    } catch (err) {
+      console.error(err)
+    }
+    setSunoLoading(false)
+  }
+
+  const copySunoPrompt = () => {
+    if (!sunoPrompt) return
+    navigator.clipboard?.writeText(sunoPrompt)
+    setSunoCopied(true)
+    setTimeout(() => setSunoCopied(false), 1600)
   }
 
   const startScroll = () => {
@@ -181,6 +218,15 @@ export default function Freestyle() {
       flex: 1, padding: '0.75rem', fontSize: '13px', borderRadius: '8px', cursor: 'pointer', fontFamily: 'Georgia, serif', textAlign: 'center', minWidth: '120px',
       background: gold ? '#c8a86a' : '#1e1a0e', color: gold ? '#0e0c08' : '#c8a86a',
       border: gold ? 'none' : '1px solid #3a2e1a', fontWeight: '700',
+    }),
+    sunoBtn: { width: '100%', padding: '0.85rem', background: '#7a00ff', color: '#ffffff', border: 'none', borderRadius: '10px', fontSize: '14px', fontWeight: '700', cursor: 'pointer', fontFamily: 'Georgia, serif', letterSpacing: '0.5px', marginTop: '0.75rem' },
+    sunoCard: { background: '#0d0a1a', border: '1px solid #2a1a4a', borderRadius: '10px', padding: '1.25rem', marginTop: '0.75rem' },
+    sunoPromptText: { color: '#e0d4f0', fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1rem', fontStyle: 'italic' },
+    pickerRow: { display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '0.75rem' },
+    pickerBtn: (active) => ({
+      padding: '0.4rem 0.9rem', fontSize: '12px', borderRadius: '16px', cursor: 'pointer', fontFamily: 'Georgia, serif', textTransform: 'capitalize',
+      background: active ? '#9a50ff' : '#1a1024', color: active ? '#fff' : '#8a7a9a',
+      border: active ? 'none' : '1px solid #2a1a3a', fontWeight: active ? '700' : '400',
     }),
     teleprompterOverlay: {
       position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
@@ -354,6 +400,34 @@ export default function Freestyle() {
               <button onClick={generate} style={s.actionBtn(false)}>
                 🔄 Regenerate
               </button>
+            </div>
+
+            {/* Suno Style Prompt Section */}
+            <div style={s.sunoCard}>
+              <div style={{ fontSize: '11px', letterSpacing: '3px', color: '#9a50ff', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                🎵 Get Suno Style Prompt for This
+              </div>
+              <div style={s.pickerRow}>
+                {MOODS.map(m => (
+                  <button key={m} style={s.pickerBtn(mood === m)} onClick={() => setMood(m)}>{m}</button>
+                ))}
+              </div>
+              <div style={s.pickerRow}>
+                {VOCAL_OPTIONS.map(v => (
+                  <button key={v} style={s.pickerBtn(vocals === v)} onClick={() => setVocals(v)}>{v}</button>
+                ))}
+              </div>
+              <button onClick={getSunoPrompt} disabled={sunoLoading} style={s.sunoBtn}>
+                {sunoLoading ? 'Writing style prompt...' : '🎵 Get Suno Style Prompt for This'}
+              </button>
+              {sunoPrompt && (
+                <>
+                  <div style={{ ...s.sunoPromptText, marginTop: '1rem' }}>{sunoPrompt}</div>
+                  <button onClick={copySunoPrompt} style={{ ...s.actionBtn(false), width: '100%' }}>
+                    {sunoCopied ? '✓ Copied!' : '⧉ Copy Suno Prompt'}
+                  </button>
+                </>
+              )}
             </div>
 
             {/* MusicAPI Affiliate Banner */}
