@@ -11,6 +11,16 @@ export default async function handler(req, res) {
     'melodic': 'Melodic rap: sing-songy flow, emotional hooks, focus on feeling.',
     'aggressive': 'Aggressive: fast delivery, intense imagery, punching rhymes, high energy.',
     'storytelling': 'Storytelling: vivid narrative, specific details, scene-setting.',
+    'uk-drill': 'UK Drill: dark, sliding 808 basslines, 140 BPM, gritty London slang, menacing minor-key melodies, deadpan aggressive delivery.',
+    'chicago-drill': 'Chicago Drill: haunting piano loops, 60-70 BPM (half-time feel), triplet flows, street-level violent imagery, cold detached tone.',
+    'g-funk': 'G-funk: laid-back 90-100 BPM, whining synth leads, deep funk bassline, West Coast cruising vibe, smooth confident delivery.',
+    'cloud-rap': 'Cloud rap: dreamy reverb-heavy production, melodic/autotuned delivery, hazy introspective lyrics, slow-to-mid tempo.',
+    'mumble-rap': 'Mumble rap: melodic autotuned ad-libs, simple repetitive hooks, trap-influenced beat, mood over lyricism.',
+    'grime': 'Grime: 140 BPM, aggressive electronic bassline, rapid-fire UK MC delivery, dark syncopated rhythm, East London slang.',
+    'latin-trap': 'Latin trap: reggaeton-influenced trap beat, Spanish/Spanglish flow, dembow-adjacent rhythm, bilingual wordplay.',
+    'afroswing': 'Afroswing: Afrobeats-influenced bounce, melodic UK-accented flow, warm percussive rhythm, romantic/street duality.',
+    'chopped-screwed': 'Chopped and screwed: slowed-down tempo, deep pitched-down vocal feel, syrupy laid-back Houston delivery, hypnotic repetition.',
+    'phonk': 'Phonk: distorted 808 cowbell, Memphis horrorcore-influenced sample chops, dark lo-fi texture, aggressive but hazy delivery.',
   }
   const barCount = parseInt(bars) || 2
   const selectedStyle = styleGuides[style] || styleGuides['trap']

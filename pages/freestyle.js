@@ -12,6 +12,19 @@ const STYLES = [
   { key: 'storytelling', label: 'Storytelling' },
 ]
 
+const SPECIFIC_STYLES = [
+  { key: 'uk-drill', label: 'UK Drill' },
+  { key: 'chicago-drill', label: 'Chicago Drill' },
+  { key: 'g-funk', label: 'G-funk' },
+  { key: 'cloud-rap', label: 'Cloud Rap' },
+  { key: 'mumble-rap', label: 'Mumble Rap' },
+  { key: 'grime', label: 'Grime' },
+  { key: 'latin-trap', label: 'Latin Trap' },
+  { key: 'afroswing', label: 'Afroswing' },
+  { key: 'chopped-screwed', label: 'Chopped & Screwed' },
+  { key: 'phonk', label: 'Phonk' },
+]
+
 const BAR_OPTIONS = ['4', '8', '16', 'full-song']
 
 const RANDOM_OBJECTS = [
@@ -38,6 +51,7 @@ export default function Freestyle() {
   const [objects, setObjects] = useState([])
   const [customInput, setCustomInput] = useState('')
   const [style, setStyle] = useState('trap')
+  const [showSpecific, setShowSpecific] = useState(false)
   const [bars, setBars] = useState('8')
   const [loading, setLoading] = useState(false)
   const [result, setResult] = useState(null)
@@ -277,6 +291,13 @@ export default function Freestyle() {
           <span style={s.cardLabel}>Style</span>
           <div style={s.stylesRow}>
             {STYLES.map(st => (
+              <button key={st.key} style={s.styleBtn(style === st.key)} onClick={() => setStyle(st.key)}>
+                {st.label}
+              </button>
+            ))}
+          </div>
+          <div style={{ ...s.stylesRow, marginTop: '0.5rem' }}>
+            {SPECIFIC_STYLES.map(st => (
               <button key={st.key} style={s.styleBtn(style === st.key)} onClick={() => setStyle(st.key)}>
                 {st.label}
               </button>
