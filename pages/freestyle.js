@@ -7,7 +7,7 @@ import { SiteNav, SiteFooter } from '../components/Layout'
 const STYLES = [
   { key: 'trap', label: 'Trap' },
   { key: 'boom-bap', label: 'Boom Bap' },
-  { key: 'emotional', label: 'Emotional' },
+  { key: 'melodic', label: 'Emotional' },
   { key: 'aggressive', label: 'Aggressive' },
   { key: 'storytelling', label: 'Storytelling' },
 ]
