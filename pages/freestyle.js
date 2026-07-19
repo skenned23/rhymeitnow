@@ -224,7 +224,7 @@ export default function Freestyle() {
 
         {/* Objects */}
         <div style={s.card}>
-          <span style={s.cardLabel}>Your Objects ({objects.length}/10)</span>
+          <span style={s.cardLabel}>What is your rap about? Pick your ingredients ({objects.length}/10)</span>
           <div style={s.objectsGrid}>
             {objects.map((obj, i) => (
               <div key={i} style={s.objectTag}>
@@ -243,7 +243,7 @@ export default function Freestyle() {
                 value={customInput}
                 onChange={e => setCustomInput(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && addCustomObject()}
-                placeholder="Add your own object..."
+                placeholder="Add your own ingredient..."
                 style={s.input}
               />
               <button onClick={addCustomObject} style={s.addBtn}>+ Add</button>
