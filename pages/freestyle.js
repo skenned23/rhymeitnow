@@ -12,7 +12,7 @@ const STYLES = [
   { key: 'storytelling', label: 'Storytelling' },
 ]
 
-const BAR_OPTIONS = ['4', '8', '16']
+const BAR_OPTIONS = ['4', '8', '16', 'full-song']
 
 const RANDOM_OBJECTS = [
   'a rusted stop sign', 'a half-eaten sandwich', 'a cracked smartphone',
@@ -79,17 +79,23 @@ export default function Freestyle() {
     setResult(null)
     setTeleprompter(false)
 
-    const prompt = `Write a ${bars}-bar ${style} rap verse that naturally incorporates these items: ${objects.join(', ')}. Make the flow feel authentic and the rhymes tight. Each item should appear meaningfully — not just name-dropped.`
+    const isFullSong = bars === 'full-song'
+    const prompt = isFullSong
+      ? `Write a full ${style} rap song (Verse 1, Hook, Verse 2, Outro) that naturally incorporates these items: ${objects.join(', ')}. Make the flow feel authentic and the rhymes tight. Each item should appear meaningfully — not just name-dropped.`
+      : `Write a ${bars}-bar ${style} rap verse that naturally incorporates these items: ${objects.join(', ')}. Make the flow feel authentic and the rhymes tight. Each item should appear meaningfully — not just name-dropped.`
 
     try {
       const res = await fetch('/api/rap', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ line: prompt, style, bars }),
+        body: JSON.stringify({ line: prompt, style, bars, mode: isFullSong ? 'full-song' : undefined }),
       })
       const data = await res.json()
-      const lines = data.generated_bars || []
-      setResult(lines)
+      if (isFullSong) {
+        setResult(data.sections || [])
+      } else {
+        setResult(data.generated_bars || [])
+      }
     } catch (err) {
       console.error(err)
     }
@@ -98,7 +104,10 @@ export default function Freestyle() {
 
   const copyResult = () => {
     if (!result) return
-    navigator.clipboard?.writeText(result.join('\n'))
+    const text = bars === 'full-song'
+      ? result.map(section => `[${section.label}]\n${section.lines.join('\n')}`).join('\n\n')
+      : result.join('\n')
+    navigator.clipboard?.writeText(text)
     setCopied(true)
     setTimeout(() => setCopied(false), 1600)
   }
@@ -190,9 +199,18 @@ export default function Freestyle() {
       {teleprompter && result && (
         <div style={s.teleprompterOverlay}>
           <div ref={scrollRef} style={s.teleprompterText}>
-            {result.map((line, i) => (
-              <div key={i} style={{ marginBottom: '1rem' }}>{line}</div>
-            ))}
+            {bars === 'full-song'
+              ? result.map((section, i) => (
+                  <div key={i} style={{ marginBottom: '2rem' }}>
+                    <div style={{ fontSize: '0.9rem', color: '#c8a86a', marginBottom: '0.75rem', letterSpacing: '2px' }}>{section.label}</div>
+                    {section.lines.map((line, j) => (
+                      <div key={j} style={{ marginBottom: '1rem' }}>{line}</div>
+                    ))}
+                  </div>
+                ))
+              : result.map((line, i) => (
+                  <div key={i} style={{ marginBottom: '1rem' }}>{line}</div>
+                ))}
             <div style={{ height: '50vh' }} />
           </div>
           <div style={s.teleprompterControls}>
@@ -272,7 +290,7 @@ export default function Freestyle() {
           <div style={s.barsRow}>
             {BAR_OPTIONS.map(b => (
               <button key={b} style={s.barBtn(bars === b)} onClick={() => setBars(b)}>
-                {b} Bars
+                {b === 'full-song' ? 'Full Song' : `${b} Bars`}
               </button>
             ))}
           </div>
@@ -287,10 +305,23 @@ export default function Freestyle() {
         {result && (
           <>
             <div style={s.resultCard}>
-              <span style={{ ...s.cardLabel, marginBottom: '1rem' }}>Your Freestyle — {style} · {bars} bars</span>
-              {result.map((line, i) => (
-                <div key={i} style={s.barLine}>{line}</div>
-              ))}
+              <span style={{ ...s.cardLabel, marginBottom: '1rem' }}>
+                Your Freestyle — {style} · {bars === 'full-song' ? 'Full Song' : `${bars} bars`}
+              </span>
+              {bars === 'full-song'
+                ? result.map((section, i) => (
+                    <div key={i} style={{ marginBottom: '1.25rem' }}>
+                      <div style={{ fontSize: '11px', letterSpacing: '2px', color: '#c8a86a', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                        {section.label}
+                      </div>
+                      {section.lines.map((line, j) => (
+                        <div key={j} style={s.barLine}>{line}</div>
+                      ))}
+                    </div>
+                  ))
+                : result.map((line, i) => (
+                    <div key={i} style={s.barLine}>{line}</div>
+                  ))}
             </div>
             <div style={s.actionRow}>
               <button onClick={copyResult} style={s.actionBtn(false)}>

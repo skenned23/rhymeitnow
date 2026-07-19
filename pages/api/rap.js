@@ -1,7 +1,7 @@
 // pages/api/rap.js
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' })
-  const { line, style, bars, previousBars } = req.body
+  const { line, style, bars, previousBars, mode } = req.body
   if (!line) return res.status(400).json({ error: 'Line is required' })
   const apiKey = process.env.ANTHROPIC_API_KEY
   if (!apiKey) return res.status(500).json({ error: 'API key not configured' })
@@ -17,7 +17,11 @@ export default async function handler(req, res) {
   const previousContext = previousBars && previousBars.length > 0
     ? ' Previous bars: ' + previousBars.slice(-4).join(' / ')
     : ''
-  const systemPrompt = 'You are a rap lyricist. Return ONLY a raw JSON object with no markdown, no backticks, no extra text. The JSON must have these exact keys: "analysis" (one sentence about the rhyme scheme of the input line), "generated_bars" (array of exactly ' + barCount + ' rap bar strings that flow from the input), "rhyme_words" (array of 4-6 key rhyming words used). Style guide: ' + selectedStyle + previousContext
+
+  const systemPrompt = mode === 'full-song'
+    ? 'You are a rap lyricist. Return ONLY a raw JSON object with no markdown, no backticks, no extra text. The JSON must have these exact keys: "analysis" (one sentence about the overall theme), "sections" (array of objects, each with "label" — one of "Verse 1", "Hook", "Verse 2", "Outro" — and "lines" — an array of bar strings for that section: 8-10 lines for each Verse, 4 lines for Hook, 4 lines for Outro), "rhyme_words" (array of 4-6 key rhyming words used). The Hook should be simple, repeatable, and catchy — distinct in rhythm from the verses. Style guide: ' + selectedStyle
+    : 'You are a rap lyricist. Return ONLY a raw JSON object with no markdown, no backticks, no extra text. The JSON must have these exact keys: "analysis" (one sentence about the rhyme scheme of the input line), "generated_bars" (array of exactly ' + barCount + ' rap bar strings that flow from the input), "rhyme_words" (array of 4-6 key rhyming words used). Style guide: ' + selectedStyle + previousContext
+
   try {
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
@@ -28,7 +32,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 1000,
+        max_tokens: 1500,
         system: systemPrompt,
         messages: [{ role: 'user', content: 'Generate ' + barCount + ' rap bars continuing from this line: "' + line.trim() + '"' }],
       }),
