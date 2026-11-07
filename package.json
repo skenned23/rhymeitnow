@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/split-words.js",
     "dev": "next dev",
+    "prebuild": "node scripts/split-words.js",
     "build": "next build",
     "start": "next start"
   },

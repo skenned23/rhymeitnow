@@ -5,11 +5,15 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { SiteNav, SiteFooter } from '../../components/Layout'
 
+// Word data comes from small per-word files made by scripts/split-words.js (runs before every build),
+// never from the 18 MB data/words-content.json: parsing that on each request burned Vercel CPU.
+const GENERATED = path.join(process.cwd(), 'data', 'generated')
+
+// Unknown or malformed words: cache the 404 for a day so repeat bot hits don't re-run this function.
+const NOT_FOUND = { notFound: true, revalidate: 86400 }
+
 export async function getStaticPaths() {
-  const filePath = path.join(process.cwd(), 'data', 'words-content.json')
-  const raw = fs.readFileSync(filePath, 'utf-8')
-  const wordsContent = JSON.parse(raw)
-  const words = Object.keys(wordsContent)
+  const words = JSON.parse(fs.readFileSync(path.join(GENERATED, 'word-index.json'), 'utf-8'))
   const paths = words.map(word => ({ params: { word } }))
   return { paths, fallback: 'blocking' }
 }
@@ -19,31 +23,26 @@ export async function getStaticProps({ params }) {
 
   // Redirect uppercase URLs to lowercase
   if (word !== word.toLowerCase()) {
-    return { notFound: true }
+    return NOT_FOUND
   }
 
-  const filePath = path.join(process.cwd(), 'data', 'words-content.json')
-  const raw = fs.readFileSync(filePath, 'utf-8')
-  const wordsContent = JSON.parse(raw)
-  const content = wordsContent[word] || null
-
-  // Redirect unknown words to homepage
-  if (!content) {
-    return { notFound: true }
+  // Only plain words map to a data file (also blocks path tricks like "../").
+  if (!/^[a-z0-9][a-z0-9 '\-]*$/.test(word)) {
+    return NOT_FOUND
   }
 
-  // Figure out which rhyme/related words already have their own page.
+  let data
+  try {
+    data = JSON.parse(fs.readFileSync(path.join(GENERATED, 'words', `${word}.json`), 'utf-8'))
+  } catch {
+    // Redirect unknown words to homepage
+    return NOT_FOUND
+  }
+
+  // existingWords = the rhyme/related words that already have their own page (precomputed at build).
   // Only those get turned into internal links — everything else stays
   // as copy-to-clipboard so we never link to a page that doesn't exist yet.
-  const candidateWords = [
-    ...(content.perfect || []),
-    ...(content.near || []),
-    ...(content.slant || []),
-    ...(content.related || []),
-  ]
-  const existingWords = candidateWords.filter(w => wordsContent[w])
-
-  return { props: { word, content, existingWords } }
+  return { props: { word, content: data.content, existingWords: data.existingWords } }
 }
 
 const CATEGORIES = [
